@@ -36,7 +36,7 @@ nav ul li a::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #2596be;
+    background: #c71405;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -54,5 +54,5 @@ nav ul li a:hover::after{
     margin-top: 20px;
 }
 .header-text h1 span{
-    color: #2596be;
+    color: #c71405;
 }
