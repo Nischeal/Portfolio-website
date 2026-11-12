@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter, JetBrains_Mono, Alex_Brush } from "next/font/google";
 import { SeasonProvider } from "@/context/SeasonContext";
 import { SeasonalCanvas } from "@/components/canvas/SeasonalCanvas";
 import { Navbar } from "@/components/layout/Navbar";
@@ -26,6 +26,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const alexBrush = Alex_Brush({
+  variable: "--font-signature",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Nischal Basnet | Full-Stack & Systems Engineer",
   description: "Personal engineering portfolio showcasing full-stack web architectures, AI vision pipelines, and systems design.",
@@ -46,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} ${alexBrush.variable} antialiased`}
     >
       <body className="bg-[var(--bg-page)] text-[var(--text-body)] min-h-screen selection:bg-[#4A5D4E]/20 selection:text-[#37463A] relative overflow-x-hidden">
         <SeasonProvider>

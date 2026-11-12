@@ -16,12 +16,12 @@ export function Navbar() {
   return (
     <header className="sticky top-0 left-0 right-0 z-40 bg-[#F9F6F0]/85 backdrop-blur-md border-b border-[#E7E2D8]/70 transition-colors duration-400">
       <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Poetic Typographic Brand Mark */}
+        {/* Fluid Signature Brand Mark */}
         <Link
           href="/"
-          className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#1C1917] hover:text-[#4A5D4E] transition-colors"
+          className="font-[family-name:var(--font-signature)] text-3xl sm:text-4xl text-[#1C1917] hover:text-[#4A5D4E] transition-colors leading-none pt-1 select-none"
         >
-          Nischal Basnet
+          Nischal
         </Link>
 
         {/* Desktop Navigation */}

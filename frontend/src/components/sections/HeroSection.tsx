@@ -8,28 +8,24 @@ export function HeroSection() {
   const { season } = useSeason();
 
   return (
-    <section className="pt-20 sm:pt-28 pb-24 sm:pb-32 px-6 max-w-4xl mx-auto w-full">
+    <section className="pt-20 sm:pt-28 pb-20 sm:pb-28 px-6 max-w-4xl mx-auto w-full">
       <div className="space-y-8 text-left">
-        {/* Top Horology & Kicker */}
-        <div className="flex items-center gap-2.5 font-mono text-xs text-stone-500 tracking-wider">
+        {/* Clean Spaced Kicker */}
+        <div className="flex items-center gap-2.5 font-mono text-[11px] text-stone-500 tracking-widest uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E]" />
-          <span>01 // PORTFOLIO</span>
-          <span className="text-[#D6CFC3]">/</span>
-          <span>FULL-STACK &amp; SYSTEMS ARCHITECT</span>
+          <span>KATHMANDU, NEPAL — FULL-STACK &amp; SYSTEMS ENGINEER</span>
         </div>
 
-        {/* Authoritative Display Headline */}
-        <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-[#1C1917] leading-[1.02]">
-          Nischal Basnet
-        </h1>
-
-        {/* Dynamic Olive Typewriter Rotator */}
-        <div className="pt-1">
+        {/* Grand Typographic Headline Lockup */}
+        <div className="space-y-3">
+          <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-[#1C1917] leading-[0.98]">
+            Nischal Basnet
+          </h1>
           <TypewriterRole
-            prefix="Crafting"
+            prefix="Architecting"
             roles={[
+              "AI Vision Pipelines",
               "Full-Stack Web Systems",
-              "AI & Vision Pipelines",
               "Scalable Backend Services",
               "Interactive Web Experiences",
             ]}
@@ -42,10 +38,10 @@ export function HeroSection() {
         </p>
 
         {/* Action Button Row */}
-        <div className="flex flex-wrap items-center gap-4 pt-4 font-mono text-xs">
+        <div className="flex flex-wrap items-center gap-4 pt-3 font-mono text-xs">
           <Link
             href="#work"
-            className="bg-[#4A5D4E] hover:bg-[#37463A] text-white px-7 py-3.5 rounded-full tracking-wider transition-all shadow-[0_4px_16px_rgba(74,93,78,0.25)] inline-flex items-center gap-2"
+            className="bg-[#4A5D4E] hover:bg-[#37463A] text-white px-7 py-3.5 rounded-full tracking-wider transition-all shadow-[0_4px_16px_rgba(74,93,78,0.22)] inline-flex items-center gap-2"
           >
             <span>Explore Selected Work</span>
             <span>↓</span>
@@ -60,8 +56,8 @@ export function HeroSection() {
           </Link>
         </div>
 
-        {/* Refined Live Status & Metadata Strip */}
-        <div className="pt-8 border-t border-[#E7E2D8] grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs text-stone-600">
+        {/* Generous Spaced Metadata Strip */}
+        <div className="mt-14 pt-8 border-t border-[#E7E2D8] grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-stone-600">
           <div>
             <span className="text-[10px] text-stone-400 block uppercase tracking-widest mb-1">
               LOCATION

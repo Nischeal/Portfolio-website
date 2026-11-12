@@ -47,3 +47,7 @@ This document tracks all frozen architectural decisions, design rules, and plan 
 ### Decision 6: Full-Width Editorial Masthead Hero Layout
 - **Rationale**: Removed the right-hand decorative botanical card. Shifted to a full-width typographic layout centered on Cormorant Garamond headline, olive typewriter role rotator, and a functional live status strip.
 - **Date**: 2026-11-12
+
+### Decision 7: Hero Typographic Lockup & Bespoke Signature Navigation
+- **Rationale**: Replaced repetitive navbar name with fluid signature script (`Alex_Brush`). Upgraded typewriter from tiny monospace to a large Cormorant Garamond italic display line (`Architecting [...]`). Cleaned up top kicker to `KATHMANDU, NEPAL — FULL-STACK & SYSTEMS ENGINEER` and increased vertical whitespace.
+- **Date**: 2026-11-12

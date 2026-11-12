@@ -5,27 +5,31 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 interface TypewriterRoleProps {
   roles?: string[];
   prefix?: string;
+  className?: string;
 }
 
 const DEFAULT_ROLES = [
+  "AI Vision Pipelines",
   "Full-Stack Web Systems",
-  "AI & Vision Pipelines",
   "Scalable Backend Services",
   "Interactive Web Experiences",
 ];
 
 export function TypewriterRole({
   roles = DEFAULT_ROLES,
-  prefix = "Crafting",
+  prefix = "Architecting",
+  className = "",
 }: TypewriterRoleProps) {
   const currentText = useTypewriter({ words: roles });
 
   return (
-    <div className="font-mono text-sm sm:text-base md:text-lg flex items-center gap-2 text-stone-600">
-      <span className="font-normal">{prefix}</span>
-      <span className="text-[#4A5D4E] font-medium min-h-[1.5em] inline-flex items-center">
+    <div
+      className={`font-serif text-3xl sm:text-4xl md:text-5xl italic font-normal tracking-tight flex flex-wrap items-center gap-x-3 text-stone-500 leading-tight ${className}`}
+    >
+      <span className="text-stone-500 font-light">{prefix}</span>
+      <span className="text-[#4A5D4E] font-medium min-h-[1.2em] inline-flex items-center">
         {currentText || "\u00A0"}
-        <span className="inline-block w-[1.5px] h-4 sm:h-5 bg-[#4A5D4E] ml-1 animate-pulse" />
+        <span className="inline-block w-[2px] h-[0.85em] bg-[#4A5D4E] ml-1.5 animate-pulse" />
       </span>
     </div>
   );
