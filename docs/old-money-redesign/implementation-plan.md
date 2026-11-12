@@ -1,62 +1,104 @@
-# Old-Money Minimalist Redesign — Implementation Plan
+# Master Implementation Plan: Old-Money Minimalist Portfolio
 
-This plan guides the complete transformation of the portfolio into a warm minimalist, old-money editorial aesthetic with subtle seasonal particle layers (Autumn/Winter), tailored visual elegance, and authentic projects (**Clip Cuisine**, **Gym Management System**).
+This document outlines the phased milestone roadmap for **The Shadow Academic** portfolio, merging old-money editorial luxury (David Whyte & Mosh Mohammed inspirations) with seasonal HTML5 canvas ambience, authentic production projects (**Clip Cuisine**, **Gym Management System**), and a secret Shadow Monarch easter egg.
 
 ---
 
 ## 📦 Inventory of Reusable Assets & Tools
 
-| Category | Existing Asset Path | Reuse Strategy |
+| Asset / Component | Location | Role in Architecture |
 | :--- | :--- | :--- |
-| **Typewriter Hook** | `src/hooks/useTypewriter.ts` | Reused for editorial role rotator with olive cursor |
-| **Typography Engine** | `next/font/google` | Update `layout.tsx` to load `Cormorant_Garamond`, `Inter`, and `JetBrains_Mono` |
-| **Styles & Tokens** | `src/app/globals.css` | Replace cyberpunk neon with Warm Linen, Olive Green, and Hairline borders |
-| **Project Data** | `src/types/portfolio.ts` | Maintain verified schema for Clip Cuisine & Gym Management System |
+| **Typewriter Hook** | `src/hooks/useTypewriter.ts` | Zero-dependency hook for editorial headline role cycling |
+| **Typewriter Component** | `src/components/ui/TypewriterRole.tsx` | Olive green typewriter role rotator |
+| **Typography Engine** | `next/font/google` in `layout.tsx` | `Cormorant_Garamond` (Display), `Inter` (Body), `JetBrains_Mono` (Dials) |
+| **Design Tokens** | `src/app/globals.css` | Warm Linen (`#F9F6F0`), Olive Green (`#4A5D4E`), Hairline (`#E7E2D8`) |
+| **Project Interfaces** | `src/types/portfolio.ts` | Strictly typed interfaces for Clip Cuisine, Gym System, and Drawers |
 
 ---
 
-## 🎯 Phased Milestones Breakdown
+## 🎯 Phased Milestones Roadmap
 
-### Milestone 1: Design Tokens & Typography Re-Architecture
-- [x] **Step 1.1: Font Setup in `layout.tsx`**
-  - Replace `Cinzel` with `Cormorant_Garamond` (subsets: latin, weights: 500, 600, 700).
-  - Retain `Inter` for body copy and `JetBrains_Mono` for micro-counters.
-- [x] **Step 1.2: Design Tokens in `globals.css`**
-  - Implement Warm Linen (`#F9F6F0`), Card White (`#FFFFFF`), Deep Espresso (`#1C1917`), and Olive Green (`#4A5D4E`).
-  - Configure Tailwind theme extension for old-money tokens (`bg-page`, `text-headline`, `accent-olive`, etc.).
-- [x] **Step 1.3: Build Verification & Testing Guide**
-  - Verify `npm run build` succeeds locally with zero layout shifts.
+### Milestone 1: Clean Foundation, Tokens & Typography (Completed & Verified)
+- [x] **Step 1.1**: Purge previous cyberpunk / gaming HUD components and styles.
+- [x] **Step 1.2**: Configure `globals.css` with Warm Linen, Card White, Deep Espresso, and Olive Green tokens.
+- [x] **Step 1.3**: Configure `layout.tsx` with `Cormorant_Garamond`, `Inter`, and `JetBrains_Mono`.
+- [x] **Step 1.4**: Verify local production build (`npm run build`).
 
-### Milestone 2: Minimalist Navigation & Ambient Seasonal Canvas
+---
+
+### Milestone 2: Minimalist Navigation & Ambient Seasonal Canvas Engine
 - [ ] **Step 2.1: Seasonal Canvas Component (`<SeasonalCanvas />`)**
-  - Zero-dependency HTML5 canvas rendering delicate, slow-drifting Autumn leaves or Winter snow.
-- [ ] **Step 2.2: Minimalist Navbar (`<Navbar />`)**
-  - Clean editorial header with brand, navigation links, and a discreet `[🍂 Autumn / ❄️ Winter]` season switch.
+  - Zero-dependency HTML5 canvas layer detecting calendar month (Autumn drifting amber/olive leaves vs. Winter snow).
+  - Sparse & Meditative density (15–22 delicate watercolor leaf silhouettes drifting at 0.6–1.2 px/frame).
+  - Subtle mouse breeze deflection on desktop.
+- [ ] **Step 2.2: Minimalist Sticky Header (`<Navbar />`)**
+  - Brand identity: Pure poetic typographic `Nischal Basnet` in medium-weight `Cormorant Garamond`.
+  - Links: `Work`, `Philosophy`, `Craft`, `Inquiry`.
+  - Action button: Olive pill `Get in Touch`.
+  - Mobile drawer: Minimalist text toggle `[ Menu ]` / `[ Close ]` opening an airy warm linen drawer.
 - [ ] **Step 2.3: Milestone 2 Manual Verification**
-  - Document verification in `manual-testing-guide.md`.
+  - Verify seasonal rendering and responsive header navigation.
 
-### Milestone 3: Editorial Split Hero Section
+---
+
+### Milestone 3: Split Hero with Botanical Motif
 - [ ] **Step 3.1: Hero Section Layout (`<HeroSection />`)**
-  - Left column: Cormorant Garamond display title, dynamic typewriter rotator in olive green ("Crafting [Full-Stack Systems | AI & Vision Pipelines | Scalable Architectures]"), concise bio, olive pill button ("Get in touch").
-  - Right column: Elegant tailored portrait card with diffuse luxury shadow and live status pill ("● Available for Engineering").
-- [ ] **Step 3.2: Interactive Easter Egg**
-  - Subtle interactive click/hover effect on the status card revealing a faint shadow-monarch aura.
-- [ ] **Step 3.3: Milestone 3 Manual Verification**
-  - Document verification in `manual-testing-guide.md`.
+  - Left column: Cormorant Garamond display headline, dynamic olive typewriter rotator ("Crafting [Full-Stack Web Systems | AI & Vision Pipelines | Scalable Backend Services | Interactive Web Experiences]"), 2-sentence bio statement, Primary Olive Pill (`Explore Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
+  - Right column: Framed artistic botanical watercolor motif card (inspired by David Whyte's tree) with floating live availability status pill (`● Available for Engineering`).
+- [ ] **Step 3.2: Milestone 3 Manual Verification**
+  - Verify split typography, responsiveness, and typewriter cycling.
 
-### Milestone 4: Selected Work Section (Editorial Case Cards)
-- [ ] **Step 4.1: Selected Work Layout (`<ProjectsSection />`)**
-  - Generous vertical case cards for **Clip Cuisine** and **Gym Management System**.
-  - Highlighting architecture details, olive tech badges, and direct `SOURCE ↗` GitHub links.
+---
+
+### Milestone 4: The Three Pillars ("Philosophy & The Craft")
+- [ ] **Step 4.1: Three Pillars Triad Layout (`<PhilosophySection />`)**
+  - 3 clean editorial cards side-by-side with Swiss-dial counters (`01 //`, `02 //`, `03 //`), Cormorant titles, delicate line icons, and 2-sentence reflections:
+    1. **01 // Architecture & Systems**: Scalable full-stack code, Python AI vision pipelines, distributed reliability.
+    2. **02 // Proportion & Form**: Tailoring, high-contrast typography, quiet luxury aesthetics.
+    3. **03 // The Atmosphere**: Late autumn warmth, crisp winter slate, and contemplative stillness.
 - [ ] **Step 4.2: Milestone 4 Manual Verification**
-  - Verify card responsiveness and link targets in `manual-testing-guide.md`.
+  - Verify card grid layout and editorial micro-typography.
 
-### Milestone 5: Technical Craft, Contact Inquiry & Editorial Footer
-- [ ] **Step 5.1: Technical Craft Section (`<CraftSection />`)**
-  - Clean minimalist overview of engineering proficiencies (AI/Vision, Backend Architecture, Databases, Modern Web).
-- [ ] **Step 5.2: Contact & Inquiry (`<ContactSection />`)**
-  - Minimalist editorial inquiry conduit and direct email transmission.
-- [ ] **Step 5.3: Editorial Footer (`<Footer />`)**
-  - Quiet luxury footer with time zone (`Kathmandu // GMT+5:45`), seasonal status, copyright, and GitHub profile.
-- [ ] **Step 5.4: End-to-End Build & Final Sign-Off**
-  - Run full production build (`npm run build`) and update `manual-testing-guide.md`.
+---
+
+### Milestone 5: Selected Works with Slide-Out Architectural Drawers
+- [ ] **Step 5.1: Selected Works Cards (`<ProjectsSection />`)**
+  - Generous editorial case cards for:
+    - **Clip Cuisine (Ingredient Finder)**: Python, YOLO, PostgreSQL, Computer Vision.
+    - **Gym Management System**: PHP, Laravel, MySQL, Operations Platform.
+    - **Class-EX Upcoming Systems**: Autonomous Agent & AI orchestrator.
+- [ ] **Step 5.2: Slide-Out Architectural Drawer (`<ProjectDrawer />`)**
+  - Smooth slide-out panel from right displaying Problem Statement, Architectural Solution, Technical Challenges Overcome, Full Stack Ledger, and direct `SOURCE ↗` GitHub links (`https://github.com/Nischeal/Ingredient_finder`, `https://github.com/Nischeal/Gym-Management-System`).
+  - Closes cleanly via `[Close]`, backdrop click, or `Escape` key.
+- [ ] **Step 5.3: Milestone 5 Manual Verification**
+  - Test drawer open/close transitions, keyboard escape handling, and GitHub link targets.
+
+---
+
+### Milestone 6: Minimalist Horizon Matrix (Technical Capabilities)
+- [ ] **Step 6.1: Horizon Matrix Component (`<CapabilitiesSection />`)**
+  - Horizontal spec ledger with Swiss-dial counters (`01 //`, `02 //`), understated mastery ratings (clean percentage or rating dot indicator), and refined olive tech tags grouped by discipline (AI & Vision, Backend Architecture, Databases, Modern Frontend).
+- [ ] **Step 6.2: Milestone 6 Manual Verification**
+  - Verify responsive table/grid rendering.
+
+---
+
+### Milestone 7: Contact Inquiry Section & Editorial Footer (with Secret Monarch Mode)
+- [ ] **Step 7.1: Minimalist Inquiry Form (`<ContactSection />`)**
+  - Clean 4-field form (Name, Email, Opportunity Type, Message) with quick-copy `nischealbasnet10@gmail.com` button.
+- [ ] **Step 7.2: Editorial Footer & Kathmandu Time Indicator (`<Footer />`)**
+  - Time indicator (`Kathmandu // GMT+5:45`), seasonal toggle (`[🍂 Autumn / ❄️ Winter]`), copyright, and GitHub profile link (`https://github.com/Nischeal`).
+- [ ] **Step 7.3: Secret Shadow Monarch Easter Egg**
+  - Keyboard listener (pressing `M`) or clicking the discreet footer watermark switches `data-theme="monarch"`, transitioning the site into deep charcoal espresso with subtle cyan shadow aura accents on the hero card and a discreet pill `"Shadow Mode // Press 'M' to return"`.
+- [ ] **Step 7.4: Milestone 7 Manual Verification**
+  - Test easter egg trigger, seasonal footer toggle, and copy-to-clipboard functionality.
+
+---
+
+### Milestone 8: Final Polish, Accessibility & Production Sign-Off
+- [ ] **Step 8.1: Full Production Build & Typecheck**
+  - Execute `npm run build` and verify static page generation.
+- [ ] **Step 8.2: Accessibility & Responsive Audit**
+  - Ensure contrast ratios, keyboard navigation, and mobile viewports are flawless.
+- [ ] **Step 8.3: Final Project Handover Summary**
+  - Present final deliverables and documentation to user.

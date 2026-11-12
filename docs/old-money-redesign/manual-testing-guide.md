@@ -4,54 +4,81 @@ This guide details verification procedures for each milestone of the Old-Money M
 
 ---
 
-## 🧪 Milestone 1 Verification: Design Tokens & Typography
-
-### 1. Build & Typography Check
-Run from project root:
-```bash
-cd frontend && npm run build
-```
-**Expected Outcome**:
-- `Cormorant_Garamond`, `Inter`, and `JetBrains_Mono` compile and self-host via `next/font/google`.
-- Page background defaults to warm linen/cream (`#F9F6F0`).
-- Text uses deep espresso (`#1C1917`) instead of pure black.
-- Primary accent uses refined olive green (`#4A5D4E`).
+## 🧪 Milestone 1 Verification: Foundation, Tokens & Typography (Completed)
+- [x] Run `npm run build` in `frontend/`.
+- [x] Background defaults to Warm Linen (`#F9F6F0`).
+- [x] Text uses Deep Espresso (`#1C1917`).
+- [x] `Cormorant_Garamond`, `Inter`, and `JetBrains_Mono` loaded without layout shift.
 
 ---
 
-## 🧪 Milestone 2 Verification: Navigation & Seasonal Canvas
-
-### 1. Visual & Particle Verification
-Run `npm run dev` in `frontend/` and open `http://localhost:3000`:
-- **Seasonal Canvas**: Subtle, slow-drifting leaves in autumn mode, soft gentle snowflakes in winter mode.
-- **Season Toggle**: Clicking `[🍂 Autumn]` / `[❄️ Winter]` smoothly swaps particle physics without freezing.
-- **Navigation**: Clean editorial links and olive pill action button.
-
----
-
-## 🧪 Milestone 3 Verification: Editorial Split Hero
-
-### 1. Hero Verification
-- Split layout adapts cleanly on mobile (<768px: stacked; >=768px: 2 columns).
-- Left: Cormorant Garamond display title + olive typewriter role rotator + bio + olive pill CTA.
-- Right: Tailored visual card with soft luxury shadow and live availability status pill.
-- Easter Egg: Clicking/hovering on the card displays a subtle shadow aura.
+## 🧪 Milestone 2 Verification: Minimalist Navigation & Seasonal Canvas
+- [ ] **Ambient Canvas**:
+  - Automatically loads drifting Autumn leaves (or soft Winter snow depending on current month).
+  - Smooth 60 FPS animation with zero layout jitter.
+- [ ] **Sticky Navbar**:
+  - Brand title: `NISCHAL BASNET // ARCHITECT`.
+  - Links: `Work`, `Philosophy`, `Craft`, `Inquiry`.
+  - Olive pill button: `Get in Touch`.
+  - Mobile drawer toggle operates cleanly on small viewports (<768px).
 
 ---
 
-## 🧪 Milestone 4 Verification: Selected Work Cards
-
-### 1. Project Cards
-- **Clip Cuisine**: Shows Python, YOLO, PostgreSQL, Computer Vision tags; links to `https://github.com/Nischeal/Ingredient_finder`.
-- **Gym Management System**: Shows PHP, Laravel, MySQL tags; links to `https://github.com/Nischeal/Gym-Management-System`.
-- Zero broken links, zero placeholder live URLs.
+## 🧪 Milestone 3 Verification: Split Hero with Botanical Motif
+- [ ] **Left Column**:
+  - Cormorant Garamond display headline ("Nischal Basnet").
+  - Dynamic olive typewriter rotator cycling through:
+    - *Full-Stack Web Systems*
+    - *AI & Vision Pipelines*
+    - *Scalable Backend Services*
+    - *Interactive Web Experiences*
+  - Concise engineering bio statement.
+  - Olive pill CTA button ("Initiate Inquiry").
+- [ ] **Right Column**:
+  - Framed artistic botanical watercolor motif card.
+  - Live availability pill (`● Available for Engineering`).
 
 ---
 
-## 🧪 Milestone 5 Verification: Craft, Contact & Footer
+## 🧪 Milestone 4 Verification: The Three Pillars ("Philosophy & Craft")
+- [ ] **Three-Card Editorial Triad**:
+  - `01 // Architecture & Systems`
+  - `02 // Proportion & Form`
+  - `03 // The Atmosphere`
+- [ ] Cards display clean micro-typography and hairline borders (`#E7E2D8`).
 
-### 1. End-to-End Verification
-- Full page scroll from Hero → Selected Work → Technical Craft → Contact → Footer.
-- GitHub link points directly to `https://github.com/Nischeal`.
-- Local time zone indicator (`Kathmandu // GMT+5:45`).
-- `npm run build` succeeds with zero errors.
+---
+
+## 🧪 Milestone 5 Verification: Selected Works & Architectural Drawers
+- [ ] **Project Cards**:
+  - **Clip Cuisine (Ingredient Finder)**: Python, YOLO, PostgreSQL, Computer Vision tags.
+  - **Gym Management System**: PHP, Laravel, MySQL tags.
+  - **Class-EX Upcoming Systems**: Autonomous Agent & AI orchestrator.
+- [ ] **Slide-Out Drawer**:
+  - Clicking any card slides out the architectural detail panel from the right.
+  - Features problem/solution, technical highlights, and direct GitHub links (`https://github.com/Nischeal/Ingredient_finder`, `https://github.com/Nischeal/Gym-Management-System`).
+  - Closes cleanly via `[Close]`, backdrop click, or `Escape` key.
+
+---
+
+## 🧪 Milestone 6 Verification: Horizon Matrix (Capabilities)
+- [ ] Horizontal spec ledger with Swiss-dial counters (`01 //`, `02 //`).
+- [ ] Clean mastery indicators and technology tags grouped by discipline.
+
+---
+
+## 🧪 Milestone 7 Verification: Contact & Footer (with Monarch Secret)
+- [ ] **Inquiry Form**: Name, Email, Opportunity Type, Message, plus quick-copy button for `nischealbasnet10@gmail.com`.
+- [ ] **Footer**:
+  - Time indicator: `Kathmandu // GMT+5:45`.
+  - Seasonal toggle: `[🍂 Autumn / ❄️ Winter]`.
+  - Copyright: `© 2026 // Nischal Basnet`.
+  - GitHub profile: `https://github.com/Nischeal`.
+- [ ] **Secret Monarch Easter Egg**:
+  - Pressing `M` on keyboard or clicking the footer watermark transitions the entire site to deep espresso charcoal (`#141312`) with subtle cyan shadow aura.
+
+---
+
+## 🧪 Milestone 8 Verification: Production Build & Accessibility Audit
+- [ ] `npm run build` generates 100% clean static output.
+- [ ] Lighthouse performance, accessibility, and contrast check.
