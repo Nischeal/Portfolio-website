@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  /* === Background Colors === */
+  --bg-void: #0A0A14;
+  --bg-panel: rgba(13, 13, 26, 0.85);
+  --bg-card: rgba(15, 15, 30, 0.6);
+
+  /* === Borders === */
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-muted: rgba(255, 255, 255, 0.15);
+  --border-visible: rgba(255, 255, 255, 0.25);
+
+  /* === Accent Frames (Purple Glow) === */
+  --frame-primary: #A855F7;
+  --frame-secondary: #D946EF;
+  --frame-glow: rgba(168, 85, 247, 0.4);
+
+  /* === Status & Cyan Accents === */
+  --cyan-primary: #38BDF8;
+  --cyan-bright: #67E8F9;
+  --cyan-glow: rgba(56, 189, 248, 0.35);
+  --cyan-border: #22D3EE;
+
+  /* === Typography === */
+  --text-primary: #E2E8F0;
+  --text-bright: #FFFFFF;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  /* === Stat Indicators (Green) === */
+  --stat-green: #22C55E;
+  --stat-green-bright: #4ADE80;
+
+  /* === Rank Tiers === */
+  --rank-s: #F59E0B;
+  --rank-a: #22D3EE;
+  --rank-b: #22C55E;
+  --rank-c: #3B82F6;
+  --rank-d: #94A3B8;
+  --rank-e: #64748B;
+}
+
+@theme inline {
+  --color-void: var(--bg-void);
+  --color-panel: var(--bg-panel);
+  --color-card: var(--bg-card);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-muted: var(--border-muted);
+  --color-border-visible: var(--border-visible);
+  
+  --color-frame-primary: var(--frame-primary);
+  --color-frame-secondary: var(--frame-secondary);
+  --color-cyan-primary: var(--cyan-primary);
+  --color-cyan-bright: var(--cyan-bright);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-bright: var(--text-bright);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+
+  --font-heading: var(--font-cinzel);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-inter);
+}
+
+body {
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-inter), sans-serif;
+  min-height: 100vh;
+}
+
+/* Subtle Glow Utilities */
+.glow-cyan {
+  text-shadow: 0 0 15px var(--cyan-glow), 0 0 30px rgba(56, 189, 248, 0.2);
+}
+
+.box-glow-frame {
+  box-shadow: 0 0 25px -5px var(--frame-glow);
+}
+
+.box-glow-cyan {
+  box-shadow: 0 0 20px -5px rgba(34, 211, 238, 0.4);
+}
