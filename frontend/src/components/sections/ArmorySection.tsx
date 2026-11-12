@@ -3,46 +3,44 @@ import { SystemWindow } from "@/components/ui/SystemWindow";
 
 const FEATURED_PROJECTS: Project[] = [
   {
-    id: "project-01",
-    title: "HRM & Enterprise Workforce Engine",
-    classification: "CLASS-S // DISTRIBUTED ARCHITECTURE",
-    category: "Full-Stack Enterprise System",
+    id: "clip-cuisine",
+    title: "Clip Cuisine (Ingredient Finder)",
+    classification: "COMPUTER VISION // AI RECIPE ENGINE",
+    category: "AI & Computer Vision",
     description:
-      "Enterprise HR platform featuring tenant isolation, automated payroll calculation, dynamic attendance tracking, and fine-grained role-based permission gates.",
+      "Computer vision recipe and ingredient discovery system using YOLO models for real-time ingredient detection from images and clips, backed by PostgreSQL for structured recipe matching.",
     architectureHighlights: [
-      "Multi-tenant database connection resolver",
-      "Strict Service-Repository layered backend",
-      "High-concurrency time-tracking workflows",
+      "YOLO object detection model for multi-ingredient identification",
+      "PostgreSQL relational schema for ingredient-to-recipe mapping",
+      "Python pipeline for image pre-processing & inference parsing",
     ],
-    techStack: ["Laravel", "Livewire", "Tailwind CSS", "MySQL", "Docker"],
+    techStack: ["Python", "YOLO", "PostgreSQL", "Computer Vision"],
     status: "Completed",
-    githubUrl: "https://github.com",
-    liveUrl: "#",
+    githubUrl: "https://github.com/Nischeal/Ingredient_finder",
   },
   {
-    id: "project-02",
-    title: "The Shadow Academic (Portfolio & Systems Hub)",
-    classification: "CLASS-S // PRODUCTION HUB",
-    category: "Full-Stack Web & AI Interface",
+    id: "gym-management",
+    title: "Gym Management System",
+    classification: "ENTERPRISE CRUD // OPERATIONS ENGINE",
+    category: "Full-Stack Web Application",
     description:
-      "High-performance engineering portfolio fusing modern App Router capabilities, custom canvas particle systems, interactive terminal emulator, and editorial typography.",
+      "Complete fitness operations management platform handling member onboarding, membership subscription billing cycles, attendance check-in tracking, and administrative dashboard metrics.",
     architectureHighlights: [
-      "Next.js 15 App Router & React 19 Client Leaves",
-      "Custom zero-dependency typewriter & HUD engine",
-      "Tailwind design token mapping with zero CLS",
+      "Relational schema for members, subscriptions, and logs",
+      "Automated subscription status & payment lifecycle tracking",
+      "Administrative command center for attendance metrics",
     ],
-    techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "FastAPI (Roadmap)"],
+    techStack: ["PHP", "Laravel", "MySQL", "Tailwind CSS"],
     status: "Completed",
-    githubUrl: "https://github.com",
-    liveUrl: "https://nischal.info.np",
+    githubUrl: "https://github.com/Nischeal/Gym-Management-System",
   },
   {
-    id: "project-03",
+    id: "autonomous-orchestrator",
     title: "Autonomous Agent & Workflow Orchestrator",
     classification: "CLASS-EX // LOCKED QUEST",
     category: "Autonomous Systems & Generative AI",
     description:
-      "Distributed task pipeline executing multi-agent problem decomposition, automated code synthesis, and verification loops.",
+      "Distributed task execution pipeline featuring multi-agent problem decomposition, automated code synthesis, and verification loops.",
     architectureHighlights: [
       "Vector memory retrieval & state machines",
       "Streaming tool execution & sandboxed runs",
@@ -75,7 +73,7 @@ export function ArmorySection() {
           <SystemWindow
             key={project.id}
             title={project.id.toUpperCase()}
-            statusBadge={project.status === "Locked" ? "LOCKED" : "DEPLOYED"}
+            statusBadge={project.status === "Locked" ? "LOCKED" : "COMPLETED"}
             glowColor={project.status === "Locked" ? "purple" : "cyan"}
             className="flex flex-col justify-between"
           >
@@ -138,9 +136,9 @@ export function ArmorySection() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-white transition-colors"
+                      className="text-slate-300 hover:text-cyan-400 transition-colors border border-white/10 px-3 py-1 bg-white/[0.02]"
                     >
-                      SOURCE ↗
+                      SOURCE CODE ↗
                     </a>
                   )}
                 </div>
