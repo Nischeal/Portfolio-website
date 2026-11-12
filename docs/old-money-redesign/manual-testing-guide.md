@@ -40,12 +40,10 @@ This guide details verification procedures for each milestone of the Old-Money M
 
 ---
 
-## 🧪 Milestone 4 Verification: The Three Pillars ("Philosophy & Craft")
-- [ ] **Three-Card Editorial Triad**:
-  - `01 // Architecture & Systems`
-  - `02 // Proportion & Form`
-  - `03 // The Atmosphere`
-- [ ] Cards display clean micro-typography and hairline borders (`#E7E2D8`).
+## 🧪 Milestone 4 Verification: Grounded "About Me" Section
+- [ ] Section anchor: `#about`.
+- [ ] Displays conversational introduction covering background, technical focus (AI/YOLO, Python, Laravel, databases), and craftsmanship approach.
+- [ ] Clean editorial layout with hairline borders (`#E7E2D8`), Swiss-dial counter (`02 // ABOUT`), and generous whitespace.
 
 ---
 

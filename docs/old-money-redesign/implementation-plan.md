@@ -50,14 +50,15 @@ This document outlines the phased milestone roadmap for **The Shadow Academic** 
 
 ---
 
-### Milestone 4: The Three Pillars ("Philosophy & The Craft")
-- [ ] **Step 4.1: Three Pillars Triad Layout (`<PhilosophySection />`)**
-  - 3 clean editorial cards side-by-side with Swiss-dial counters (`01 //`, `02 //`, `03 //`), Cormorant titles, delicate line icons, and 2-sentence reflections:
-    1. **01 // Architecture & Systems**: Scalable full-stack code, Python AI vision pipelines, distributed reliability.
-    2. **02 // Proportion & Form**: Tailoring, high-contrast typography, quiet luxury aesthetics.
-    3. **03 // The Atmosphere**: Late autumn warmth, crisp winter slate, and contemplative stillness.
+### Milestone 4: Grounded "About Me" Section
+- [ ] **Step 4.1: About Section Layout (`<AboutSection />`)**
+  - Conversational, authentic narrative introducing Nischal Basnet:
+    - Background & Roots: Software engineer based in Kathmandu, Nepal.
+    - What I Enjoy Building: Computer vision applications (YOLO, Python), robust backend platforms (PHP/Laravel, Python/FastAPI), relational data architecture (PostgreSQL, MySQL), and modern web interfaces (Next.js 15, TypeScript).
+    - Craft & Approach: Approaching software with the precision and intentionality of fine tailoring — clean schemas, maintainable code, and quiet luxury UI.
+  - Visual presentation: Clean 2-column or structured editorial layout with generous whitespace, hairline borders, and subtle Swiss-dial counters (`02 // ABOUT`).
 - [ ] **Step 4.2: Milestone 4 Manual Verification**
-  - Verify card grid layout and editorial micro-typography.
+  - Verify readable typography, authentic voice, and responsive layout.
 
 ---
 

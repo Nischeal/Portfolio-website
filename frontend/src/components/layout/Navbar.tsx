@@ -8,7 +8,7 @@ export function Navbar() {
 
   const navLinks = [
     { label: "Work", href: "#work" },
-    { label: "Philosophy", href: "#philosophy" },
+    { label: "About", href: "#about" },
     { label: "Craft", href: "#craft" },
     { label: "Inquiry", href: "#inquiry" },
   ];
