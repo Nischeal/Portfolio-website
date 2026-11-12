@@ -24,12 +24,12 @@ export function TypewriterRole({
 
   return (
     <div
-      className={`font-serif text-3xl sm:text-4xl md:text-5xl italic font-normal tracking-tight flex flex-wrap items-center gap-x-3 text-stone-500 leading-tight ${className}`}
+      className={`font-serif text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] italic font-normal tracking-tight flex items-center gap-x-2.5 sm:gap-x-3 text-stone-500 leading-tight whitespace-nowrap overflow-hidden select-none min-h-[1.3em] ${className}`}
     >
-      <span className="text-stone-500 font-light">{prefix}</span>
-      <span className="text-[#4A5D4E] font-medium min-h-[1.2em] inline-flex items-center">
-        {currentText || "\u00A0"}
-        <span className="inline-block w-[2px] h-[0.85em] bg-[#4A5D4E] ml-1.5 animate-pulse" />
+      <span className="text-stone-500 font-light shrink-0">{prefix}</span>
+      <span className="text-[#4A5D4E] font-medium inline-flex items-center">
+        <span>{currentText || "\u00A0"}</span>
+        <span className="inline-block w-[2px] h-[0.8em] bg-[#4A5D4E] ml-1.5 animate-pulse shrink-0" />
       </span>
     </div>
   );

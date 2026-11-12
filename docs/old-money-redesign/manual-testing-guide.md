@@ -26,14 +26,18 @@ This guide details verification procedures for each milestone of the Old-Money M
 
 ## 🧪 Milestone 3 Verification: Editorial Masthead Hero & Tactile Quote Card
 - [x] **Display Title**: `Nischal Basnet` in 80px `Cormorant Garamond` serif.
-- [x] **Typewriter Rotator**: Dynamic large Cormorant italic typewriter cycling roles cleanly (`Building [Laravel & Livewire Systems...]`).
+- [x] **Typewriter Rotator (Single-Line Lockup)**: 
+  - Dynamic Cormorant italic typewriter cycling roles cleanly (`Building [Laravel & Livewire Systems...]`).
+  - Strict `whitespace-nowrap` and calibrated font size prevents mid-type line breaking.
+  - Zero Cumulative Layout Shift (CLS) — the bio paragraph, buttons, and metadata below stay completely stationary.
 - [x] **Action Row**: Primary Olive Pill (`Explore Selected Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
-- [x] **Tactile Polaroid Quote Card (Right Column on Desktop)**:
-  - Archival card white mount with realistic Polaroid proportions (taller clean bottom margin).
-  - Corner paper tab in muted cream carrying the serif quotation mark `“`.
+- [x] **Tactile Archival Quote Card (Right Column on Desktop)**:
+  - Archival card white mount with clean Polaroid proportions.
+  - Corner paper tab in muted cream carrying the serif quotation mark `“` at `-rotate-6`.
   - Quote: *"I believe an engineer should have a life outside the terminal — nature, quiet walks, and seasonal stillness make you a sharper, more thoughtful builder."*
   - Attribution: Small Cormorant serif italic `— Nischal Basnet`.
-  - Subtle organic rotation (`rotate-2`), smoothing to `rotate-0` on hover.
+  - **100% Crisp Typography**: Set at `rotate-0` with native subpixel antialiasing at all times (zero browser rasterization blur when idle).
+  - **Quiet Hover Elevation**: Smooth `-translate-y-1.5` lift on hover instead of rotation snapping.
   - Stacks naturally below headline and bio on mobile devices.
 - [x] **Live Status Strip**: 4-column horizontal metadata row:
   - Location: `Kathmandu, NP`

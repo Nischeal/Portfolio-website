@@ -65,3 +65,10 @@ This document tracks all frozen architectural decisions, design rules, and plan 
   - Proportions: Polaroid card white frame with taller clean bottom margin, soft paper shadow, gentle organic rotation (`rotate-2`), and smooth hover leveling.
   - Layout: Converts Hero to an asymmetric two-column editorial desk on desktop (`max-w-6xl`), stacking naturally on mobile.
 - **Date**: 2026-11-12
+
+### Decision 10: Single-Line Typewriter Lockup & Zero-Rotation Crisp Text Rendering
+- **Rationale**: Resolved two visual defects surfaced during live viewport testing: mid-type line wrapping that caused vertical layout jumps, and browser GPU rasterization blur on rotated text elements.
+- **Implementation**:
+  - Typewriter: Enforced strict single-line display with `whitespace-nowrap` and calibrated responsive typography (`text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px]`). Eliminates mid-type wrapping and prevents any Cumulative Layout Shift (CLS) on the bio and buttons below.
+  - Quote Card: Removed `rotate-1 sm:rotate-2` from the card body so text renders at 0° with 100% native subpixel antialiasing at all times. Replaced rotation snap with smooth vertical levitation (`group-hover:-translate-y-1.5`). Retained `-rotate-6` on the corner quote tag `“` for tactile personality.
+- **Date**: 2026-11-12
