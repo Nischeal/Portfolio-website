@@ -27,16 +27,16 @@ This document outlines the phased milestone roadmap for **The Shadow Academic** 
 ---
 
 ### Milestone 2: Minimalist Navigation & Ambient Seasonal Canvas Engine
-- [ ] **Step 2.1: Seasonal Canvas Component (`<SeasonalCanvas />`)**
+- [x] **Step 2.1: Seasonal Canvas Component (`<SeasonalCanvas />`)**
   - Zero-dependency HTML5 canvas layer detecting calendar month (Autumn drifting amber/olive leaves vs. Winter snow).
   - Sparse & Meditative density (15–22 delicate watercolor leaf silhouettes drifting at 0.6–1.2 px/frame).
   - Subtle mouse breeze deflection on desktop.
-- [ ] **Step 2.2: Minimalist Sticky Header (`<Navbar />`)**
+- [x] **Step 2.2: Minimalist Sticky Header (`<Navbar />`)**
   - Brand identity: Pure poetic typographic `Nischal Basnet` in medium-weight `Cormorant Garamond`.
   - Links: `Work`, `Philosophy`, `Craft`, `Inquiry`.
   - Action button: Olive pill `Get in Touch`.
   - Mobile drawer: Minimalist text toggle `[ Menu ]` / `[ Close ]` opening an airy warm linen drawer.
-- [ ] **Step 2.3: Milestone 2 Manual Verification**
+- [x] **Step 2.3: Milestone 2 Manual Verification**
   - Verify seasonal rendering and responsive header navigation.
 
 ---

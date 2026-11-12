@@ -7,23 +7,21 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "PROFILE", href: "#profile" },
-    { label: "ARMORY", href: "#projects" },
-    { label: "SKILLS", href: "#skills" },
-    { label: "QUEST // CONTACT", href: "#contact" },
+    { label: "Work", href: "#work" },
+    { label: "Philosophy", href: "#philosophy" },
+    { label: "Craft", href: "#craft" },
+    { label: "Inquiry", href: "#inquiry" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#0A0A14]/85 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand / Logo */}
+    <header className="sticky top-0 left-0 right-0 z-40 bg-[#F9F6F0]/85 backdrop-blur-md border-b border-[#E7E2D8]/70 transition-colors duration-400">
+      <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+        {/* Poetic Typographic Brand Mark */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-mono text-sm tracking-wider text-white hover:text-cyan-400 transition-colors"
+          className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#1C1917] hover:text-[#4A5D4E] transition-colors"
         >
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="font-bold">NISCHAL</span>
-          <span className="text-slate-400">// SYS.ARCHITECT</span>
+          Nischal Basnet
         </Link>
 
         {/* Desktop Navigation */}
@@ -32,53 +30,54 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-slate-300 hover:text-cyan-400 transition-colors tracking-widest relative group py-1"
+              className="text-stone-600 hover:text-[#1C1917] tracking-wider transition-colors relative py-1 group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#4A5D4E] transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-white/10 px-3 py-1 text-slate-300 hover:text-white hover:border-cyan-400/50 transition-all text-xs"
+
+          {/* Olive Pill Action Button */}
+          <Link
+            href="#inquiry"
+            className="bg-[#4A5D4E] hover:bg-[#37463A] text-white font-mono text-xs px-5 py-2 rounded-full tracking-wider transition-all shadow-[0_2px_10px_rgba(74,93,78,0.2)]"
           >
-            GITHUB ↗
-          </a>
+            Get in Touch
+          </Link>
         </nav>
 
-        {/* Mobile menu button */}
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden font-mono text-xs text-slate-300 hover:text-white p-2 border border-white/10 rounded"
-          aria-label="Toggle navigation menu"
+          className="md:hidden font-mono text-xs text-stone-700 hover:text-[#1C1917] px-3 py-1.5 border border-[#E7E2D8] rounded-full bg-white/50"
+          aria-label="Toggle Navigation"
         >
-          {mobileMenuOpen ? "[CLOSE]" : "[MENU]"}
+          {mobileMenuOpen ? "[ Close ]" : "[ Menu ]"}
         </button>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[#0D0D1A] px-6 py-6 font-mono text-xs space-y-4">
+        <div className="md:hidden bg-[#F9F6F0] border-b border-[#E7E2D8] px-8 py-8 space-y-5 animate-in fade-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-slate-300 hover:text-cyan-400 py-1"
+              className="block font-serif text-2xl text-[#1C1917] hover:text-[#4A5D4E] transition-colors"
             >
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-2 border border-white/10 px-3 py-1.5 text-slate-200"
-          >
-            GITHUB ↗
-          </a>
+          <div className="pt-4 border-t border-[#E7E2D8]">
+            <Link
+              href="#inquiry"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-block bg-[#4A5D4E] text-white font-mono text-xs px-6 py-2.5 rounded-full tracking-wider"
+            >
+              Get in Touch
+            </Link>
+          </div>
         </div>
       )}
     </header>

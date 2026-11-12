@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { SeasonProvider } from "@/context/SeasonContext";
+import { SeasonalCanvas } from "@/components/canvas/SeasonalCanvas";
+import { Navbar } from "@/components/layout/Navbar";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -45,8 +48,17 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="bg-[var(--bg-page)] text-[var(--text-body)] min-h-screen selection:bg-[#4A5D4E]/20 selection:text-[#37463A]">
-        {children}
+      <body className="bg-[var(--bg-page)] text-[var(--text-body)] min-h-screen selection:bg-[#4A5D4E]/20 selection:text-[#37463A] relative overflow-x-hidden">
+        <SeasonProvider>
+          {/* Ambient Seasonal Background Canvas */}
+          <SeasonalCanvas />
+
+          {/* Sticky Editorial Navbar */}
+          <Navbar />
+
+          {/* Page Content Layer */}
+          <div className="relative z-10">{children}</div>
+        </SeasonProvider>
       </body>
     </html>
   );
