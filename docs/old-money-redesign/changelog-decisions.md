@@ -11,7 +11,7 @@ This document tracks all frozen architectural decisions, design rules, and plan 
    - Restraint, whitespace, hairline borders (`#E7E2D8`), and tactile diffuse shadows.
 2. **Authenticity & Grounded Voice**:
    - No pseudo-poetic fluff or pretentious literature jargon.
-   - Speak directly and conversationally as a real software engineer who takes pride in clean code, good databases, and solid architecture.
+   - Never speculate or assume user skills, job titles, or experience. Confirm directly with the user.
 3. **Implicit Visual Storytelling**:
    - Tailoring & Fashion: Editorial proportions, Swiss-dial counters (`01 //`), Cormorant Garamond display serif, pill buttons.
    - Seasonality: Automatic calendar-based falling leaves / snow canvas layer.
@@ -49,5 +49,9 @@ This document tracks all frozen architectural decisions, design rules, and plan 
 - **Date**: 2026-11-12
 
 ### Decision 7: Hero Typographic Lockup & Bespoke Signature Navigation
-- **Rationale**: Replaced repetitive navbar name with fluid signature script (`Alex_Brush`). Upgraded typewriter from tiny monospace to a large Cormorant Garamond italic display line (`Architecting [...]`). Cleaned up top kicker to `KATHMANDU, NEPAL — FULL-STACK & SYSTEMS ENGINEER` and increased vertical whitespace.
+- **Rationale**: Replaced repetitive navbar name with fluid signature script (`Alex_Brush`). Upgraded typewriter from tiny monospace to a large Cormorant Garamond italic display line (`Building [...]`). Cleaned up top kicker and increased vertical whitespace.
+- **Date**: 2026-11-12
+
+### Decision 8: Authentic Developer Identity & Verified Stack Alignment
+- **Rationale**: Replaced speculative typewriter roles with Nischal's exact confirmed competencies: Laravel & Livewire Systems, FastAPI & Python Backends, Full-Stack Web Applications, and Scalable System Architectures. Updated bio to directly highlight Laravel, Livewire, FastAPI, and system design.
 - **Date**: 2026-11-12

@@ -9,15 +9,15 @@ interface TypewriterRoleProps {
 }
 
 const DEFAULT_ROLES = [
-  "AI Vision Pipelines",
-  "Full-Stack Web Systems",
-  "Scalable Backend Services",
-  "Interactive Web Experiences",
+  "Laravel & Livewire Systems",
+  "FastAPI & Python Backends",
+  "Full-Stack Web Applications",
+  "Scalable System Architectures",
 ];
 
 export function TypewriterRole({
   roles = DEFAULT_ROLES,
-  prefix = "Architecting",
+  prefix = "Building",
   className = "",
 }: TypewriterRoleProps) {
   const currentText = useTypewriter({ words: roles });

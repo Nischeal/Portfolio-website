@@ -10,10 +10,10 @@ export function HeroSection() {
   return (
     <section className="pt-20 sm:pt-28 pb-20 sm:pb-28 px-6 max-w-4xl mx-auto w-full">
       <div className="space-y-8 text-left">
-        {/* Clean Spaced Kicker */}
+        {/* Confirmed Clean Spaced Kicker */}
         <div className="flex items-center gap-2.5 font-mono text-[11px] text-stone-500 tracking-widest uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E]" />
-          <span>KATHMANDU, NEPAL — FULL-STACK &amp; SYSTEMS ENGINEER</span>
+          <span>KATHMANDU, NEPAL — FULL-STACK &amp; BACKEND ENGINEER</span>
         </div>
 
         {/* Grand Typographic Headline Lockup */}
@@ -22,19 +22,19 @@ export function HeroSection() {
             Nischal Basnet
           </h1>
           <TypewriterRole
-            prefix="Architecting"
+            prefix="Building"
             roles={[
-              "AI Vision Pipelines",
-              "Full-Stack Web Systems",
-              "Scalable Backend Services",
-              "Interactive Web Experiences",
+              "Laravel & Livewire Systems",
+              "FastAPI & Python Backends",
+              "Full-Stack Web Applications",
+              "Scalable System Architectures",
             ]}
           />
         </div>
 
-        {/* Grounded Bio Statement */}
+        {/* Confirmed Grounded Bio Statement */}
         <p className="text-stone-600 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal pt-2">
-          Software engineer focused on clean architectural design, computer vision pipelines, and high-performance backend systems. Building with structural rigor and quiet aesthetic restraint.
+          Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.
         </p>
 
         {/* Action Button Row */}
