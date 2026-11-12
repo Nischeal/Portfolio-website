@@ -55,3 +55,13 @@ This document tracks all frozen architectural decisions, design rules, and plan 
 ### Decision 8: Authentic Developer Identity & Verified Stack Alignment
 - **Rationale**: Replaced speculative typewriter roles with Nischal's exact confirmed competencies: Laravel & Livewire Systems, FastAPI & Python Backends, Full-Stack Web Applications, and Scalable System Architectures. Updated bio to directly highlight Laravel, Livewire, FastAPI, and system design.
 - **Date**: 2026-11-12
+
+### Decision 9: Tactile Polaroid Quote Card in Hero (Personalization Without Portrait)
+- **Rationale**: Solved visual layout balance on desktop and human personalization without a face photo, using the user's uploaded reference (`ref-polaroid-quote.jpg`).
+- **Implementation**:
+  - Quote: *"I believe an engineer should have a life outside the terminal — nature, quiet walks, and seasonal stillness make you a sharper, more thoughtful builder."*
+  - Attribution: Small Cormorant serif italic `— Nischal Basnet`.
+  - Corner Tab: Muted linen paper tab with an elegant serif quotation mark `“`.
+  - Proportions: Polaroid card white frame with taller clean bottom margin, soft paper shadow, gentle organic rotation (`rotate-2`), and smooth hover leveling.
+  - Layout: Converts Hero to an asymmetric two-column editorial desk on desktop (`max-w-6xl`), stacking naturally on mobile.
+- **Date**: 2026-11-12

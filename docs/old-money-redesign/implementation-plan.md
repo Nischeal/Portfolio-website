@@ -48,6 +48,7 @@ This document outlines the phased milestone roadmap for **The Shadow Academic** 
   - Concise engineering bio statement focusing on clean architectures and systems.
   - Action buttons: Primary Olive Pill (`Explore Selected Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
   - Refined Live Status Strip: Horizontal metadata row with `📍 Kathmandu, Nepal`, `● Available for Engineering`, `🍂 Autumn Season`, and `↗ GitHub: @Nischeal`.
+  - Tactile Polaroid Quote Card: Analog archival card on the right side of the Hero holding the confirmed creed: *"I believe an engineer should have a life outside the terminal — nature, quiet walks, and seasonal stillness make you a sharper, more thoughtful builder."* with corner quote tab `“`, subtle organic tilt, and soft paper drop shadow.
 - [x] **Step 3.2: Milestone 3 Manual Verification**
   - Verify typographic hierarchy, live status indicators, responsive wrapping, and typewriter cycling.
 
