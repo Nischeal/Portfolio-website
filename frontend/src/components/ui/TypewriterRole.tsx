@@ -8,24 +8,24 @@ interface TypewriterRoleProps {
 }
 
 const DEFAULT_ROLES = [
-  "Full-Stack Systems",
-  "AI & Scalable Backends",
-  "Interactive Web Applications",
-  "High-Performance APIs",
+  "Full-Stack Web Systems",
+  "AI & Vision Pipelines",
+  "Scalable Backend Services",
+  "Interactive Web Experiences",
 ];
 
 export function TypewriterRole({
   roles = DEFAULT_ROLES,
-  prefix = "I build",
+  prefix = "Crafting",
 }: TypewriterRoleProps) {
   const currentText = useTypewriter({ words: roles });
 
   return (
-    <div className="font-mono text-base md:text-xl flex items-center gap-2">
-      <span className="text-slate-400">{prefix}</span>
-      <span className="text-cyan-400 glow-cyan font-semibold min-h-[1.5em] inline-flex items-center">
+    <div className="font-mono text-sm sm:text-base md:text-lg flex items-center gap-2 text-stone-600">
+      <span className="font-normal">{prefix}</span>
+      <span className="text-[#4A5D4E] font-medium min-h-[1.5em] inline-flex items-center">
         {currentText || "\u00A0"}
-        <span className="inline-block w-[2px] h-5 bg-cyan-400 ml-1 animate-pulse" />
+        <span className="inline-block w-[1.5px] h-4 sm:h-5 bg-[#4A5D4E] ml-1 animate-pulse" />
       </span>
     </div>
   );

@@ -1,85 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  /* === Background Colors === */
-  --bg-void: #0A0A14;
-  --bg-panel: rgba(13, 13, 26, 0.85);
-  --bg-card: rgba(15, 15, 30, 0.6);
+  /* === Backgrounds (Old-Money Light) === */
+  --bg-page: #F9F6F0;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F3EFE7;
 
-  /* === Borders === */
-  --border-subtle: rgba(255, 255, 255, 0.10);
-  --border-muted: rgba(255, 255, 255, 0.15);
-  --border-visible: rgba(255, 255, 255, 0.25);
-
-  /* === Accent Frames (Purple Glow) === */
-  --frame-primary: #A855F7;
-  --frame-secondary: #D946EF;
-  --frame-glow: rgba(168, 85, 247, 0.4);
-
-  /* === Status & Cyan Accents === */
-  --cyan-primary: #38BDF8;
-  --cyan-bright: #67E8F9;
-  --cyan-glow: rgba(56, 189, 248, 0.35);
-  --cyan-border: #22D3EE;
+  /* === Borders & Hairlines === */
+  --border-hairline: #E7E2D8;
+  --border-muted: #D6CFC3;
 
   /* === Typography === */
-  --text-primary: #E2E8F0;
-  --text-bright: #FFFFFF;
-  --text-muted: #94A3B8;
-  --text-dim: #64748B;
+  --text-headline: #1C1917;
+  --text-body: #44403C;
+  --text-muted: #78716C;
+  --text-dim: #A8A29E;
 
-  /* === Stat Indicators (Green) === */
-  --stat-green: #22C55E;
-  --stat-green-bright: #4ADE80;
+  /* === Signature Olive Green Accent === */
+  --accent-olive: #4A5D4E;
+  --accent-olive-dark: #37463A;
+  --accent-olive-soft: rgba(74, 93, 78, 0.10);
+}
 
-  /* === Rank Tiers === */
-  --rank-s: #F59E0B;
-  --rank-a: #22D3EE;
-  --rank-b: #22C55E;
-  --rank-c: #3B82F6;
-  --rank-d: #94A3B8;
-  --rank-e: #64748B;
+[data-theme="monarch"] {
+  /* === Monarch / Dark Mode === */
+  --bg-page: #141312;
+  --bg-card: #1C1A18;
+  --bg-subtle: #23211E;
+
+  --border-hairline: #2C2925;
+  --border-muted: #3B3732;
+
+  --text-headline: #F5F2EB;
+  --text-body: #D6CFC4;
+  --text-muted: #8C8479;
+  --text-dim: #59534B;
+
+  --accent-olive: #6A856F;
+  --accent-olive-dark: #829D87;
+  --accent-olive-soft: rgba(106, 133, 111, 0.20);
 }
 
 @theme inline {
-  --color-void: var(--bg-void);
-  --color-panel: var(--bg-panel);
+  --color-page: var(--bg-page);
   --color-card: var(--bg-card);
-  --color-border-subtle: var(--border-subtle);
+  --color-subtle: var(--bg-subtle);
+  
+  --color-hairline: var(--border-hairline);
   --color-border-muted: var(--border-muted);
-  --color-border-visible: var(--border-visible);
   
-  --color-frame-primary: var(--frame-primary);
-  --color-frame-secondary: var(--frame-secondary);
-  --color-cyan-primary: var(--cyan-primary);
-  --color-cyan-bright: var(--cyan-bright);
-  
-  --color-text-primary: var(--text-primary);
-  --color-text-bright: var(--text-bright);
-  --color-text-muted: var(--text-muted);
-  --color-text-dim: var(--text-dim);
+  --color-headline: var(--text-headline);
+  --color-body: var(--text-body);
+  --color-muted: var(--text-muted);
+  --color-dim: var(--text-dim);
 
-  --font-heading: var(--font-cinzel);
+  --color-olive: var(--accent-olive);
+  --color-olive-dark: var(--accent-olive-dark);
+  --color-olive-soft: var(--accent-olive-soft);
+
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
-  --font-body: var(--font-inter);
 }
 
 body {
-  background-color: var(--bg-void);
-  color: var(--text-primary);
+  background-color: var(--bg-page);
+  color: var(--text-body);
   font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
-}
-
-/* Subtle Glow Utilities */
-.glow-cyan {
-  text-shadow: 0 0 15px var(--cyan-glow), 0 0 30px rgba(56, 189, 248, 0.2);
-}
-
-.box-glow-frame {
-  box-shadow: 0 0 25px -5px var(--frame-glow);
-}
-
-.box-glow-cyan {
-  box-shadow: 0 0 20px -5px rgba(34, 211, 238, 0.4);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }

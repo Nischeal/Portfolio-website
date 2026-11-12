@@ -1,30 +1,35 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ArmorySection } from "@/components/sections/ArmorySection";
-import { SkillMatrix } from "@/components/sections/SkillMatrix";
-import { ContactQuest } from "@/components/sections/ContactQuest";
-import { Footer } from "@/components/layout/Footer";
+import { TypewriterRole } from "@/components/ui/TypewriterRole";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0A0A14] text-[#E2E8F0] relative overflow-x-hidden selection:bg-cyan-500/20 selection:text-cyan-300">
-      {/* Background ambient light */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/[0.03] blur-[150px] pointer-events-none rounded-full" />
-      <div className="fixed bottom-0 right-1/4 w-[600px] h-[400px] bg-purple-500/[0.03] blur-[140px] pointer-events-none rounded-full" />
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16 max-w-4xl mx-auto">
+      {/* Refined Minimalist Editorial Intro */}
+      <div className="w-full space-y-6 text-center sm:text-left">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4A5D4E]/10 text-[#4A5D4E] font-mono text-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E] animate-pulse" />
+          <span>Available for Engineering &amp; Projects</span>
+        </div>
 
-      {/* Top Navigation */}
-      <Navbar />
+        <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-[#1C1917] leading-[1.1]">
+          Nischal Basnet
+        </h1>
 
-      {/* Landing Main Container */}
-      <main className="flex-1 flex flex-col items-center">
-        <HeroSection />
-        <ArmorySection />
-        <SkillMatrix />
-        <ContactQuest />
-      </main>
+        <div className="pt-1">
+          <TypewriterRole
+            prefix="Crafting"
+            roles={[
+              "Full-Stack Web Systems",
+              "AI & Vision Pipelines",
+              "Scalable Backend Services",
+              "Interactive Web Experiences",
+            ]}
+          />
+        </div>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed pt-2">
+          Full-Stack &amp; Systems Engineer focused on clean architecture, high-performance backends, and elegant interfaces. Rooted in Kathmandu, Nepal.
+        </p>
+      </div>
+    </main>
   );
 }

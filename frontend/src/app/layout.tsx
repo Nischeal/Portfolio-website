@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Cinzel, JetBrains_Mono, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -23,14 +16,21 @@ const inter = Inter({
   display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Nischal Basnet | Full-Stack & Systems Developer",
-  description: "Personal engineering portfolio showcasing projects, technical expertise, and systems design.",
+  title: "Nischal Basnet | Full-Stack & Systems Engineer",
+  description: "Personal engineering portfolio showcasing full-stack web architectures, AI vision pipelines, and systems design.",
   openGraph: {
     title: "Nischal Basnet | Engineering Portfolio",
-    description: "Explore projects, systems architecture, and technical capabilities.",
+    description: "Full-Stack & Systems Engineer based in Nepal.",
     url: "https://nischal.info.np",
-    siteName: "Nischal Basnet Portfolio",
+    siteName: "Nischal Basnet",
     type: "website",
   },
 };
@@ -43,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${jetbrainsMono.variable} ${inter.variable} antialiased`}
+      className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="bg-[var(--bg-void)] text-[var(--text-primary)] min-h-screen selection:bg-cyan-500/20 selection:text-cyan-300">
+      <body className="bg-[var(--bg-page)] text-[var(--text-body)] min-h-screen selection:bg-[#4A5D4E]/20 selection:text-[#37463A]">
         {children}
       </body>
     </html>
