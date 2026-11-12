@@ -24,19 +24,15 @@ This guide details verification procedures for each milestone of the Old-Money M
 
 ---
 
-## 🧪 Milestone 3 Verification: Split Hero with Botanical Motif
-- [x] **Left Column**:
-  - Cormorant Garamond display headline ("Nischal Basnet").
-  - Dynamic olive typewriter rotator cycling through:
-    - *Full-Stack Web Systems*
-    - *AI & Vision Pipelines*
-    - *Scalable Backend Services*
-    - *Interactive Web Experiences*
-  - Concise engineering bio statement.
-  - Olive pill CTA button ("Explore Work ↓") + Hairline Ghost Button ("Initiate Inquiry ↗").
-- [x] **Right Column**:
-  - Framed artistic botanical watercolor motif card.
-  - Live availability pill (`● Available for Engineering`).
+## 🧪 Milestone 3 Verification: Full-Width Editorial Masthead Hero
+- [x] **Display Title**: `Nischal Basnet` in 80px `Cormorant Garamond` serif.
+- [x] **Typewriter Rotator**: Dynamic olive green typewriter cycling roles cleanly.
+- [x] **Action Row**: Primary Olive Pill (`Explore Selected Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
+- [x] **Live Status Strip**: 4-column horizontal metadata row:
+  - Location: `Kathmandu, NP`
+  - Availability: `● Open for Work` (pulsing olive indicator)
+  - Seasonal Ambience: `🍂 Autumn Drift` (or `❄️ Winter Frost`)
+  - Code Archive: Direct link to `github.com/Nischeal ↗`.
 
 ---
 

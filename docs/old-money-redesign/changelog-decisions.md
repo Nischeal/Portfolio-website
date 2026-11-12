@@ -14,7 +14,7 @@ This document tracks all frozen architectural decisions, design rules, and plan 
    - Speak directly and conversationally as a real software engineer who takes pride in clean code, good databases, and solid architecture.
 3. **Implicit Visual Storytelling**:
    - Tailoring & Fashion: Editorial proportions, Swiss-dial counters (`01 //`), Cormorant Garamond display serif, pill buttons.
-   - Autumn & Winter Seasonality: Automatic calendar-based falling leaves / snow canvas layer.
+   - Seasonality: Automatic calendar-based falling leaves / snow canvas layer.
    - Solo Leveling: Pure secret easter egg triggered by pressing `M` or clicking the footer watermark.
    - AI & Code: Real projects (**Clip Cuisine**, **Gym Management System**) with architectural drawers and direct GitHub links (`https://github.com/Nischeal`).
 4. **Strict Phased Discipline (`task-planner`)**:
@@ -25,7 +25,7 @@ This document tracks all frozen architectural decisions, design rules, and plan 
 ## 📋 Architectural Decisions Log
 
 ### Decision 1: Single-Page Editorial Flow
-- **Structure**: Sticky Navbar → Split Hero (with Botanical watercolor card) → Grounded About Section → Selected Works (with Architectural Drawers) → Horizon Matrix (Capabilities) → Contact Inquiry → Footer (with Kathmandu Time & Monarch Secret).
+- **Structure**: Sticky Navbar → Full-Width Editorial Hero → Grounded About Section → Selected Works (with Architectural Drawers) → Horizon Matrix (Capabilities) → Contact Inquiry → Footer (with Kathmandu Time & Monarch Secret).
 - **Date**: 2026-11-12
 
 ### Decision 2: Automatic Seasonal Canvas with Footer Override
@@ -42,4 +42,8 @@ This document tracks all frozen architectural decisions, design rules, and plan 
 
 ### Decision 5: Grounded "About Me" Section over Abstract Philosophy
 - **Rationale**: User clarified they are an engineer, not a poet. Replaced abstract 3-pillar philosophy with a genuine, conversational About Me narrative focusing on background, what they build (AI vision, full-stack, databases), and their engineering standards.
+- **Date**: 2026-11-12
+
+### Decision 6: Full-Width Editorial Masthead Hero Layout
+- **Rationale**: Removed the right-hand decorative botanical card. Shifted to a full-width typographic layout centered on Cormorant Garamond headline, olive typewriter role rotator, and a functional live status strip.
 - **Date**: 2026-11-12

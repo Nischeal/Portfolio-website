@@ -41,12 +41,15 @@ This document outlines the phased milestone roadmap for **The Shadow Academic** 
 
 ---
 
-### Milestone 3: Split Hero with Botanical Motif
-- [x] **Step 3.1: Hero Section Layout (`<HeroSection />`)**
-  - Left column: Cormorant Garamond display headline, dynamic olive typewriter rotator ("Crafting [Full-Stack Web Systems | AI & Vision Pipelines | Scalable Backend Services | Interactive Web Experiences]"), 2-sentence bio statement, Primary Olive Pill (`Explore Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
-  - Right column: Framed artistic botanical watercolor motif card (inspired by David Whyte's tree) with floating live availability status pill (`● Available for Engineering`).
+### Milestone 3: Full-Width Editorial Masthead Hero
+- [x] **Step 3.1: Full-Width Hero Section Layout (`<HeroSection />`)**
+  - Authoritative display headline: `Nischal Basnet` in `Cormorant Garamond` serif.
+  - Dynamic olive typewriter role rotator ("Crafting [Full-Stack Web Systems | AI & Vision Pipelines | Scalable Backend Services | Interactive Web Experiences]").
+  - Concise engineering bio statement focusing on clean architectures and systems.
+  - Action buttons: Primary Olive Pill (`Explore Selected Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
+  - Refined Live Status Strip: Horizontal metadata row with `📍 Kathmandu, Nepal`, `● Available for Engineering`, `🍂 Autumn Season`, and `↗ GitHub: @Nischeal`.
 - [x] **Step 3.2: Milestone 3 Manual Verification**
-  - Verify split typography, responsiveness, and typewriter cycling.
+  - Verify typographic hierarchy, live status indicators, responsive wrapping, and typewriter cycling.
 
 ---
 
