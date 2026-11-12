@@ -25,7 +25,7 @@ This guide details verification procedures for each milestone of the Old-Money M
 ---
 
 ## 🧪 Milestone 3 Verification: Split Hero with Botanical Motif
-- [ ] **Left Column**:
+- [x] **Left Column**:
   - Cormorant Garamond display headline ("Nischal Basnet").
   - Dynamic olive typewriter rotator cycling through:
     - *Full-Stack Web Systems*
@@ -33,8 +33,8 @@ This guide details verification procedures for each milestone of the Old-Money M
     - *Scalable Backend Services*
     - *Interactive Web Experiences*
   - Concise engineering bio statement.
-  - Olive pill CTA button ("Initiate Inquiry").
-- [ ] **Right Column**:
+  - Olive pill CTA button ("Explore Work ↓") + Hairline Ghost Button ("Initiate Inquiry ↗").
+- [x] **Right Column**:
   - Framed artistic botanical watercolor motif card.
   - Live availability pill (`● Available for Engineering`).
 
