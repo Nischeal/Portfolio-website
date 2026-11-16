@@ -14,7 +14,7 @@ Full specs and milestones: [portfolio-v1/plan.md](portfolio-v1/plan.md). Run wit
 - [x] Phase 2 — **Selected Works** (`#work`): swipeable dossier deck, case study on the card's back (ADR 026, 027)
 - [x] Phase 3 — **Stack** (`#stack`, was Capabilities): full-width moving logo bands (ADR 030, 031)
 - [x] Polish pass from the design-taste reviews ([plan](polish-pass/plan.md), ADR 031)
-- [ ] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
+- [x] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
 - [ ] Phase 5 — **Footer**
 - [ ] Phase 6 — **Monarch mode**
 - [ ] Phase 7 — **Polish, SEO & launch**

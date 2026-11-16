@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { WorksSection } from "@/components/sections/WorksSection";
 import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
+import { InquirySection } from "@/components/sections/InquirySection";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <AboutSection />
       <WorksSection />
       <CapabilitiesSection />
+      <InquirySection />
     </main>
   );
 }

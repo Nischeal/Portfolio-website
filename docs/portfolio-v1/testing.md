@@ -78,3 +78,16 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] **Reduced motion** (OS setting): bands stand still as one centred row each, wrapping on phones; no fade masks.
 - [ ] **Screen reader:** after the heading, two lists ("Backend and databases", "AI, vision and frontend") with each tool once; the moving copies aren't read.
 - [ ] **Monarch preview** (`data-theme="monarch"` on `<html>`): logos and names visible in dark; Next.js hover stays visible (not black).
+
+## Phase 4 — M1 + M2 (Inquiry)
+`http://localhost:3000/#inquiry`, desktop (~1440px) and phone (~375px).
+- [ ] Navbar shows About / Work / Stack / Inquiry + the "Get in Touch" pill; the hero shows "Get in touch ↓". All three land on the section.
+- [ ] Desktop: left column `05 // INQUIRY`, "Get in touch", the intro, then DIRECT with the address, "Copy email" and "Open mail ↗"; right column the form on a white card. Phone: heading → intro → form → direct; no sideways scroll.
+- [ ] Copy matches the approved table in `plan.md` exactly; the address reads "…basnet10@…" (not "1o").
+- [ ] "Copy email" copies the address and shows "Copied ✓" for ~2s; "Open mail ↗" opens a new email to the address.
+- [ ] Press **Send message** empty: each field shows its own message under it, the fields get a darker border, focus jumps to Name. Typing in a field clears its message.
+- [ ] Bad email ("abc"): "That email doesn't look right."
+- [ ] **Keyboard only:** Tab through Name → Email → Opportunity type → Message → Send message; Enter submits.
+- [ ] **Without the key:** a valid submit shows "That didn't send. Please try again, or email me directly…" and makes no network request.
+- [ ] **With the key (real test):** a valid submit shows "Sending…", then "Thanks, your message is on its way…", the form clears, and the email arrives in your inbox with subject "Portfolio inquiry: <type>".
+- [ ] **Screen reader:** every field has a visible label; errors are read with their field; the sending/sent/error line is announced.
