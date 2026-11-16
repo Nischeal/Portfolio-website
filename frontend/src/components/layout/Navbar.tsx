@@ -34,7 +34,7 @@ export function Navbar() {
         {/* Fluid Signature Brand Mark */}
         <Link
           href="/"
-          className="font-signature text-3xl sm:text-4xl text-headline hover:text-olive transition-colors leading-none pt-1 select-none"
+          className="inline-flex items-center min-h-11 font-signature text-3xl sm:text-4xl text-headline hover:text-olive transition-colors leading-none pt-1 select-none"
         >
           Nischal
         </Link>
@@ -68,7 +68,7 @@ export function Navbar() {
           ref={toggleRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden font-mono text-xs text-body hover:text-headline px-3 py-1.5 border border-hairline rounded-full bg-card/50"
+          className="md:hidden inline-flex items-center min-h-11 font-mono text-xs text-body hover:text-headline px-4 border border-hairline rounded-full bg-card/50"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav"
         >

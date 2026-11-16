@@ -29,7 +29,7 @@ export function AboutSection() {
               key={block.label}
               className="grid grid-cols-1 sm:grid-cols-[9.5rem_1fr] gap-x-8 gap-y-3 py-8 sm:py-10"
             >
-              <dt className="font-mono text-[11px] text-muted uppercase tracking-widest sm:pt-1.5">
+              <dt className="font-mono text-xs text-muted uppercase tracking-widest sm:pt-1.5">
                 {block.label}
               </dt>
               <dd className="text-body text-lg leading-relaxed max-w-prose">{block.text}</dd>

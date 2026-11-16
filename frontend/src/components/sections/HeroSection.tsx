@@ -12,7 +12,7 @@ export function HeroSection() {
         {/* Left Column: Typographic Hierarchy & Identity */}
         <div className="lg:col-span-7 space-y-8 text-left">
           {/* Clean Spaced Kicker */}
-          <div className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
+          <div className="flex items-center gap-2.5 font-mono text-xs text-muted tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-olive" />
             <span>KATHMANDU, NEPAL — FULL-STACK &amp; BACKEND ENGINEER</span>
           </div>
@@ -69,14 +69,14 @@ export function HeroSection() {
       {/* Generous Spaced Full-Width Metadata Strip */}
       <div className="mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body">
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             LOCATION
           </span>
           <span className="text-headline">Kathmandu, NP</span>
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             AVAILABILITY
           </span>
           <span className="text-olive-dark font-medium flex items-center gap-1.5">
@@ -86,7 +86,7 @@ export function HeroSection() {
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             SEASONAL AMBIENCE
           </span>
           <span className="text-headline capitalize">
@@ -95,7 +95,7 @@ export function HeroSection() {
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             CODE ARCHIVE
           </span>
           <a

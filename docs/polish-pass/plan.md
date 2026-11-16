@@ -1,5 +1,5 @@
 # Polish pass — Plan
-Status: in progress (M2)
+Status: in progress (M3)
 Branch: `fix/polish-pass` (from `master`)
 
 ## Goal
@@ -55,8 +55,8 @@ From two `/design-taste-frontend` reviews (2026-11-16): an eyes-on review, then 
 - [x] Verify the deck's focus ring by hand: it really was missing (`outline-none` + `focus-visible:outline-2` leaves the style at none in Tailwind v4); fixed with `focus-visible:outline-solid`
 - [x] Verify (build, lint, tsc; click every in-page link; Tab from the top); `testing.md` section
 ### M2 — Mechanical sweep: readable text + tap sizes (#3, #4)
-- [ ] Floor for readable mono labels: 11px → proposed 12px (decorative counters may stay 11px); list every changed class
-- [ ] 44px tap targets on phones for logo, `[ Menu ]`, deck arrows, card buttons (hit area, not necessarily visible size)
+- [x] Floor for readable mono labels: 12px (`text-xs`). 14 lines raised from 9–11px: hero kicker + 4 meta labels, quote-card footer (9px), About labels, card ledger labels, "Project file", case-study header, deck index numbers, "In progress", "or drag the card". The three `aria-hidden` section counters stay 11px
+- [x] 44px tap targets (`min-h-11` / `h-11 w-11`): navbar logo, `[ Menu ]`, deck ← →, "Read case study", `SOURCE ↗`, `[ Close ]`, "Next file"
 - [ ] Nothing wraps or breaks at 375px; contrast stays per ADR 022; verify; `testing.md` section
 ### M3 — Layout: shared grid, phone hero, fonts (#5, #6, #7)
 - [ ] Design gate: options for one shared column grid (which lines About/Works/hero snap to) + top-aligned splits; options for the phone hero (e.g. quote card smaller / after the meta strip / hidden on phones)
