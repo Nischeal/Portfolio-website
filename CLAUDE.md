@@ -44,7 +44,7 @@ This is Next.js 16 / React 19 / Tailwind v4 (via `@tailwindcss/turbopack`, no `t
 - `docs/roadmap.md` — section status and what's next. Update checkboxes when a section lands.
 - `docs/decisions.md` — numbered decision log, newest wins. Add a 2–5 bullet entry for any non-trivial design/content decision.
 - `docs/design-system/tokens.md` + reference images — keep in sync with `globals.css`.
-- `docs/sections/<name>.md` — one working doc per section, created and maintained by the `/section` skill (ADR 012). Marked `Status: shipped` when done, not deleted.
-- Don't create other per-feature plan/changelog/testing-guide folders; office workflow skills (`task-planner`, `daily`, `openproject`) don't apply to this repo.
+- `docs/<task>/plan.md` + `testing.md` — per-task plan and manual checks, created by the user-level `/my-planner` skill (ADR 020). Kept with `Status: done` when finished. Decisions still go to `docs/decisions.md`.
+- Office workflow skills (`task-planner`, `daily`, `openproject`) don't apply to this repo; use `/my-planner`.
 - Commits use conventional format with scopes, e.g. `feat(hero): …`, `fix(hero): …`, `docs: …`, `ci: …`.
 - Portfolio content must be real (ADR 002, 008): only user-confirmed projects, links, roles and copy. Ask before adding any personal detail; don't invent projects, metrics, quotes, or placeholder URLs (LinkedIn stays hidden until provided).

@@ -83,3 +83,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 ## 019 — CI gate & client boundaries (2026-11-16)
 - CI runs `npm run lint` and `npx tsc --noEmit` before `npm run build`; any failure blocks the deploy.
 - Keep `"use client"` at the leaves: sections are server components, and only interactive or browser-dependent bits (e.g. `SeasonLabel`) are client components.
+
+## 020 — /my-planner replaces /section (2026-11-16)
+- Supersedes 012. Work is planned and run with the user-level `/my-planner` skill (personal twin of the office `task-planner`), restricted to personal repos.
+- Per task: `docs/<task>/plan.md` (milestones + reusable-asset inventory) and `docs/<task>/testing.md` (manual checks); decisions stay in this log.
+- Branch per task (`feat/<task>`), commit per approved milestone; the user merges and pushes.
+- Verify = this repo's checks (build, lint, tsc) plus tests once a runner exists; hard stop after every milestone.
