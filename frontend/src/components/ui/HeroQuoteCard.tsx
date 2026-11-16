@@ -20,7 +20,7 @@ export function HeroQuoteCard() {
           </p>
 
           <div className="pt-4 mt-2 border-t border-hairline/60 flex items-center justify-between">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-dim">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-muted">
               WORLDVIEW // CRAFT
             </span>
             <span className="font-serif italic text-xs text-muted">

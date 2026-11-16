@@ -21,3 +21,9 @@ Unstyled on purpose; styling is M2.
 - [ ] **Mobile (~375px):** everything stacked, label above each paragraph, no horizontal scroll, comfortable line length.
 - [ ] Hero still fills the first screen exactly as before (the centring moved to a wrapper).
 - [ ] **Monarch preview:** add `data-theme="monarch"` to `<html>` in DevTools; About text and hairlines switch to dark.
+
+## Phase 1 — M3 (About accessibility + contrast floor)
+- [ ] About labels (Background, What I build, How I work) and the hero metadata labels (LOCATION, AVAILABILITY, …) are slightly darker and easy to read on linen. Nothing else visibly changed.
+- [ ] Keyboard: Tab from the top; the navbar **About** link is reachable, and Enter scrolls so "About me" sits just below the sticky bar.
+- [ ] Screen reader (optional; Orca on Linux, or the Chrome DevTools accessibility tree): headings read "Nischal Basnet" (h1) → "About me" (h2); the `02 // About` counter isn't announced; each label is read with its paragraph.
+- [ ] DevTools → Lighthouse → Accessibility on the page shows no contrast failures in About or the hero strip.

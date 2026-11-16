@@ -96,3 +96,8 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Inquiry: Web3Forms from the browser, plus the published address nischealbasnet10@gmail.com with copy + mailto.
 - Capabilities: tags grouped by discipline, no ratings of any kind (overrides old M6 "mastery ratings").
 - Third Works card is the 8th-semester college project, generic "in progress" until it has a name. Later phases: scroll reveal, Ctrl+K terminal, FastAPI backend.
+
+## 022 — Text contrast floor (2026-11-16)
+- `--text-muted` darkened `#78716C` → `#736C67` (4.45:1 → 4.8:1 on linen) so the smallest readable text passes WCAG AA.
+- `text-dim` (2.3:1) is decoration only, never readable text; the hero metadata labels and the quote-card tag moved to `text-muted`.
+- Monarch tokens already pass (muted 5.0:1); `--text-dim` there follows the same decoration-only rule.
