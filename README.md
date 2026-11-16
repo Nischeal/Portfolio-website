@@ -1,6 +1,6 @@
 # Nischal Basnet — Portfolio
 
-Personal portfolio at [nischal.info.np](https://nischal.info.np). Next.js 16 static export, deployed to GitHub Pages on push to `master`.
+Personal portfolio at [www.nischalbasnet10.com.np](https://www.nischalbasnet10.com.np). Next.js 16 static export, deployed to GitHub Pages on push to `master`.
 
 ```text
 Portfolio-website/

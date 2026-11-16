@@ -80,7 +80,7 @@ export function SeasonalCanvas() {
         opacity: isAutumn ? Math.random() * 0.25 + 0.35 : Math.random() * 0.3 + 0.4,
         color: isAutumn
           ? AUTUMN_COLORS[Math.floor(Math.random() * AUTUMN_COLORS.length)]
-          : "#FFFFFF",
+          : "#B8C2C9",
         swayRadius: Math.random() * 1.5 + 0.5,
         swaySpeed: Math.random() * 0.02 + 0.01,
       };

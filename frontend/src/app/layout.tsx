@@ -34,12 +34,13 @@ const alexBrush = Alex_Brush({
 });
 
 export const metadata: Metadata = {
-  title: "Nischal Basnet | Full-Stack & Systems Engineer",
-  description: "Personal engineering portfolio showcasing full-stack web architectures, AI vision pipelines, and systems design.",
+  title: "Nischal Basnet | Full-Stack & Backend Engineer",
+  description:
+    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.",
   openGraph: {
-    title: "Nischal Basnet | Engineering Portfolio",
-    description: "Full-Stack & Systems Engineer based in Nepal.",
-    url: "https://nischal.info.np",
+    title: "Nischal Basnet | Full-Stack & Backend Engineer",
+    description: "Full-Stack & Backend Engineer based in Kathmandu, Nepal.",
+    url: "https://www.nischalbasnet10.com.np",
     siteName: "Nischal Basnet",
     type: "website",
   },

@@ -3,20 +3,13 @@
 import { useTypewriter } from "@/hooks/useTypewriter";
 
 interface TypewriterRoleProps {
-  roles?: string[];
+  roles: string[];
   prefix?: string;
   className?: string;
 }
 
-const DEFAULT_ROLES = [
-  "Laravel & Livewire Systems",
-  "FastAPI & Python Backends",
-  "Full-Stack Web Applications",
-  "Scalable System Architectures",
-];
-
 export function TypewriterRole({
-  roles = DEFAULT_ROLES,
+  roles,
   prefix = "Building",
   className = "",
 }: TypewriterRoleProps) {
