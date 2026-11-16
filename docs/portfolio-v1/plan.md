@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 2 (Selected Works), M2 next (M1 deck approved provisionally 2026-11-16; may change if a better reference turns up)
+Status: in progress — next: Phase 3 (Capabilities). Phase 2 done 2026-11-16 (deck approved provisionally; may change if a better reference turns up)
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.

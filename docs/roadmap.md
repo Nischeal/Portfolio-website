@@ -11,7 +11,7 @@ Single-page portfolio. Sections are built in `frontend/src/components/sections/`
 ## Next
 Full specs and milestones: [portfolio-v1/plan.md](portfolio-v1/plan.md). Run with `/my-planner resume portfolio-v1`.
 - [x] Phase 1 — **About** (`#about`)
-- [ ] Phase 2 — **Selected Works** (`#work`) + project drawer
+- [x] Phase 2 — **Selected Works** (`#work`): swipeable dossier deck, case study on the card's back (ADR 026, 027)
 - [ ] Phase 3 — **Capabilities** (`#craft`)
 - [ ] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
 - [ ] Phase 5 — **Footer**
