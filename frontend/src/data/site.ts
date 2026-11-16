@@ -1,7 +1,13 @@
-// Site-wide switches.
+// Site-wide switches and contact details.
+
+/** The Inquiry section (`#inquiry`) exists, so its links (navbar, "Get in Touch", hero button) are shown. */
+export const INQUIRY_LIVE = true;
+
+/** Published contact address (approved for publishing, ADR 021). */
+export const CONTACT_EMAIL = "nischealbasnet10@gmail.com";
 
 /**
- * The Inquiry section (`#inquiry`) is built in Phase 4. Until then every link to it (navbar "Inquiry",
- * "Get in Touch", the hero's second button) stays hidden so nothing points to a missing section.
+ * Web3Forms access key (public by design: it only routes form mail to the address above).
+ * TODO(user): create it at web3forms.com and paste it here. While empty, the form shows its error state.
  */
-export const INQUIRY_LIVE = false;
+export const WEB3FORMS_KEY = "";
