@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter, JetBrains_Mono, Alex_Brush } from "next/font
 import { SeasonProvider } from "@/context/SeasonContext";
 import { SeasonalCanvas } from "@/components/canvas/SeasonalCanvas";
 import { Navbar } from "@/components/layout/Navbar";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -74,6 +75,9 @@ export default function RootLayout({
 
           {/* Page Content Layer */}
           <div className="relative z-10">{children}</div>
+
+          {/* Footer: espresso band (footer-dark recipe, ADR 032) */}
+          <SiteFooter />
         </SeasonProvider>
       </body>
     </html>

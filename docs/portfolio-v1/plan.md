@@ -208,14 +208,31 @@ Layout: 5/7 like About/Works. Left: counter, heading, intro, direct block. Right
   - [x] Test email confirmed by you; merged 2026-11-16.
 
 ## Phase 5 — Footer  · branch `feat/footer`
-Source: old M7.2, ADR 018 (legacy file deleted).
+Source: old M7.2, ADR 018 (legacy file deleted). **Re-checked 2026-11-16:** from this phase on the design-taste skill drives the design (recipes + checkers) without changing the theme or colours (ADR 032). The original three-group strip is replaced by the skill's **footer-dark** recipe, chosen by you; the clock, season toggle, GitHub link and Phase 6 doorway all stay.
 
-**Spec.** Hairline top border, mono small text, three groups:
-- **Left:** `© 2026 Nischal Basnet` (year computed at build).
-- **Middle:** live time `Kathmandu // 15:42 GMT+5:45` (client leaf, updates each minute, `Asia/Kathmandu` via `Intl.DateTimeFormat`); season toggle `[🍂 Autumn / ❄️ Winter]` using `toggleSeason`.
-- **Right:** `GitHub ↗` https://github.com/Nischeal (LinkedIn hidden until provided); discreet Monarch watermark (wired in Phase 6).
+**Spec (skill recipe `footer-dark`, adapted to our tokens).** `<footer class="closing">` after Inquiry (the form is the page's close, so no extra call-to-action row). One espresso band using existing tokens inverted (`bg-headline`, `text-page`; no new colours):
+- **Row 1 (lg 12-col):** company block on 4 cols: the "Nischal" signature at ~48px + a one-line lede. Two link columns: *Sections* (About, Work, Stack, Inquiry: the nav's words, same order, each an `#id`) and *Elsewhere* (GitHub ↗, Email ↗ `mailto:`). LinkedIn stays hidden until provided.
+- **Row 2 (legal row, hairline above):** `© 2026 Nischal Basnet` (year at build) · live clock `Kathmandu // 15:42 GMT+5:45` (client leaf, `Asia/Kathmandu` via `Intl.DateTimeFormat`, updates each minute, not announced) · season switch: two buttons `🍂 Autumn` / `❄️ Winter` with `aria-pressed`, using `setSeason`.
+- **Row 3 (type moment):** the signature set wide across the content width in muted linen, decorative (`aria-hidden`); the Phase 6 Monarch doorway (watermark click) attaches here.
+- **390px:** name ~30px, columns two-up, legal row stacked, signature scaled to fit (hand-set sizes per breakpoint, no transform).
+- Skill rules kept: columns match the nav; no links to pages that don't exist (no Privacy/Terms); no coloured social icons; no effects in the footer; 44px tap targets.
 
-- [ ] **M1 Footer (single slice):** markup, live Kathmandu clock, working season toggle (`<button aria-pressed>`), GitHub link, watermark placeholder for Phase 6; styled (stacks centred on mobile); accessible (the clock isn't announced every minute). Close-out in the same turn as the "ok".
+**Copy (approved 2026-11-16).** Implement exactly this.
+| Slot | Copy |
+|---|---|
+| Lede | Full-stack & backend engineer, Kathmandu. |
+| Column heads | Sections · Elsewhere |
+| Links | About · Work · Stack · Inquiry · GitHub ↗ · Email ↗ |
+| Legal row | © 2026 Nischal Basnet · Kathmandu // HH:MM GMT+5:45 · 🍂 Autumn / ❄️ Winter |
+
+- [x] **M1 Footer (single slice):**
+  - [x] `SiteFooter.tsx` (server shell) + `KathmanduClock.tsx` + `SeasonSwitch.tsx` (client leaves); rendered in `layout.tsx` after the content
+  - [x] Styled per the spec above; responsive at 1440/1024/768/390 (signature sized per breakpoint to 97–99% of the content width: 6.7 / 12.6 / 15.4 / 21 / 24rem)
+  - [x] A11y: `<footer>` landmark, `<nav aria-label="Footer">` with two lists under visible heads, clock in `<time>` with no live region, switch buttons with `aria-pressed`, decorative signature hidden, contrast checked on the band
+  - [x] Verify: build, lint, tsc; browser check desktop + 375px
+  - [x] **Skill checks:** copy-lint 0 FAIL (1 known WARN); fixed section-gaps at the band edge (128px both sides). Waived per ADR 031/032: footer height (screen rule), split line (footer matches the 5/7 line at x=651), container lines, font families (signature kept), test-server broken requests
+  - [x] Feedback fix (2026-11-16): switching to Winter left the leaves on screen as autumn-coloured circles. Particles now remember their season and are replaced on a switch; winter draws six-armed snowflake crystals (frost blue-grey `#97A7B3`, 6–11px, slow spin) instead of dots
+  - [x] `testing.md` section; ADR 032; close-out in the same turn as the "ok"
 
 ## Phase 6 — Monarch mode (easter egg)  · branch `feat/monarch-mode`
 Source: old M7.3 + old decision 3, ADR 003/004.

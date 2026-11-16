@@ -5,6 +5,8 @@ import { useSeason, Season } from "@/context/SeasonContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface Particle {
+  /** The season it was made for; a season switch replaces it with the other kind. */
+  season: Season;
   x: number;
   y: number;
   size: number;
@@ -19,6 +21,8 @@ interface Particle {
 }
 
 const AUTUMN_COLORS = ["#C88A42", "#6E7F66", "#B87333", "#7A8450"];
+// Frost blue-grey (the canvas's existing winter tone, a step deeper so thin flake lines read on linen)
+const SNOW_COLOR = "#97A7B3";
 
 export function SeasonalCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -88,17 +92,16 @@ export function SeasonalCanvas() {
     const createParticle = (randomY = true): Particle => {
       const isAutumn = seasonRef.current === "autumn";
       return {
+        season: seasonRef.current,
         x: Math.random() * width,
         y: randomY ? Math.random() * height : -20,
-        size: isAutumn ? Math.random() * 8 + 10 : Math.random() * 2.5 + 1.5,
+        size: isAutumn ? Math.random() * 8 + 10 : Math.random() * 5 + 6,
         speedY: isAutumn ? Math.random() * 0.6 + 0.4 : Math.random() * 0.8 + 0.5,
         speedX: (Math.random() - 0.5) * 0.3,
         angle: Math.random() * Math.PI * 2,
-        angularSpeed: (Math.random() - 0.5) * 0.015,
+        angularSpeed: (Math.random() - 0.5) * (isAutumn ? 0.015 : 0.008),
         opacity: isAutumn ? Math.random() * 0.25 + 0.35 : Math.random() * 0.3 + 0.4,
-        color: isAutumn
-          ? AUTUMN_COLORS[Math.floor(Math.random() * AUTUMN_COLORS.length)]
-          : "#B8C2C9",
+        color: isAutumn ? AUTUMN_COLORS[Math.floor(Math.random() * AUTUMN_COLORS.length)] : SNOW_COLOR,
         swayRadius: Math.random() * 1.5 + 0.5,
         swaySpeed: Math.random() * 0.02 + 0.01,
       };
@@ -140,22 +143,46 @@ export function SeasonalCanvas() {
       context.restore();
     };
 
-    // Helper: draw a soft snowflake / frost particle
+    // Helper: draw a six-armed snowflake crystal (each arm with a pair of small side branches)
     const drawSnow = (
       context: CanvasRenderingContext2D,
       p: Particle
     ) => {
+      const s = p.size;
       context.save();
+      context.translate(p.x, p.y);
+      context.rotate(p.angle);
       context.globalAlpha = p.opacity;
-      context.fillStyle = p.color;
+      context.strokeStyle = p.color;
+      context.lineWidth = Math.max(0.9, s / 6);
+      context.lineCap = "round";
       context.beginPath();
-      context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      context.fill();
+      for (let arm = 0; arm < 6; arm++) {
+        context.rotate(Math.PI / 3);
+        context.moveTo(0, 0);
+        context.lineTo(0, -s);
+        // Side branches at 55% of the arm, angled outwards
+        const by = -s * 0.55;
+        const bl = s * 0.32;
+        context.moveTo(0, by);
+        context.lineTo(-bl * 0.7, by - bl * 0.7);
+        context.moveTo(0, by);
+        context.lineTo(bl * 0.7, by - bl * 0.7);
+      }
+      context.stroke();
       context.restore();
+    };
+
+    // A season switch replaces every particle with the other kind at once (spread over the screen)
+    const matchSeason = () => {
+      for (let i = 0; i < particles.length; i++) {
+        if (particles[i].season !== seasonRef.current) particles[i] = createParticle(true);
+      }
     };
 
     // Reduced motion: one still frame of the current season, no loop.
     const drawFrame = () => {
+      matchSeason();
       ctx.clearRect(0, 0, width, height);
       const isAutumn = seasonRef.current === "autumn";
       for (const p of particles) {
@@ -169,6 +196,7 @@ export function SeasonalCanvas() {
       ctx.clearRect(0, 0, width, height);
       tick++;
 
+      matchSeason();
       const isAutumn = seasonRef.current === "autumn";
 
       for (let i = 0; i < particles.length; i++) {
