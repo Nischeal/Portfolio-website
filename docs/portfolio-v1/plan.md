@@ -204,7 +204,8 @@ Layout: 5/7 like About/Works. Left: counter, heading, intro, direct block. Right
 - [x] **M1 Section + copy email (working slice):** content first (opportunity-type options, intro line, success/error copy; you create the Web3Forms key at web3forms.com, where you enter the email and the key arrives by mail). Then `InquirySection.tsx` (server shell), `InquiryForm.tsx` + `CopyEmailButton.tsx` (client leaves): the form is fully styled with real `<label>`s (hairline inputs, olive submit pill, form + direct columns on `lg`). The copy-email and `mailto:` work for real (clipboard API with fallback, `Copied ✓`). The form validates in the browser but doesn't send yet.
 - [ ] **M2 Sending (working slice):** fetch submit to Web3Forms with honeypot; idle → sending → sent / error states announced via `aria-live`; friendly errors linked with `aria-describedby`; keyboard-only submit; **one real test submission reaches your inbox**. Close-out in the same turn as the "ok".
   - [x] Code: fetch to Web3Forms (JSON) with `botcheck` honeypot; idle → sending → sent / error in a polite `role="status"`; per-field errors linked with `aria-describedby` + `aria-invalid`, focus moves to the first; keyboard submit; no key = error state without a network call. Copy button falls back to the legacy copy after 1s if the clipboard promise stalls; email in lining numerals.
-  - [ ] **Blocked on you:** paste the Web3Forms key into `src/data/site.ts`, then one real test submission must reach your inbox. Phase 4 merges after that.
+  - [x] Web3Forms key added (2026-11-16). Real test sent from localhost: Web3Forms answered success and the form showed the sent state.
+  - [ ] You confirm the test email ("Portfolio inquiry: Just saying hello", from "Portfolio test") is in your inbox; then merge.
 
 ## Phase 5 — Footer  · branch `feat/footer`
 Source: old M7.2, ADR 018 (legacy file deleted).

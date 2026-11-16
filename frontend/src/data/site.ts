@@ -6,8 +6,5 @@ export const INQUIRY_LIVE = true;
 /** Published contact address (approved for publishing, ADR 021). */
 export const CONTACT_EMAIL = "nischealbasnet10@gmail.com";
 
-/**
- * Web3Forms access key (public by design: it only routes form mail to the address above).
- * TODO(user): create it at web3forms.com and paste it here. While empty, the form shows its error state.
- */
-export const WEB3FORMS_KEY = "";
+/** Web3Forms access key (public by design: it only routes form mail to the address above). */
+export const WEB3FORMS_KEY = "ac287d59-f0e3-4c1f-8135-44d4eda5a539";
