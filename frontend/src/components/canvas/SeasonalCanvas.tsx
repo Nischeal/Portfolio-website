@@ -23,7 +23,11 @@ export function SeasonalCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { season } = useSeason();
   const seasonRef = useRef<Season>(season);
-  seasonRef.current = season;
+
+  // Keep the animation loop's view of the season current without restarting it.
+  useEffect(() => {
+    seasonRef.current = season;
+  }, [season]);
 
   const mouseRef = useRef<{ x: number; y: number; active: boolean }>({
     x: -1000,

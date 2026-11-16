@@ -7,7 +7,7 @@ export function Footer() {
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
           <span className="text-slate-300">NISCHAL BASNET</span>
-          <span>// PORTFOLIO V1.0</span>
+          <span>{"// PORTFOLIO V1.0"}</span>
         </div>
 
         <div className="flex items-center gap-6">

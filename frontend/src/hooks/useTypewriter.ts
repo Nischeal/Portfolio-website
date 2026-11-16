@@ -39,8 +39,10 @@ export function useTypewriter({
           setDisplayText(currentWord.slice(0, displayText.length - 1));
         }, deletingSpeed);
       } else {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }, 0);
       }
     }
 
