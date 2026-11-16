@@ -1,5 +1,5 @@
 # Polish pass — Plan
-Status: in progress (M4)
+Status: done (2026-11-16)
 Branch: `fix/polish-pass` (from `master`)
 
 ## Goal
@@ -63,9 +63,9 @@ From two `/design-taste-frontend` reviews (2026-11-16): an eyes-on review, then 
 - [x] Signature font kept (Alex Brush)
 - [x] Build the approved options; verify; `testing.md` section. Also fixed: the typewriter line was clipped on phones (`whitespace-nowrap`); below `sm` "Building" sits on its own line with two lines reserved
 ### M4 — Copy + hero entrance (#8, #9, #10)
-- [ ] Content gate: DRAFT replacements for "robust", the virtue words/em dashes, h1 or kicker wording that says what you do, "Initiate Inquiry ↗", Craft/Capabilities, "Seasonal ambience" / "Code archive" (multiple choice, your approval; approved About/hero copy changes are recorded in `docs/decisions.md`)
-- [ ] Design gate: entrance options (e.g. name + lines fade up once, staggered ~80ms; or a single fade), `motion-safe`, runs once, no layout shift
-- [ ] Build, verify (`copy-lint` clean or every kept WARN explained), `testing.md` section; close-out (decision entry)
+- [x] Content gate: settled (see table above); recorded in ADR 031
+- [x] Design gate: staggered fade-up (`--animate-enter`, delays as inline styles because the `animation` shorthand resets `animation-delay`)
+- [x] Build, verify, `testing.md`, ADR 031. Skill re-run: copy-lint 0 FAIL / 1 WARN (3 virtue words: the quote + tailor line, kept as your voice); consistency gone: links, focus-visible, skip-link, nav-labels, button-styles, col-edge, copy-buttons, hero-screen. Left on purpose: split-pair (hero 7/5), copy-headline (name as h1), collide (false positive: hidden card back)
 
 ## Open questions
 - None yet; each milestone opens with its own gate.

@@ -24,7 +24,7 @@ export function Navbar() {
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Work", href: "#work" },
-    { label: "Craft", href: "#craft" },
+    { label: "Stack", href: "#stack" },
     ...(INQUIRY_LIVE ? [{ label: "Inquiry", href: "#inquiry" }] : []),
   ];
 

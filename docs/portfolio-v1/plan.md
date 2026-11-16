@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — next: polish pass (`docs/polish-pass/plan.md`, branch `fix/polish-pass`), then Phase 4 (Inquiry). Phase 3 done 2026-11-16
+Status: in progress — next: Phase 4 (Inquiry). Polish pass done 2026-11-16 (`docs/polish-pass/plan.md`)
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.

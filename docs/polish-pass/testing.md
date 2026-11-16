@@ -17,3 +17,9 @@ Desktop and phone (~375px).
 - [ ] Desktop: About's text rows and the Works deck start on the same vertical line; the Works card top lines up with the "03 // SELECTED WORKS" counter (its number tab sits just above).
 - [ ] Phone (~375px): first screen shows kicker, name, "Building" + role on the next line (never cut off), bio and "Explore Selected Work"; then the LOCATION / AVAILABILITY strip; then the quote card. Desktop hero unchanged.
 - [ ] The typewriter doesn't make the page jump as it types (two lines reserved on phones).
+
+## M4 — Copy + hero entrance
+- [ ] Reload: kicker, name + role, bio, button, meta strip and quote card rise and fade in one after another (about half a second in all); with reduced motion everything is simply there.
+- [ ] Kicker reads `KATHMANDU, NEPAL · FULL-STACK & BACKEND ENGINEER`; bio says "well-modelled relational databases"; meta labels read LOCATION / AVAILABILITY / SEASON / GITHUB; the GitHub link is easy to tap on a phone.
+- [ ] Navbar: About / Work / **Stack**; "Stack" jumps to the section headed "Stack" (`04 // STACK`).
+- [ ] About "Background": "…to the screen a person touches."

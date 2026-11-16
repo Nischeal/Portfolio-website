@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { STACK } from "@/data/stack";
 import type { StackItem } from "@/types/portfolio";
 
-const HEADING = "Capabilities";
+const HEADING = "Stack";
 
 // Brand colours light up on hover. Next.js's brand is pure black, which would vanish in Monarch mode,
 // so it keeps the text colour instead.
@@ -71,17 +71,17 @@ function Band({ items, reverse, label }: { items: StackItem[]; reverse?: boolean
 export function CapabilitiesSection() {
   return (
     <section
-      id="craft"
-      aria-labelledby="craft-heading"
+      id="stack"
+      aria-labelledby="stack-heading"
       className="w-full pt-16 sm:pt-24 pb-28 sm:pb-40"
     >
       <div className="px-6 max-w-6xl mx-auto space-y-5">
         <p aria-hidden="true" className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-olive" />
-          <span>04 // Capabilities</span>
+          <span>04 // Stack</span>
         </p>
         <h2
-          id="craft-heading"
+          id="stack-heading"
           className="font-serif text-5xl sm:text-6xl font-semibold tracking-tight text-headline leading-[1.02]"
         >
           {HEADING}

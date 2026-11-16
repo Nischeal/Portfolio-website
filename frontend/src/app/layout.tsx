@@ -36,7 +36,7 @@ const alexBrush = Alex_Brush({
 export const metadata: Metadata = {
   title: "Nischal Basnet | Full-Stack & Backend Engineer",
   description:
-    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.",
+    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, well-modelled relational databases, and scalable web platforms. Rooted in Kathmandu, Nepal.",
   openGraph: {
     title: "Nischal Basnet | Full-Stack & Backend Engineer",
     description: "Full-Stack & Backend Engineer based in Kathmandu, Nepal.",

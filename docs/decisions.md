@@ -152,3 +152,10 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Logos from Simple Icons v16.36.0 (CC0), 12 paths copied into `src/data/stack.ts`; no dependency. Espresso by default; brand colour on hover only (exception to ADR 015, like shadows). "Computer vision" dropped (no logo); YOLO uses the Ultralytics YOLO mark.
 - Pure CSS animation in a server component; pauses on hover; reduced motion shows a still row; screen readers get one plain list per band.
 - No visible pause control, at the user's request. Trade-off: WCAG 2.2.2 (Pause, Stop, Hide) is only met for reduced-motion users and on hover; revisit in the Phase 7 audit.
+
+## 031 — Polish pass from the design-taste reviews (2026-11-16)
+- Inquiry links (navbar, "Get in Touch", hero button) sit behind `INQUIRY_LIVE` until `#inquiry` exists; "Skip to content" link added; readable labels ≥ 12px; phone tap targets ≥ 44px.
+- About moves to 5/7 to share Works' column line; the hero keeps 7/5. On phones the quote card follows the meta strip and the typewriter wraps "Building" onto its own line.
+- Copy (supersedes parts of 008/023-era copy): bio "robust database architectures" → "well-modelled relational databases"; hero button "Get in touch ↓"; section renamed **Stack** (nav, heading, `#stack`); meta labels SEASON / GITHUB; kicker dash → `·`; About drops "actually". The name stays the h1.
+- Hero enters once on load: staggered 12px fade-up (0–400ms), `motion-safe` only.
+- Skipped on purpose (skill rules that clash with this site): screen-snapped section heights, no hairlines, pause buttons, always-colour logos, hero split top-alignment.
