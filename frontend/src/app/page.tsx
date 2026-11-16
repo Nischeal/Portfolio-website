@@ -3,8 +3,11 @@ import { AboutSection } from "@/components/sections/AboutSection";
 
 export default function HomePage() {
   return (
-    <main className="min-h-[calc(100vh-80px)] flex flex-col justify-center">
-      <HeroSection />
+    <main>
+      {/* The hero fills the first screen (minus the 80px navbar) and centres itself in it */}
+      <div className="min-h-[calc(100vh-80px)] flex flex-col justify-center">
+        <HeroSection />
+      </div>
       <AboutSection />
     </main>
   );

@@ -14,3 +14,10 @@ Unstyled on purpose; styling is M2.
 - [ ] Navbar (desktop and the ~375px menu) reads About / Work / Craft / Inquiry.
 - [ ] Clicking **About** in the navbar scrolls to the section with its heading visible below the sticky bar.
 - [ ] Hero looks unchanged.
+
+## Phase 1 — M2 (About styling)
+- [ ] **Desktop (≥1024px):** counter + large serif "About me" on the left third; three rows on the right, each with a small mono label beside the paragraph, separated by hairlines.
+- [ ] **Tablet (~640–1023px):** heading on top, rows below, label still beside the text.
+- [ ] **Mobile (~375px):** everything stacked, label above each paragraph, no horizontal scroll, comfortable line length.
+- [ ] Hero still fills the first screen exactly as before (the centring moved to a wrapper).
+- [ ] **Monarch preview:** add `data-theme="monarch"` to `<html>` in DevTools; About text and hairlines switch to dark.
