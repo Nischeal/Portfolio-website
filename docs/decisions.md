@@ -133,3 +133,4 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Both faces are flat at rest (decision 010 holds); the angle exists only mid-turn. Reduced motion swaps instantly.
 - The card grows to fit the back instead of scrolling inside. Any deck navigation turns the card face-up first.
 - Trigger is a hairline ghost button ("Read case study →"); the back closes with `[ Close ]`, the label approved in M0.
+- Revised same day: the size jump at mid-turn felt wrong. The back now keeps the front's size and the case study scrolls inside it (header with `[ Close ]` pinned); the cards behind are hidden while the card turns.

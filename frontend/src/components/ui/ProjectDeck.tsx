@@ -34,10 +34,12 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   const [order, setOrder] = useState(() => projects.map((_, i) => i)); // order[0] is the top card
   const [motion, setMotion] = useState<Motion>({ kind: "rest" });
   const [flipped, setFlipped] = useState<number | null>(null); // project whose card shows its back (ADR 027)
+  const [turning, setTurning] = useState(false); // mid-turn: the cards behind are hidden so they don't show through
   const reducedMotion = usePrefersReducedMotion();
   const deckRef = useRef<HTMLDivElement>(null);
 
   const busy = useRef(false);
+  const turnTimer = useRef<number | undefined>(undefined);
   const drag = useRef<{ x: number; t: number } | null>(null);
   const wheel = useRef({ sum: 0, lockedUntil: 0 });
 
@@ -91,11 +93,20 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
     setMotion({ kind: "rest" });
   };
 
+  /** Turn the top card over (index) or face-up (null), hiding the cards behind while it turns. */
+  const turn = (index: number | null) => {
+    setFlipped(index);
+    if (reducedMotion) return;
+    setTurning(true);
+    window.clearTimeout(turnTimer.current);
+    turnTimer.current = window.setTimeout(() => setTurning(false), FLIP_MS);
+  };
+
   /** Deck moves never carry a card face-down: turn it face-up first, then move (ADR 027). */
   const faceUpThen = (move: () => void) => {
     if (busy.current) return;
     if (flipped === null) return move();
-    setFlipped(null);
+    turn(null);
     setMotion({ kind: "rest" }); // a released drag springs back while the card turns face-up
     if (reducedMotion) return move();
     busy.current = true;
@@ -142,7 +153,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
       prev();
     } else if (e.key === "Escape" && flipped !== null) {
       e.preventDefault();
-      setFlipped(null);
+      turn(null);
     }
   };
 
@@ -189,8 +200,12 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
     return {
       transform: `translateY(${depth * STACK_OFFSET}px) scale(${1 - depth * STACK_SCALE})`,
       transformOrigin: "50% 100%",
-      opacity: position > 2 ? 0 : 1,
-      transition: motion.kind === "drag" ? "transform 120ms linear" : settle,
+      opacity: position > 2 || (turning && position > 0) ? 0 : 1,
+      transition: turning
+        ? "opacity 160ms ease"
+        : motion.kind === "drag"
+          ? "transform 120ms linear"
+          : settle,
       zIndex: count - position,
     };
   };
@@ -301,7 +316,8 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
                 number={String(index + 1).padStart(2, "0")}
                 interactive={isTop}
                 flipped={flipped === index}
-                onFlip={(open) => setFlipped(open ? index : null)}
+                onFlip={(open) => turn(open ? index : null)}
+                onNext={() => next(-1)}
               />
             </div>
           );
