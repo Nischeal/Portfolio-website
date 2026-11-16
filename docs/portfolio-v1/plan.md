@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 1 done; next: Phase 2 (Selected Works)
+Status: in progress — Phase 2 (Selected Works), M0 done
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -72,15 +72,37 @@ Source: old M5 + old decision 4, decision 002, ADR 021.
 
 | Card | Stack | Link | Status |
 |---|---|---|---|
-| **Clip Cuisine (Ingredient Finder)**: computer vision | Python, YOLO, PostgreSQL | `SOURCE ↗` https://github.com/Nischeal/Ingredient_finder | not live: no demo link |
+| **Clip Cuisine (Ingredient Finder)**: computer vision | Python, Flask, YOLO, PostgreSQL | `SOURCE ↗` https://github.com/Nischeal/Ingredient_finder | not live: no demo link |
 | **Gym Management System**: members, subscriptions, attendance, admin dashboard | PHP, Laravel, MySQL | `SOURCE ↗` https://github.com/Nischeal/Gym-Management-System | not live: no demo link |
 | **College project (8th semester)** | TBD | none | "In progress / coming soon" card, generic until you name it; not clickable |
 
 Clicking a real card opens a **slide-out drawer** from the right containing: Problem, Solution (architecture), Challenges overcome, Stack ledger, `SOURCE ↗`. It closes on `[Close]`, a backdrop click or Esc.
 
-- [ ] **M0 Content gate:** for both real projects, a 1–2 line card summary + Problem / Solution / Challenges as DRAFT for you to edit (from the repos/README if readable, otherwise questions). Third card wording.
-- [ ] **M1 Data + markup:** `src/types/portfolio.ts` (`Project`: slug, title, summary, stack[], problem, solution, challenges[], sourceUrl?, status `"shipped" | "in-progress"`); `src/data/projects.ts`; `WorksSection.tsx` (server) + `ProjectCard.tsx`.
-- [ ] **M2 Styling + responsive:** 3-up grid on `lg`, 1-up mobile; quote-card style with lift on hover.
+- [x] **M0 Content gate:** for both real projects, a 1–2 line card summary + Problem / Solution / Challenges as DRAFT for you to edit (from the repos/README if readable, otherwise questions). Third card wording.
+
+  **Facts confirmed by the user (2026-11-16):**
+  - **Clip Cuisine:** photo → list of detected ingredients (no recipe suggestions). Flask backend + web UI. Pretrained YOLO used as-is (no custom training). PostgreSQL stores user accounts + detection history. Real challenges: look-alike ingredients/lighting/clutter; model speed on modest hardware.
+  - **Gym Management System:** admin dashboard + member portal (members log in). Staff mark attendance manually. Plans with durations/prices, expiry tracking, recorded payments (no online payment). Real challenge: schema for members/plans/subscriptions/renewals. Front-end tech (Blade/Livewire) not stated, so the ledger stays PHP/Laravel/MySQL.
+
+  **Copy (approved 2026-11-16). Implement exactly this:**
+
+  | Slot | Copy |
+  |---|---|
+  | Counter / heading (h2) | `03 // SELECTED WORKS` / Selected Works |
+  | **Clip Cuisine** card summary | Snap a photo of your ingredients and get back a list of what's in it, detected by a YOLO computer-vision model. |
+  | Problem | Listing ingredients by hand from what's in front of you is tedious. Clip Cuisine turns a single photo into that list. |
+  | Solution | A Flask web app serves a pretrained YOLO model. You upload a photo in the browser, the backend runs detection and returns the ingredients it found. PostgreSQL keeps user accounts and each user's detection history. |
+  | Challenges | • Look-alike ingredients: similar-looking items, uneven lighting and cluttered backgrounds make detection less reliable. • Running the model: keeping detection fast enough on modest hardware. |
+  | Stack | Python · Flask · YOLO · PostgreSQL |
+  | **Gym Management System** card summary | A Laravel platform for running a gym: members, membership plans, payments and attendance, with a portal for members. |
+  | Problem | Running a gym on paper or spreadsheets makes it hard to see who has paid, whose membership is about to expire and who has been coming in. |
+  | Solution | Staff manage members, plans, payments and attendance from an admin dashboard, recording check-ins as members arrive. Plans have durations and prices, and the system tracks expiry so renewals don't slip through. Members log in to their own portal. |
+  | Challenges | • Designing the MySQL schema for members, plans, subscriptions and renewals so each member's history stays intact across renewals. |
+  | Stack | PHP · Laravel · MySQL |
+  | **College project** card | Label: In progress · Title: Final-year project · Text: My BCA final-year project is underway. Details soon. (Not clickable, no link.) |
+  | Drawer labels | Problem · Solution · Challenges · Stack · `SOURCE ↗` · `[ Close ]` |
+- [ ] **M1 Data + markup:** `src/types/portfolio.ts` (also move `AboutBlock` there from `src/data/about.ts`) (`Project`: slug, title, summary, stack[], problem, solution, challenges[], sourceUrl?, status `"shipped" | "in-progress"`); `src/data/projects.ts`; `WorksSection.tsx` (server) + `ProjectCard.tsx`.
+- [ ] **M2 Styling + responsive:** 3-up grid on `lg`, 1-up mobile; quote-card style with lift on hover. Small labels (stack ledger, "In progress") use `text-muted` or darker, never `text-dim` (ADR 022).
 - [ ] **M3 Drawer:** `ProjectDrawer.tsx` (client): `role="dialog"`, `aria-modal`, labelled by title; focus moves in on open, returns to the card on close; Tab is trapped; body scroll locked; Esc/backdrop/[Close]; slide is `motion-safe`.
 - [ ] **M4 Accessibility:** cards are real `<button>`s, keyboard open, screen-reader pass, links have `rel="noopener noreferrer"`.
 - [ ] Close-out: tick roadmap.

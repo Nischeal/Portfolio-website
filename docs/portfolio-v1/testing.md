@@ -27,3 +27,9 @@ Unstyled on purpose; styling is M2.
 - [ ] Keyboard: Tab from the top; the navbar **About** link is reachable, and Enter scrolls so "About me" sits just below the sticky bar.
 - [ ] Screen reader (optional; Orca on Linux, or the Chrome DevTools accessibility tree): headings read "Nischal Basnet" (h1) → "About me" (h2); the `02 // About` counter isn't announced; each label is read with its paragraph.
 - [ ] DevTools → Lighthouse → Accessibility on the page shows no contrast failures in About or the hero strip.
+
+## Phase 2 — M0 (Works copy)
+No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
+- [ ] Every claim about Clip Cuisine and the Gym Management System is accurate (pretrained YOLO, Flask, PostgreSQL for users + history; admin + member portal, manual check-ins, plans/expiry/payments).
+- [ ] Nothing is overstated (no recipe suggestions, no custom-trained model, no online payments).
+- [ ] The college card reveals only what you want public right now.
