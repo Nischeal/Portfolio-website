@@ -20,7 +20,7 @@ export function HeroSection() {
 
           {/* Grand Typographic Headline Lockup */}
           <div className="space-y-3 motion-safe:animate-enter" style={{ animationDelay: "80ms" }}>
-            <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-headline leading-[0.98]">
+            <h1 className="monarch-shimmer font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-headline leading-[0.98]">
               Nischal Basnet
             </h1>
             <TypewriterRole

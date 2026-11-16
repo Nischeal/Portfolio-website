@@ -1,8 +1,8 @@
 export function HeroQuoteCard() {
   return (
-    <div className="relative group w-full max-w-[340px] sm:max-w-[370px] mx-auto lg:mx-0">
+    <div className="monarch-glow relative group w-full max-w-[340px] sm:max-w-[370px] mx-auto lg:mx-0">
       {/* Crisp Precision Archival Card (Zero Rotation on Text for 100% Sharp Typography) */}
-      <div className="relative bg-card border border-hairline rounded-[3px] p-5 sm:p-6 pb-10 sm:pb-12 shadow-[0_14px_36px_rgba(28,25,23,0.06)] group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_50px_rgba(28,25,23,0.11)] transition-all duration-300 ease-out">
+      <div className="monarch-flow relative bg-card border border-hairline rounded-[3px] p-5 sm:p-6 pb-10 sm:pb-12 shadow-[0_14px_36px_rgba(28,25,23,0.06)] group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_50px_rgba(28,25,23,0.11)] transition-all duration-300 ease-out">
         {/* Corner Tactile Paper Tag with Serif Quotation Mark */}
         <div
           aria-hidden="true"

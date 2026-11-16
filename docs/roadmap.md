@@ -16,7 +16,7 @@ Full specs and milestones: [portfolio-v1/plan.md](portfolio-v1/plan.md). Run wit
 - [x] Polish pass from the design-taste reviews ([plan](polish-pass/plan.md), ADR 031)
 - [x] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
 - [x] Phase 5 — **Footer**: espresso footer-dark band, Kathmandu clock, season switch (ADR 032)
-- [ ] Phase 6 — **Monarch mode**
+- [x] Phase 6 — **Monarch mode**: violet Shadow Monarch theme, vignette + rising motes, ripple + colour glitch switch (ADR 033–047)
 - [ ] Phase 7 — **Polish, SEO & launch**
 
 ## Later
