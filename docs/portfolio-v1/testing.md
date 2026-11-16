@@ -66,3 +66,15 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] Back: **NEXT FILE →** sits on the right of `SOURCE ↗` (it wraps under on narrow phones). Click it: the card turns face-up, then the deck moves to the next project. Counter and index follow.
 - [ ] From Gym, "Next file →" goes on to the final-year card (which has no case study), and the deck keeps looping.
 - [ ] Keyboard: Enter on "Next file →" moves on, and focus stays on the deck (not lost to the page top).
+
+## Phase 3 — M1 (Capabilities: moving logo bands, ADR 030)
+`http://localhost:3000/#craft`, desktop (~1440px) and phone (~375px).
+- [ ] Navbar **Craft** jumps to the section; the heading isn't hidden under the navbar.
+- [ ] Under `04 // CAPABILITIES` / "Capabilities" (heading on the same left line as About and Works): two **full-width** bands between hairlines, running to both screen edges and fading out there. Logos ~44px with larger mono names. Top: Laravel, Livewire, PHP, FastAPI, Python, PostgreSQL, MySQL. Bottom: YOLO, Next.js, React, TypeScript, Tailwind CSS. Each is a logo + mono name; no context lines, no ratings.
+- [ ] The top band drifts left, the bottom one right, slowly and smoothly, with **no gap or jump** where the loop restarts (watch for ~1 minute).
+- [ ] The fade sits at the screen edges and stays put while the logos move (it doesn't slide away with them).
+- [ ] Hover a logo: it shows its brand colour (Laravel red, PHP purple…) and that band pauses; move away and it continues.
+- [ ] **Phone (~375px):** bands fit the width, no sideways page scroll, logos and names readable.
+- [ ] **Reduced motion** (OS setting): bands stand still as one centred row each, wrapping on phones; no fade masks.
+- [ ] **Screen reader:** after the heading, two lists ("Backend and databases", "AI, vision and frontend") with each tool once; the moving copies aren't read.
+- [ ] **Monarch preview** (`data-theme="monarch"` on `<html>`): logos and names visible in dark; Next.js hover stays visible (not black).
