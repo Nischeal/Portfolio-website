@@ -9,13 +9,16 @@ Single-page portfolio. Sections are built in `frontend/src/components/sections/`
 - [x] Hero: masthead, typewriter, metadata strip, quote card (decisions 006–010)
 
 ## Next
-- [ ] **About** (`#about`) — copy per decision 005; `02 // ABOUT` style counter.
-- [ ] **Selected Works** (`#work`) — cards for Clip Cuisine, Gym Management System, and a "coming soon" slot (decision 002). Each card opens a slide-out drawer (Problem, Solution, Challenges, Stack, `SOURCE ↗`); closes on `[Close]`, backdrop click, or `Esc`. Recreate a `Project` type in `src/types/` (it was deleted along with the gaming fields).
-- [ ] **Capabilities** (`#craft`) — horizontal spec ledger with `01 //` counters and olive tech tags grouped by discipline (Backend, Databases, AI & Vision, Frontend). No gamified ratings.
-- [ ] **Inquiry** (`#inquiry`) — form (Name, Email, Opportunity type, Message) + quick-copy email button. ⚠ Static export has no server: decide on mailto, a form service, or the future FastAPI backend.
-- [ ] **Footer** — build fresh (legacy file deleted, ADR 018): Kathmandu time (GMT+5:45), season toggle, copyright, GitHub link, Monarch watermark.
-- [ ] **Monarch mode** — `M` key / watermark toggles `data-theme="monarch"` on `<html>`; tokens already in `globals.css`; small pill "Shadow Mode // Press M to return".
-- [ ] **Polish** — contrast audit, SEO/OG image (`metadataBase`), Lighthouse. (Reduced motion, screen-reader typewriter, menu keyboard support done — ADR 017.)
+Full specs and milestones: [portfolio-v1/plan.md](portfolio-v1/plan.md). Run with `/my-planner resume portfolio-v1`.
+- [ ] Phase 1 — **About** (`#about`)
+- [ ] Phase 2 — **Selected Works** (`#work`) + project drawer
+- [ ] Phase 3 — **Capabilities** (`#craft`)
+- [ ] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
+- [ ] Phase 5 — **Footer**
+- [ ] Phase 6 — **Monarch mode**
+- [ ] Phase 7 — **Polish, SEO & launch**
 
 ## Later
-- [ ] `backend/` FastAPI service (e.g. for the inquiry form) — only if a static option isn't enough.
+- [ ] Phase 8 — Scroll reveal
+- [ ] Phase 9 — Ctrl+K command terminal
+- [ ] Phase 10 — FastAPI backend
