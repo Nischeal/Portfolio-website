@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 1 (About), M0 done
+Status: in progress — Phase 1 (About), M1 done
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -60,7 +60,7 @@ Must not repeat the hero bio word for word. No poetic labels (decision 005).
   | Text 2 | Most of what I build is backend: platforms in Laravel and FastAPI, with data modelled in PostgreSQL and MySQL. Alongside that I explore computer vision, building with YOLO models in Python, like the ingredient detection behind Clip Cuisine, and I use Next.js with TypeScript when a project needs a modern web interface. |
   | Label 3 | How I work |
   | Text 3 | I care about the parts nobody sees: clean, readable code and database schemas that still make sense a year later. I try to build software the way a good tailor makes a suit: measured carefully, fitted properly, made to last. |
-- [ ] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`.
+- [x] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`. Copy lives in `src/data/about.ts`; blocks are a `<dl>` (label = `dt`, text = `dd`).
 - [ ] **M2 Styling + responsive.**
 - [ ] **M3 Accessibility:** heading order, `aria-labelledby`, contrast of muted text, navbar jump lands on the heading.
 - [ ] Close-out: tick roadmap "About".

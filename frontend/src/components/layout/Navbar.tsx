@@ -21,8 +21,8 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
+    { label: "Work", href: "#work" },
     { label: "Craft", href: "#craft" },
     { label: "Inquiry", href: "#inquiry" },
   ];
