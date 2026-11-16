@@ -1,5 +1,5 @@
 # Polish pass — Plan
-Status: in progress (M3)
+Status: in progress (M4)
 Branch: `fix/polish-pass` (from `master`)
 
 ## Goal
@@ -59,9 +59,9 @@ From two `/design-taste-frontend` reviews (2026-11-16): an eyes-on review, then 
 - [x] 44px tap targets (`min-h-11` / `h-11 w-11`): navbar logo, `[ Menu ]`, deck ← →, "Read case study", `SOURCE ↗`, `[ Close ]`, "Next file"
 - [ ] Nothing wraps or breaks at 375px; contrast stays per ADR 022; verify; `testing.md` section
 ### M3 — Layout: shared grid, phone hero, fonts (#5, #6, #7)
-- [ ] Design gate: options for one shared column grid (which lines About/Works/hero snap to) + top-aligned splits; options for the phone hero (e.g. quote card smaller / after the meta strip / hidden on phones)
-- [ ] Decide the signature font (keep Alex Brush for the logo, or set the logo in Cormorant italic and drop a family)
-- [ ] Build the approved options; verify at 1440/1024/768/390; `testing.md` section
+- [x] Design gate: About + Works share 5/7 (About moved from 4/8; both right columns now start at x=884 on a 1920px window); Works deck top raised to the heading line (`lg:pt-3.5`, tab sits above); hero keeps 7/5 and its centred columns. Phone hero: quote card after the meta strip (`display: contents` + `order`)
+- [x] Signature font kept (Alex Brush)
+- [x] Build the approved options; verify; `testing.md` section. Also fixed: the typewriter line was clipped on phones (`whitespace-nowrap`); below `sm` "Building" sits on its own line with two lines reserved
 ### M4 — Copy + hero entrance (#8, #9, #10)
 - [ ] Content gate: DRAFT replacements for "robust", the virtue words/em dashes, h1 or kicker wording that says what you do, "Initiate Inquiry ↗", Craft/Capabilities, "Seasonal ambience" / "Code archive" (multiple choice, your approval; approved About/hero copy changes are recorded in `docs/decisions.md`)
 - [ ] Design gate: entrance options (e.g. name + lines fade up once, staggered ~80ms; or a single fade), `motion-safe`, runs once, no layout shift

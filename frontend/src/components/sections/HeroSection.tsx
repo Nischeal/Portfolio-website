@@ -6,11 +6,12 @@ import { INQUIRY_LIVE } from "@/data/site";
 
 export function HeroSection() {
   return (
-    <section className="pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 max-w-6xl mx-auto w-full">
-      {/* Asymmetric Two-Column Editorial Desk */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+    <section className="flex flex-col lg:block pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 max-w-6xl mx-auto w-full">
+      {/* Asymmetric Two-Column Editorial Desk. Below lg the wrapper dissolves (display: contents) so the
+          quote card can follow the meta strip and the first phone screen holds name, bio, button and strip. */}
+      <div className="contents lg:grid lg:grid-cols-12 lg:gap-14 lg:items-center">
         {/* Left Column: Typographic Hierarchy & Identity */}
-        <div className="lg:col-span-7 space-y-8 text-left">
+        <div className="order-1 lg:order-none lg:col-span-7 space-y-8 text-left">
           {/* Clean Spaced Kicker */}
           <div className="flex items-center gap-2.5 font-mono text-xs text-muted tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-olive" />
@@ -61,13 +62,13 @@ export function HeroSection() {
         </div>
 
         {/* Right Column: Tactile Polaroid Quote Card */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end pt-4 lg:pt-0">
+        <div className="order-3 lg:order-none lg:col-span-5 flex justify-center lg:justify-end mt-14 lg:mt-0">
           <HeroQuoteCard />
         </div>
       </div>
 
       {/* Generous Spaced Full-Width Metadata Strip */}
-      <div className="mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body">
+      <div className="order-2 lg:order-none mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body">
         <div>
           <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             LOCATION

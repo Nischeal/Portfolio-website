@@ -12,3 +12,8 @@
 Desktop and phone (~375px).
 - [ ] Small mono labels (hero kicker, LOCATION/AVAILABILITY…, quote-card footer, About labels, card ledgers, "In progress", "or drag the card") read at 12px; nothing wraps awkwardly or overflows at 375px.
 - [ ] On a phone, the logo, `[ Menu ]`, deck ← →, "Read case study", `SOURCE ↗`, `[ Close ]` and "Next file" are easy to tap (≥ 44px tall).
+
+## M3 — Shared grid + phone hero
+- [ ] Desktop: About's text rows and the Works deck start on the same vertical line; the Works card top lines up with the "03 // SELECTED WORKS" counter (its number tab sits just above).
+- [ ] Phone (~375px): first screen shows kicker, name, "Building" + role on the next line (never cut off), bio and "Explore Selected Work"; then the LOCATION / AVAILABILITY strip; then the quote card. Desktop hero unchanged.
+- [ ] The typewriter doesn't make the page jump as it types (two lines reserved on phones).

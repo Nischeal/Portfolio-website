@@ -25,7 +25,7 @@ export function TypewriterRole({
       </p>
       <div
         aria-hidden="true"
-        className={`font-serif text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] italic font-normal tracking-tight flex items-center gap-x-2.5 sm:gap-x-3 text-muted leading-tight whitespace-nowrap overflow-hidden select-none min-h-[1.3em] ${className}`}
+        className={`font-serif text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] italic font-normal tracking-tight flex flex-col items-start sm:flex-row sm:items-center gap-x-2.5 sm:gap-x-3 text-muted leading-tight sm:whitespace-nowrap overflow-hidden select-none min-h-[2.6em] sm:min-h-[1.3em] ${className}`}
       >
         <span className="text-muted font-light shrink-0">{prefix}</span>
         <span className="text-olive font-medium inline-flex items-center">

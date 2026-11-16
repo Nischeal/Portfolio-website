@@ -7,9 +7,9 @@ export function AboutSection() {
       aria-labelledby="about-heading"
       className="px-6 max-w-6xl mx-auto w-full pt-12 sm:pt-16 pb-24 sm:pb-32"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-14 gap-y-10">
         {/* Left: counter + heading */}
-        <div className="lg:col-span-4 space-y-5">
+        <div className="lg:col-span-5 space-y-5">
           <p aria-hidden="true" className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-olive" />
             <span>02 // About</span>
@@ -23,7 +23,7 @@ export function AboutSection() {
         </div>
 
         {/* Right: label + text rows divided by hairlines */}
-        <dl className="lg:col-span-8 border-t border-hairline divide-y divide-hairline">
+        <dl className="lg:col-span-7 border-t border-hairline divide-y divide-hairline">
           {ABOUT_BLOCKS.map((block) => (
             <div
               key={block.label}
