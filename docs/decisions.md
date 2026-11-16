@@ -50,3 +50,36 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 ## 011 — Docs cleanup (2026-11-16)
 - Removed Gemini-era docs (old gaming spec, finished phase plans, glossary, feedback screenshots), the legacy static site at the repo root, and Next.js boilerplate.
 - Docs are now for the user + Claude only: `CLAUDE.md`, `docs/decisions.md`, `docs/roadmap.md`, `docs/design-system/`.
+
+## 012 — Milestone-gated section workflow (2026-11-16)
+- Sections are shipped via the user-level `/section` skill: M0a content gate → M0b layout → M1 markup → M2 styling/responsive → M3 interactivity → M4 a11y, with a hard stop for user verification after each.
+- One working doc per section in `docs/sections/<name>.md`; kept (marked shipped) after completion. Narrow exception to 011's "no per-feature docs".
+- One commit per approved milestone; Claude never pushes (master deploys live).
+- Missing copy is offered as labelled DRAFTs for the user to edit; nothing unapproved ships (002, 008).
+
+## 013 — Canonical domain (2026-11-16)
+- The site lives at `www.nischalbasnet10.com.np` (the value in `frontend/public/CNAME`). `nischal.info.np` was stale and is removed from code, README and CLAUDE.md.
+
+## 014 — Visible winter snow (2026-11-16)
+- Winter particles use a pale frost grey-blue (`#B8C2C9`, 40–70% opacity) instead of white, which vanished on the linen background.
+
+## 015 — Colours only through tokens (2026-11-16)
+- Components use the token utilities from `globals.css` (`bg-page`, `text-headline`, `border-hairline`, `bg-olive`, …): no raw hex, no `stone-*`/`slate-*`, so Monarch mode flips everything.
+- Exception: shadow rgba values and canvas particle colours.
+- Shades with no token are mapped to the nearest existing token instead of adding new ones.
+
+## 016 — Metadata follows decision 008 (2026-11-16)
+- Site title "Nischal Basnet | Full-Stack & Backend Engineer"; description derived from the hero bio; drop "Systems Engineer" and "AI vision pipelines".
+- Hero availability label stays "Open for Work" (supersedes 006's "Available for Engineering").
+
+## 017 — Reduced motion & baseline accessibility (2026-11-16)
+- `prefers-reduced-motion`: the canvas draws one static frame of leaves/snow; the typewriter shows the first role with no blinking cursor. The canvas also pauses while the tab is hidden.
+- Typewriter is `aria-hidden`, with an `sr-only` line listing all roles for screen readers.
+- Sticky-header offset (`scroll-padding-top`), mobile menu `aria-expanded` + Esc to close, DPR-sharp canvas: fixed now, not deferred to Polish.
+
+## 018 — Remove legacy Footer (2026-11-16)
+- Deleted the unrendered gaming-era `Footer.tsx` (neon colours, placeholder GitHub/LinkedIn URLs). `/section footer` builds a new one from scratch.
+
+## 019 — CI gate & client boundaries (2026-11-16)
+- CI runs `npm run lint` and `npx tsc --noEmit` before `npm run build`; any failure blocks the deploy.
+- Keep `"use client"` at the leaves: sections are server components, and only interactive or browser-dependent bits (e.g. `SeasonLabel`) are client components.

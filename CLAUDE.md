@@ -18,7 +18,7 @@ No test runner is configured yet. Verification = `npm run build` + `npm run lint
 
 ## Deployment
 
-Pushing to `master` triggers `.github/workflows/deploy.yml`: `npm ci && npm run build` in `frontend/` (Node 20), then uploads `frontend/out` to GitHub Pages. Custom domain via `frontend/public/CNAME` (nischal.info.np), so no `basePath`.
+Pushing to `master` triggers `.github/workflows/deploy.yml`: `npm ci && npm run build` in `frontend/` (Node 20), then uploads `frontend/out` to GitHub Pages. Custom domain via `frontend/public/CNAME` (www.nischalbasnet10.com.np), so no `basePath`.
 
 Because `next.config.ts` sets `output: "export"`, anything requiring a server breaks the build: no API routes, Server Actions, middleware, ISR, dynamic routes without `generateStaticParams`, or `next/image` optimization (`images.unoptimized: true`).
 
@@ -44,6 +44,7 @@ This is Next.js 16 / React 19 / Tailwind v4 (via `@tailwindcss/turbopack`, no `t
 - `docs/roadmap.md` — section status and what's next. Update checkboxes when a section lands.
 - `docs/decisions.md` — numbered decision log, newest wins. Add a 2–5 bullet entry for any non-trivial design/content decision.
 - `docs/design-system/tokens.md` + reference images — keep in sync with `globals.css`.
-- Don't create per-feature plan/changelog/testing-guide folders; office workflow skills (`task-planner`, `daily`, `openproject`) don't apply to this repo.
+- `docs/sections/<name>.md` — one working doc per section, created and maintained by the `/section` skill (ADR 012). Marked `Status: shipped` when done, not deleted.
+- Don't create other per-feature plan/changelog/testing-guide folders; office workflow skills (`task-planner`, `daily`, `openproject`) don't apply to this repo.
 - Commits use conventional format with scopes, e.g. `feat(hero): …`, `fix(hero): …`, `docs: …`, `ci: …`.
 - Portfolio content must be real (ADR 002, 008): only user-confirmed projects, links, roles and copy. Ask before adding any personal detail; don't invent projects, metrics, quotes, or placeholder URLs (LinkedIn stays hidden until provided).

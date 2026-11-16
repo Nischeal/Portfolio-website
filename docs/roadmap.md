@@ -13,7 +13,7 @@ Single-page portfolio. Sections are built in `frontend/src/components/sections/`
 - [ ] **Selected Works** (`#work`) — cards for Clip Cuisine, Gym Management System, and a "coming soon" slot (decision 002). Each card opens a slide-out drawer (Problem, Solution, Challenges, Stack, `SOURCE ↗`); closes on `[Close]`, backdrop click, or `Esc`. Recreate a `Project` type in `src/types/` (it was deleted along with the gaming fields).
 - [ ] **Capabilities** (`#craft`) — horizontal spec ledger with `01 //` counters and olive tech tags grouped by discipline (Backend, Databases, AI & Vision, Frontend). No gamified ratings.
 - [ ] **Inquiry** (`#inquiry`) — form (Name, Email, Opportunity type, Message) + quick-copy email button. ⚠ Static export has no server: decide on mailto, a form service, or the future FastAPI backend.
-- [ ] **Footer** — `Footer.tsx` exists but isn't rendered yet: Kathmandu time (GMT+5:45), season toggle, copyright, GitHub link, Monarch watermark.
+- [ ] **Footer** — build fresh (legacy file deleted, ADR 018): Kathmandu time (GMT+5:45), season toggle, copyright, GitHub link, Monarch watermark.
 - [ ] **Monarch mode** — `M` key / watermark toggles `data-theme="monarch"` on `<html>`; tokens already in `globals.css`; small pill "Shadow Mode // Press M to return".
 - [ ] **Polish** — accessibility (contrast, keyboard nav, `prefers-reduced-motion` for canvas/typewriter), SEO/OG image, Lighthouse.
 
