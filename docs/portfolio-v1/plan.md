@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 1 (About), M3 done
+Status: in progress — Phase 1 done; next: Phase 2 (Selected Works)
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -63,7 +63,7 @@ Must not repeat the hero bio word for word. No poetic labels (decision 005).
 - [x] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`. Copy lives in `src/data/about.ts`; blocks are a `<dl>` (label = `dt`, text = `dd`).
 - [x] **M2 Styling + responsive.** `lg`: 4/8 columns (counter + heading left; hairline-divided label/text rows right). Mobile: stacked. Page-level hero centring moved to a wrapper around `HeroSection` in `page.tsx`.
 - [x] **M3 Accessibility:** heading order, `aria-labelledby`, contrast of muted text, navbar jump lands on the heading. Labels moved to `text-muted`; decorative counter `aria-hidden`; site-wide contrast floor fixed (ADR 022: `--text-muted` → `#736C67`, `text-dim` decoration only, hero labels moved to muted).
-- [ ] Close-out: tick roadmap "About".
+- [x] Close-out: tick roadmap "About". Done 2026-11-16.
 
 ## Phase 2 — Selected Works (`#work`)  · branch `feat/works-section`
 Source: old M5 + old decision 4, decision 002, ADR 021.
