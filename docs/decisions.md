@@ -101,3 +101,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - `--text-muted` darkened `#78716C` → `#736C67` (4.45:1 → 4.8:1 on linen) so the smallest readable text passes WCAG AA.
 - `text-dim` (2.3:1) is decoration only, never readable text; the hero metadata labels and the quote-card tag moved to `text-muted`.
 - Monarch tokens already pass (muted 5.0:1); `--text-dim` there follows the same decoration-only rule.
+
+## 023 — Milestones are working slices (2026-11-16)
+- Every milestone ends in something usable and finished-looking: real content, styled, responsive, accessible. No layer-by-layer milestones (markup → styling → a11y); supersedes 012's layer template.
+- Copy is asked first inside the milestone (multiple choice) and built in the same turn; there's no separate content stop or commit.
+- Simple sections (Capabilities, Footer, Monarch) are one milestone. Works and Inquiry are two (cards → drawer; section + copy email → sending).
+- Phase re-check stops only on drift; close-out happens in the same turn as the last milestone's "ok".

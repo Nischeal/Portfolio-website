@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 2 (Selected Works), M0 done
+Status: in progress — Phase 2 (Selected Works), next: M1 Cards
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -15,7 +15,8 @@ How to run: `/my-planner resume portfolio-v1` → it finds the first phase with 
 - **Styling:** token utilities only (ADR 015); load `portfolio-design-system` at styling milestones. Hairlines, white cards with soft shadow, hover = lift (never rotate text, ADR 010).
 - **Components:** server components by default; `"use client"` only on the interactive leaf (ADR 019). Content data lives in `src/data/*.ts`, types in `src/types/portfolio.ts`.
 - **Motion:** everything animated respects reduced motion (`motion-safe:` or `usePrefersReducedMotion`, ADR 017).
-- **Content:** real and user-confirmed only (ADR 002, 008). Every phase starts with an M0 content gate; anything not confirmed below is DRAFT until approved.
+- **Content:** real and user-confirmed only (ADR 002, 008). A milestone that needs copy asks for it first (multiple choice), gets approval, then builds in the same turn; anything not confirmed below is DRAFT until approved.
+- **Milestones are working slices (ADR 023):** each ends in something finished-looking you can try, with accessibility built in; never "markup now, styling later".
 - **Static export:** no API routes, Server Actions or middleware. External calls go from the browser.
 - **Verify each milestone:** from `frontend/`: `npm run build`, `npm run lint`, `npx tsc --noEmit`, plus manual checks on desktop (≥1280px) and mobile (~375px), recorded in `docs/portfolio-v1/testing.md`.
 
@@ -101,11 +102,8 @@ Clicking a real card opens a **slide-out drawer** from the right containing: Pro
   | Stack | PHP · Laravel · MySQL |
   | **College project** card | Label: In progress · Title: Final-year project · Text: My BCA final-year project is underway. Details soon. (Not clickable, no link.) |
   | Drawer labels | Problem · Solution · Challenges · Stack · `SOURCE ↗` · `[ Close ]` |
-- [ ] **M1 Data + markup:** `src/types/portfolio.ts` (also move `AboutBlock` there from `src/data/about.ts`) (`Project`: slug, title, summary, stack[], problem, solution, challenges[], sourceUrl?, status `"shipped" | "in-progress"`); `src/data/projects.ts`; `WorksSection.tsx` (server) + `ProjectCard.tsx`.
-- [ ] **M2 Styling + responsive:** 3-up grid on `lg`, 1-up mobile; quote-card style with lift on hover. Small labels (stack ledger, "In progress") use `text-muted` or darker, never `text-dim` (ADR 022).
-- [ ] **M3 Drawer:** `ProjectDrawer.tsx` (client): `role="dialog"`, `aria-modal`, labelled by title; focus moves in on open, returns to the card on close; Tab is trapped; body scroll locked; Esc/backdrop/[Close]; slide is `motion-safe`.
-- [ ] **M4 Accessibility:** cards are real `<button>`s, keyboard open, screen-reader pass, links have `rel="noopener noreferrer"`.
-- [ ] Close-out: tick roadmap.
+- [ ] **M1 Cards (working slice):** `src/types/portfolio.ts` (`Project`: slug, title, summary, stack[], problem, solution, challenges[], sourceUrl?, status `"shipped" | "in-progress"`; also move `AboutBlock` there from `src/data/about.ts`); `src/data/projects.ts` with the approved copy; `WorksSection.tsx` (server) + `ProjectCard.tsx`. Fully styled: 3-up grid on `lg`, 1-up on mobile, quote-card style with lift on hover. Accessible: `h2`, list semantics, small labels `text-muted` or darker (ADR 022), the college card clearly non-interactive. Real cards render as `<button>`s that do nothing until M2.
+- [ ] **M2 Drawer (working slice):** `ProjectDrawer.tsx` (client) opens from a real card with Problem / Solution / Challenges / Stack / `SOURCE ↗` (`rel="noopener noreferrer"`). `role="dialog"`, `aria-modal`, labelled by the title; focus moves in on open and returns to the card on close; Tab is trapped; body scroll locked; closes on Esc, backdrop or `[ Close ]`; slide is `motion-safe`. Close-out in the same turn as the "ok".
 
 ## Phase 3 — Capabilities (`#craft`)  · branch `feat/capabilities-section`
 Source: old M6 (ratings dropped by ADR 021).
@@ -118,11 +116,7 @@ Candidate tags (from decisions 005/008; confirm at M0):
 - **AI & Vision:** YOLO, Python, computer vision
 - **Frontend:** Next.js, React, TypeScript, Tailwind CSS
 
-- [ ] **M0 Content gate:** confirm the list, add/remove tech, context lines.
-- [ ] **M1 Data + markup:** `src/data/capabilities.ts`, `CapabilitiesSection.tsx` (server).
-- [ ] **M2 Styling + responsive:** ledger rows with hairlines on desktop; stacked rows with wrapping tags on mobile.
-- [ ] **M3 Accessibility:** list semantics (`<dl>` or `<ul>`), contrast of tags.
-- [ ] Close-out: tick roadmap.
+- [ ] **M1 Capabilities (single slice):** content first (confirm the tag list and context lines, multiple choice), then `src/data/capabilities.ts` + `CapabilitiesSection.tsx` (server), fully styled (hairline ledger rows on desktop; stacked rows with wrapping tags on mobile) and accessible (`<dl>`/`<ul>` semantics, tag contrast per ADR 022). Close-out in the same turn as the "ok".
 
 ## Phase 4 — Inquiry (`#inquiry`)  · branch `feat/inquiry-section`
 Source: old M7.1, ADR 021.
@@ -133,12 +127,8 @@ Source: old M7.1, ADR 021.
 
 The Web3Forms access key is public by design (it only routes mail to you); keep it in `src/data/site.ts` along with the email.
 
-- [ ] **M0 Content gate:** you create the Web3Forms key (web3forms.com → enter email → key arrives by mail); opportunity-type options; intro line; success/error copy.
-- [ ] **M1 Markup:** `InquirySection.tsx` (server shell) + `InquiryForm.tsx` / `CopyEmailButton.tsx` (client leaves), with real `<label>`s.
-- [ ] **M2 Styling + responsive:** hairline inputs, olive submit pill, two columns (form + direct) on `lg`.
-- [ ] **M3 Behaviour:** fetch submit, states, honeypot, clipboard API with fallback, HTML validation + friendly errors.
-- [ ] **M4 Accessibility + real send test:** keyboard-only submit, error association (`aria-describedby`), one real test submission reaches your inbox.
-- [ ] Close-out: tick roadmap.
+- [ ] **M1 Section + copy email (working slice):** content first (opportunity-type options, intro line, success/error copy; you create the Web3Forms key at web3forms.com, where you enter the email and the key arrives by mail). Then `InquirySection.tsx` (server shell), `InquiryForm.tsx` + `CopyEmailButton.tsx` (client leaves): the form is fully styled with real `<label>`s (hairline inputs, olive submit pill, form + direct columns on `lg`). The copy-email and `mailto:` work for real (clipboard API with fallback, `Copied ✓`). The form validates in the browser but doesn't send yet.
+- [ ] **M2 Sending (working slice):** fetch submit to Web3Forms with honeypot; idle → sending → sent / error states announced via `aria-live`; friendly errors linked with `aria-describedby`; keyboard-only submit; **one real test submission reaches your inbox**. Close-out in the same turn as the "ok".
 
 ## Phase 5 — Footer  · branch `feat/footer`
 Source: old M7.2, ADR 018 (legacy file deleted).
@@ -148,21 +138,14 @@ Source: old M7.2, ADR 018 (legacy file deleted).
 - **Middle:** live time `Kathmandu // 15:42 GMT+5:45` (client leaf, updates each minute, `Asia/Kathmandu` via `Intl.DateTimeFormat`); season toggle `[🍂 Autumn / ❄️ Winter]` using `toggleSeason`.
 - **Right:** `GitHub ↗` https://github.com/Nischeal (LinkedIn hidden until provided); discreet Monarch watermark (wired in Phase 6).
 
-- [ ] **M1 Markup + clock + toggle** (no new content needed beyond the above).
-- [ ] **M2 Styling + responsive** (stacks centred on mobile).
-- [ ] **M3 Accessibility:** toggle is a `<button>` with `aria-pressed`; the clock is not announced every minute.
-- [ ] Close-out: tick roadmap.
+- [ ] **M1 Footer (single slice):** markup, live Kathmandu clock, working season toggle (`<button aria-pressed>`), GitHub link, watermark placeholder for Phase 6; styled (stacks centred on mobile); accessible (the clock isn't announced every minute). Close-out in the same turn as the "ok".
 
 ## Phase 6 — Monarch mode (easter egg)  · branch `feat/monarch-mode`
 Source: old M7.3 + old decision 3, ADR 003/004.
 
 **Spec.** Pressing `M` (ignored while typing in inputs/textareas or with modifier keys) or clicking the footer watermark toggles `data-theme="monarch"` on `<html>`. Dark tokens already exist in `globals.css`. A small fixed pill reads `Shadow Mode // Press M to return`. A faint cyan aura (allowed **only** inside `[data-theme="monarch"]`) appears on the hero quote card. Body transitions colour over ~0.4s (already in `globals.css`).
 
-- [ ] **M0 Decisions:** should the mode persist across reloads (localStorage) or reset each visit? Should canvas particles change in Monarch (e.g. rising shadow motes, from the old vision), or stay leaves/snow?
-- [ ] **M1 Toggle mechanics:** `MonarchProvider`/hook (client) setting the attribute; key listener; watermark hookup.
-- [ ] **M2 Visuals:** pill, cyan aura, any canvas tweak; verify every section in dark.
-- [ ] **M3 Accessibility:** pill announced via `aria-live`, contrast in dark tokens, reduced-motion transitions.
-- [ ] Close-out: tick roadmap.
+- [ ] **M1 Monarch mode (single slice):** questions first (persist across reloads via localStorage, or reset each visit? canvas particles change in Monarch, e.g. rising shadow motes, or stay leaves/snow?). Then the client hook/provider setting `data-theme`, `M` key listener (ignored in inputs or with modifier keys), watermark click, the `Shadow Mode // Press M to return` pill (`aria-live`), cyan aura on the quote card, any canvas tweak, reduced-motion transitions; every section checked in dark. Close-out in the same turn as the "ok".
 
 ## Phase 7 — Polish, SEO & launch  · branch `feat/polish-seo`
 Source: old M8, vision Phase 3, roadmap Polish.
@@ -170,7 +153,7 @@ Source: old M8, vision Phase 3, roadmap Polish.
 - [ ] **M1 SEO:** `metadataBase: new URL("https://www.nischalbasnet10.com.np")`; OG/Twitter image as a static `public/og.png` (1200×630, designed in the site style); `app/sitemap.ts` + `app/robots.ts` (static); JSON-LD `Person` (name, url, sameAs GitHub).
 - [ ] **M2 Audit:** contrast check of all token pairs in both themes; keyboard pass through the whole page; Lighthouse (target ≥95 for performance, accessibility, best practices and SEO) and fix findings.
 - [ ] **M3 Launch check:** full build on `master` after merge, live site smoke test on desktop + phone, OG preview check (link pasted in a chat app).
-- [ ] Close-out: tick roadmap "Polish".
+- [ ] Close-out: tick roadmap "Polish", in the same turn as the M3 "ok".
 
 ---
 
