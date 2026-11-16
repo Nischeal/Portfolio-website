@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: planned — next: Phase 1 (About)
+Status: in progress — Phase 1 done; next: Phase 2 (Selected Works)
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -46,11 +46,24 @@ Source: old M4, decision 005.
 
 Must not repeat the hero bio word for word. No poetic labels (decision 005).
 
-- [ ] **M0 Content gate:** heading + three paragraphs as DRAFT from the points above; ask whether to add personal details (study, how you started, goals); record approved copy here.
-- [ ] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`.
-- [ ] **M2 Styling + responsive.**
-- [ ] **M3 Accessibility:** heading order, `aria-labelledby`, contrast of muted text, navbar jump lands on the heading.
-- [ ] Close-out: tick roadmap "About".
+- [x] **M0 Content gate:** heading + three paragraphs as DRAFT from the points above; ask whether to add personal details (study, how you started, goals); record approved copy here.
+
+  **Copy (approved 2026-11-16).** Sources: decision 005, Clip Cuisine from decision 002, and study details confirmed by the user (BCA, final year, Pascal National College). Text 2 is backend-first, at the user's request. Implement exactly this.
+
+  | Slot | Copy |
+  |---|---|
+  | Counter | `02 // ABOUT` |
+  | Heading (h2) | About me |
+  | Label 1 | Background |
+  | Text 1 | I'm a full-stack developer based in Kathmandu, Nepal, in my final year of a BCA at Pascal National College. I work across the whole stack, from the database schema to the screen a person actually touches. |
+  | Label 2 | What I build |
+  | Text 2 | Most of what I build is backend: platforms in Laravel and FastAPI, with data modelled in PostgreSQL and MySQL. Alongside that I explore computer vision, building with YOLO models in Python, like the ingredient detection behind Clip Cuisine, and I use Next.js with TypeScript when a project needs a modern web interface. |
+  | Label 3 | How I work |
+  | Text 3 | I care about the parts nobody sees: clean, readable code and database schemas that still make sense a year later. I try to build software the way a good tailor makes a suit: measured carefully, fitted properly, made to last. |
+- [x] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`. Copy lives in `src/data/about.ts`; blocks are a `<dl>` (label = `dt`, text = `dd`).
+- [x] **M2 Styling + responsive.** `lg`: 4/8 columns (counter + heading left; hairline-divided label/text rows right). Mobile: stacked. Page-level hero centring moved to a wrapper around `HeroSection` in `page.tsx`.
+- [x] **M3 Accessibility:** heading order, `aria-labelledby`, contrast of muted text, navbar jump lands on the heading. Labels moved to `text-muted`; decorative counter `aria-hidden`; site-wide contrast floor fixed (ADR 022: `--text-muted` → `#736C67`, `text-dim` decoration only, hero labels moved to muted).
+- [x] Close-out: tick roadmap "About". Done 2026-11-16.
 
 ## Phase 2 — Selected Works (`#work`)  · branch `feat/works-section`
 Source: old M5 + old decision 4, decision 002, ADR 021.

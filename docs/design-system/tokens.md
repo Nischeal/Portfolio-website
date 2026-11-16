@@ -21,8 +21,8 @@ Source of truth for colors, type and canvas parameters. Implemented in `frontend
   /* === Typography === */
   --text-headline:     #1C1917;    /* Deep Espresso / Near-Black */
   --text-body:         #44403C;    /* Refined Charcoal */
-  --text-muted:        #78716C;    /* Warm Stone / Taupe */
-  --text-dim:          #A8A29E;    /* Light Taupe */
+  --text-muted:        #736C67;    /* Warm Stone / Taupe — 4.8:1 on linen, smallest readable text (ADR 022) */
+  --text-dim:          #A8A29E;    /* Light Taupe — decoration only, never readable text (ADR 022) */
 
   /* === Signature Olive Green Accent === */
   --accent-olive:      #4A5D4E;    /* Primary Olive Green (Pills, active states) */
