@@ -107,17 +107,76 @@ Clicking "Read case study →" on the top (real) card opens a **slide-out drawer
   - [x] **M2 follow-up (approved idea 1, 2026-11-16):** "Next file →" text link on the back, next to `SOURCE ↗`, turns the card face-up and moves the deck on. (A "Turns the card over" hint beside the front button was tried and removed at the user's request.)
 
 ## Phase 3 — Capabilities (`#craft`)  · branch `feat/capabilities-section`
-Source: old M6 (ratings dropped by ADR 021).
+Source: old M6 (ratings dropped by ADR 021). Re-checked 2026-11-16 against ADR 022–027: added a design gate (show options, build only the approved one) and made the tag style a choice, since ADR 024 called pill tags cheap-looking and Works shows its stack as a quiet mono line.
 
-**Spec.** Horizontal spec ledger, counter `04 // CAPABILITIES`. One row per discipline with a mono row counter (`01 //` …), discipline name in serif, olive tech tags, and an optional one-line real context (e.g. "used in Gym Management System"). **No ratings, dots, percentages or bars.**
+**Spec.** A ledger of disciplines, counter `04 // CAPABILITIES`. One row per discipline: mono row counter (`01 //` …), discipline name in serif, its tools, and an optional one-line real context (e.g. "Used in Gym Management System"). **No ratings, dots, percentages or bars** (ADR 021). Server section with one small client leaf for the tool cross-highlight (ADR 028); no motion on its own.
 
-Candidate tags (from decisions 005/008; confirm at M0):
+Candidate content (decisions 005/008, Works M0; confirmed at the content gate):
 - **Backend:** Laravel, Livewire, PHP, FastAPI, Python
 - **Databases:** PostgreSQL, MySQL
 - **AI & Vision:** YOLO, Python, computer vision
 - **Frontend:** Next.js, React, TypeScript, Tailwind CSS
 
-- [ ] **M1 Capabilities (single slice):** content first (confirm the tag list and context lines, multiple choice), then `src/data/capabilities.ts` + `CapabilitiesSection.tsx` (server), fully styled (hairline ledger rows on desktop; stacked rows with wrapping tags on mobile) and accessible (`<dl>`/`<ul>` semantics, tag contrast per ADR 022). Close-out in the same turn as the "ok".
+### Implementation plan
+**Files**
+| File | Change |
+|---|---|
+| `src/types/portfolio.ts` | Add `Capability { name: string; tools: string[]; context?: string }` |
+| `src/data/capabilities.ts` | `CAPABILITIES_HEADING` + `CAPABILITIES: Capability[]` (approved copy only, header comment like `about.ts`) |
+| `src/components/sections/CapabilitiesSection.tsx` | Server component, `<section id="craft" aria-labelledby="craft-heading">` |
+| `src/app/page.tsx` | Render after `WorksSection` |
+
+**Reusable assets**
+| Asset | Path | Reuse |
+|---|---|---|
+| Section shell + counter/heading | `AboutSection.tsx` | Same padding, `max-w-6xl`, olive dot + mono counter (`aria-hidden`), serif h2 sizes |
+| Hairline ledger rows | `AboutSection.tsx` `<dl>` rows, `DossierCard` ledger | `border-hairline` + `divide-y`, mono `dt` labels in `text-muted` |
+| Mono stack line | `DossierCard` back (`Stack` row) | `font-mono text-sm text-headline` joined with ` · ` (if that tag style is chosen) |
+| Tokens + contrast floor | `globals.css`, ADR 015/022 | Readable text only in `text-headline` / `text-body` / `text-muted` |
+| Navbar link | `Navbar.tsx` (`#craft`) | Already points here; nothing to change |
+
+**Semantics & a11y**
+- `h2` "Capabilities" (heading order h1 → h2 continues); row counters are decorative (`aria-hidden`).
+- Ledger as `<dl>`: `dt` = discipline, `dd` = `<ul>` of tools (+ the context line as `<p>`), so screen readers hear "Backend, list, 5 items".
+- Context lines that name a project link to nothing (Works has no per-project URL yet); plain text.
+- No motion → reduced motion needs nothing; hover is colour only.
+- Contrast: tools in `text-headline`, context in `text-muted` (≥ 4.8:1).
+
+**Responsive**
+- Desktop: 2 × 2 grid of blocks from `md` (768px) up.
+- Phone (~375px): each row stacks (counter + name, then tools wrapping, then context); no horizontal scroll.
+
+**Monarch**: token utilities only, so the dark theme works automatically; checked in testing.
+
+**Settled (2026-11-16)**
+- Layout: **2 × 2 blocks** on desktop (each block: hairline top border, mono counter, serif discipline name, tools, context). Phones: one column. Counter + heading above the grid.
+- Tools: **mono dotted line** (`LARAVEL · LIVEWIRE · PHP`), as on the Works card back. No pills.
+- Context lines: **yes, only where true** (from approved Works facts).
+- Flask: **left out** (not added to any discipline).
+- **Redesign 2 (2026-11-16, ADR 030): moving stack bands. Current.** The catalogue felt much worse and context lines aren't wanted. The section is now only **logos + names**: two endless bands drifting slowly in opposite directions under the heading. Band 1: Laravel, Livewire, PHP, FastAPI, Python, PostgreSQL, MySQL. Band 2: YOLO, Next.js, React, TypeScript, Tailwind CSS ("Computer vision" dropped: no logo). Logos in espresso; brand colour on hover; the band pauses on hover. Edges fade into the linen. **No visible pause control** (user's call). Reduced motion: one still, centred row per band. Screen readers get one plain list per band; the moving copies are hidden. Logos: Simple Icons v16.36.0 (CC0), paths copied into `src/data/stack.ts`, no dependency. Pure CSS, server component, no client JS.
+- *Superseded:* **Redesign (2026-11-16, ADR 029): library card catalogue.** Replaces the 2 × 2 blocks (felt too simple and static). A cabinet drawn in hairlines (left, `lg` 5 cols) holds four drawers, one per discipline (label holder `01 // BACKEND` + round pull). Clicking a drawer slides it out toward a "reading desk" (right, 7 cols) where its index card sits: white paper, olive top rule, hairline dividers, punch hole (ruled lines were tried and dropped: they ran through the text); counter + serif name, tool buttons on a mono dotted line, context line. One drawer open at a time; **Backend open on arrival**. Phone: cabinet stacks, the card opens right under its drawer. Cross-highlight kept, adapted: hover/focus/tap a tool on the card and every *other* drawer holding it gets an olive mark on its label (Python on Backend marks AI & Vision). Drawers are buttons with `aria-expanded`/`aria-controls`; tools keep `aria-pressed` pinning + Esc; the card fades in (`motion-safe`). Copy unchanged.
+- *Superseded:* **Revision (2026-11-16, ADR 028):** the first build felt too static. Added a **tool cross-highlight**: hovering or focusing a tool turns it olive wherever it appears and dims the blocks that don't use it (tool only; context lines don't react). Tools are buttons: tap/click/Enter pins the highlight (`aria-pressed`), again or Esc unpins; a polite live line announces e.g. "Python: Backend, AI & Vision". Hover is mouse-only so touch taps don't leave a stuck hover. Nothing moves on its own; scroll reveals stay in Phase 8.
+
+**Copy (approved 2026-11-16; context lines dropped by ADR 030, tool names still apply).**
+| Slot | Copy |
+|---|---|
+| Counter / heading (h2) | `04 // CAPABILITIES` / Capabilities |
+| 01 Backend | Laravel · Livewire · PHP · FastAPI · Python — *Used in Gym Management System and Clip Cuisine.* |
+| 02 Databases | PostgreSQL · MySQL — *MySQL in Gym Management System, PostgreSQL in Clip Cuisine.* |
+| 03 AI & Vision | YOLO · Python · Computer vision — *Used in Clip Cuisine.* |
+| 04 Frontend | Next.js · React · TypeScript · Tailwind CSS — *This portfolio is built with them.* |
+
+- [x] **M1 Capabilities (single slice):**
+  - [x] Content gate: confirm disciplines, tools and context lines (multiple choice); record the approved copy here
+  - [x] Design gate: layout + tool style options, build only the approved one
+  - [x] Types, data, `CapabilitiesSection`, compose in `page.tsx`
+  - [x] Responsive + a11y as above (tool dots trail their item so a wrapped line never starts with one)
+  - [x] Cross-highlight (ADR 028): client `CapabilityGrid.tsx`, tool buttons, pin, Esc, live announcement
+  - [x] Card catalogue (ADR 029): client `CapabilityCatalogue.tsx` replaces `CapabilityGrid.tsx`; cabinet, drawers, index card, adapted highlight
+  - [x] Stack bands (ADR 030): `src/data/stack.ts` (logo paths), `StackItem` type, `CapabilitiesSection` rewritten; catalogue + `capabilities.ts` removed
+  - [x] Edges + height (taste review 2026-11-16): the bands start at x=313 while every other section starts at x=401 (unequal edges), and the section is ~485px tall vs ~850px for About/Works. Chosen: **true full-bleed** bands (edge to edge of the screen, fading at both screen edges; heading stays on the content column) and **bigger logos + more air** (~44px logos, larger names, taller bands) so the section is about one screen. Also fixes the edge fade, which sat on the moving track instead of the band
+  - [x] Verify: `npm run build`, `npm run lint`, `npx tsc --noEmit`; browser check desktop + 375px
+  - [x] `testing.md` section; close-out in the same turn as the "ok"
 
 ## Phase 4 — Inquiry (`#inquiry`)  · branch `feat/inquiry-section`
 Source: old M7.1, ADR 021.

@@ -42,6 +42,8 @@
 }
 
 @theme inline {
+  /* Capabilities stack marquee (ADR 030): the track holds two copies, so -50% loops seamlessly */
+  --animate-marquee: marquee 48s linear infinite;
   --color-page: var(--bg-page);
   --color-card: var(--bg-card);
   --color-subtle: var(--bg-subtle);
@@ -75,4 +77,9 @@ body {
 /* Anchor jumps land below the sticky 80px navbar */
 html {
   scroll-padding-top: 5rem;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

@@ -134,3 +134,21 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - The card grows to fit the back instead of scrolling inside. Any deck navigation turns the card face-up first.
 - Trigger is a hairline ghost button ("Read case study →"); the back closes with `[ Close ]`, the label approved in M0.
 - Revised same day: the size jump at mid-turn felt wrong. The back now keeps the front's size and the case study scrolls inside it (header with `[ Close ]` pinned); the cards behind are hidden while the card turns.
+
+## 028 — Capabilities: tool cross-highlight (2026-11-16)
+- The plain 2 × 2 ledger felt too static. Tools now react: hover or focus one and it turns olive everywhere it appears, while blocks that don't use it dim.
+- Highlight covers tools only (the user chose this over also lighting up projects in the context lines). Only Python repeats today, so most tools simply isolate their own block.
+- Tools are toggle buttons: tap, click, Enter or Space pins the highlight; again or Esc unpins. Mouse-only hover so taps on phones don't stick. A polite live line announces where the tool is used.
+- Only reacts to the visitor; no scroll animation here (Phase 8 stays site-wide).
+
+## 029 — Capabilities as a library card catalogue (2026-11-16)
+- Supersedes the 2 × 2 layout of Phase 3 (still too static after ADR 028). A hairline card-catalogue cabinet with four drawers; opening one slides it toward a reading desk where its index card shows the tools and context. One open at a time, Backend open on arrival.
+- Drawn with tokens and CSS only (no images); index card = white paper, olive top rule, hairline dividers, punch hole. Phone: the card opens under its drawer.
+- The ADR 028 cross-highlight stays, adapted: a tool on the open card marks every other drawer that also holds it.
+- Same approved copy; no ratings. Motion only on interaction and `motion-safe`.
+
+## 030 — Capabilities as moving logo bands (2026-11-16)
+- Supersedes 028/029 (the catalogue felt much worse). Only logos and names of the stack, no "used in" context lines: two endless bands drifting in opposite directions.
+- Logos from Simple Icons v16.36.0 (CC0), 12 paths copied into `src/data/stack.ts`; no dependency. Espresso by default; brand colour on hover only (exception to ADR 015, like shadows). "Computer vision" dropped (no logo); YOLO uses the Ultralytics YOLO mark.
+- Pure CSS animation in a server component; pauses on hover; reduced motion shows a still row; screen readers get one plain list per band.
+- No visible pause control, at the user's request. Trade-off: WCAG 2.2.2 (Pause, Stop, Hide) is only met for reduced-motion users and on hover; revisit in the Phase 7 audit.

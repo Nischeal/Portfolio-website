@@ -83,3 +83,6 @@ Source of truth for colors, type and canvas parameters. Implemented in `frontend
 ## Layout
 
 Section layout and status live in `../roadmap.md`; layout decisions in `../decisions.md`.
+
+## Motion
+- `--animate-marquee` (`animate-marquee`): 48s linear infinite `marquee` keyframes (translateX 0 → -50%), used by the Capabilities logo bands (ADR 030). Paused on hover; off under reduced motion.

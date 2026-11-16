@@ -37,3 +37,14 @@ export interface InProgressProject {
 }
 
 export type Project = ShippedProject | InProgressProject;
+
+/** One tool in the Capabilities stack marquee (ADR 030). */
+export interface StackItem {
+  name: string;
+  /** Which band it drifts in: 1 = backend + data, 2 = AI + frontend. */
+  row: 1 | 2;
+  /** Brand colour, shown on hover only. */
+  brand: string;
+  /** Simple Icons path data, 24×24 viewBox. */
+  path: string;
+}
