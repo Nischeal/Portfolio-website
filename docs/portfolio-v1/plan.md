@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 4 (Inquiry) built on `feat/inquiry-section`, waiting for the Web3Forms key + one real test send before merge. Polish pass done 2026-11-16
+Status: in progress — next: Phase 5 (Footer). Phase 4 (Inquiry) done 2026-11-16
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -202,10 +202,10 @@ The Web3Forms access key is public by design (it only routes mail to you); keep 
 Layout: 5/7 like About/Works. Left: counter, heading, intro, direct block. Right: the form on a white paper card. Phones: heading → intro → form → direct. Turning `INQUIRY_LIVE` on brings back the navbar "Inquiry" link, the "Get in Touch" pill and the hero's "Get in touch ↓". **Web3Forms key:** you create it later; until it's pasted into `src/data/site.ts` the form shows the error state, so don't push before then.
 
 - [x] **M1 Section + copy email (working slice):** content first (opportunity-type options, intro line, success/error copy; you create the Web3Forms key at web3forms.com, where you enter the email and the key arrives by mail). Then `InquirySection.tsx` (server shell), `InquiryForm.tsx` + `CopyEmailButton.tsx` (client leaves): the form is fully styled with real `<label>`s (hairline inputs, olive submit pill, form + direct columns on `lg`). The copy-email and `mailto:` work for real (clipboard API with fallback, `Copied ✓`). The form validates in the browser but doesn't send yet.
-- [ ] **M2 Sending (working slice):** fetch submit to Web3Forms with honeypot; idle → sending → sent / error states announced via `aria-live`; friendly errors linked with `aria-describedby`; keyboard-only submit; **one real test submission reaches your inbox**. Close-out in the same turn as the "ok".
+- [x] **M2 Sending (working slice):** fetch submit to Web3Forms with honeypot; idle → sending → sent / error states announced via `aria-live`; friendly errors linked with `aria-describedby`; keyboard-only submit; **one real test submission reaches your inbox**. Close-out in the same turn as the "ok".
   - [x] Code: fetch to Web3Forms (JSON) with `botcheck` honeypot; idle → sending → sent / error in a polite `role="status"`; per-field errors linked with `aria-describedby` + `aria-invalid`, focus moves to the first; keyboard submit; no key = error state without a network call. Copy button falls back to the legacy copy after 1s if the clipboard promise stalls; email in lining numerals.
   - [x] Web3Forms key added (2026-11-16). Real test sent from localhost: Web3Forms answered success and the form showed the sent state.
-  - [ ] You confirm the test email ("Portfolio inquiry: Just saying hello", from "Portfolio test") is in your inbox; then merge.
+  - [x] Test email confirmed by you; merged 2026-11-16.
 
 ## Phase 5 — Footer  · branch `feat/footer`
 Source: old M7.2, ADR 018 (legacy file deleted).
