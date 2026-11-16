@@ -56,7 +56,7 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} ${alexBrush.variable} antialiased`}
     >
-      <body className="bg-[var(--bg-page)] text-[var(--text-body)] min-h-screen selection:bg-[#4A5D4E]/20 selection:text-[#37463A] relative overflow-x-hidden">
+      <body className="bg-page text-body min-h-screen selection:bg-olive/20 selection:text-olive-dark relative overflow-x-hidden">
         <SeasonProvider>
           {/* Ambient Seasonal Background Canvas */}
           <SeasonalCanvas />

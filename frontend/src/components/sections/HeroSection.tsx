@@ -15,14 +15,14 @@ export function HeroSection() {
         {/* Left Column: Typographic Hierarchy & Identity */}
         <div className="lg:col-span-7 space-y-8 text-left">
           {/* Clean Spaced Kicker */}
-          <div className="flex items-center gap-2.5 font-mono text-[11px] text-stone-500 tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E]" />
+          <div className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive" />
             <span>KATHMANDU, NEPAL — FULL-STACK &amp; BACKEND ENGINEER</span>
           </div>
 
           {/* Grand Typographic Headline Lockup */}
           <div className="space-y-3">
-            <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-[#1C1917] leading-[0.98]">
+            <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-headline leading-[0.98]">
               Nischal Basnet
             </h1>
             <TypewriterRole
@@ -37,7 +37,7 @@ export function HeroSection() {
           </div>
 
           {/* Grounded Bio Statement */}
-          <p className="text-stone-600 text-lg sm:text-xl leading-relaxed max-w-xl font-normal pt-1">
+          <p className="text-body text-lg sm:text-xl leading-relaxed max-w-xl font-normal pt-1">
             Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.
           </p>
 
@@ -45,7 +45,7 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center gap-4 pt-2 font-mono text-xs">
             <Link
               href="#work"
-              className="bg-[#4A5D4E] hover:bg-[#37463A] text-white px-7 py-3.5 rounded-full tracking-wider transition-all shadow-[0_4px_16px_rgba(74,93,78,0.22)] inline-flex items-center gap-2"
+              className="bg-olive hover:bg-olive-dark text-white px-7 py-3.5 rounded-full tracking-wider transition-all shadow-[0_4px_16px_rgba(74,93,78,0.22)] inline-flex items-center gap-2"
             >
               <span>Explore Selected Work</span>
               <span>↓</span>
@@ -53,7 +53,7 @@ export function HeroSection() {
 
             <Link
               href="#inquiry"
-              className="border border-[#D6CFC3] hover:border-[#1C1917] text-[#1C1917] px-7 py-3.5 rounded-full tracking-wider transition-all bg-white/60 hover:bg-white inline-flex items-center gap-2 shadow-sm"
+              className="border border-border-muted hover:border-headline text-headline px-7 py-3.5 rounded-full tracking-wider transition-all bg-card/60 hover:bg-card inline-flex items-center gap-2 shadow-sm"
             >
               <span>Initiate Inquiry</span>
               <span>↗</span>
@@ -68,42 +68,42 @@ export function HeroSection() {
       </div>
 
       {/* Generous Spaced Full-Width Metadata Strip */}
-      <div className="mt-14 sm:mt-16 pt-8 border-t border-[#E7E2D8] grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-stone-600">
+      <div className="mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body">
         <div>
-          <span className="text-[10px] text-stone-400 block uppercase tracking-widest mb-1">
+          <span className="text-[10px] text-dim block uppercase tracking-widest mb-1">
             LOCATION
           </span>
-          <span className="text-stone-800">Kathmandu, NP</span>
+          <span className="text-headline">Kathmandu, NP</span>
         </div>
 
         <div>
-          <span className="text-[10px] text-stone-400 block uppercase tracking-widest mb-1">
+          <span className="text-[10px] text-dim block uppercase tracking-widest mb-1">
             AVAILABILITY
           </span>
-          <span className="text-[#37463A] font-medium flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E] animate-pulse" />
+          <span className="text-olive-dark font-medium flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive animate-pulse" />
             Open for Work
           </span>
         </div>
 
         <div>
-          <span className="text-[10px] text-stone-400 block uppercase tracking-widest mb-1">
+          <span className="text-[10px] text-dim block uppercase tracking-widest mb-1">
             SEASONAL AMBIENCE
           </span>
-          <span className="text-stone-800 capitalize">
+          <span className="text-headline capitalize">
             {season === "autumn" ? "🍂 Autumn Drift" : "❄️ Winter Frost"}
           </span>
         </div>
 
         <div>
-          <span className="text-[10px] text-stone-400 block uppercase tracking-widest mb-1">
+          <span className="text-[10px] text-dim block uppercase tracking-widest mb-1">
             CODE ARCHIVE
           </span>
           <a
             href="https://github.com/Nischeal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#4A5D4E] hover:underline"
+            className="text-olive hover:underline"
           >
             github.com/Nischeal ↗
           </a>

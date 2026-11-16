@@ -32,7 +32,7 @@ This is Next.js 16 / React 19 / Tailwind v4 (via `@tailwindcss/turbopack`, no `t
 - `src/context/SeasonContext.tsx` — client context; season (`autumn` | `winter`) auto-detected from calendar month (Dec–Feb = winter), toggleable. The canvas particle engine reads it.
 - `src/app/page.tsx` — single-page editorial journey; sections are added under `src/components/sections/` and composed here. Currently only the Hero exists; planned sections are in `docs/roadmap.md`.
 - `src/components/{layout,sections,ui,canvas}`, `src/hooks/`. Import alias `@/` → `src/`.
-- Styling: design tokens are CSS variables in `src/app/globals.css` (`--bg-page`, `--text-headline`, `--accent-olive`, …), used as `bg-[var(--bg-page)]`. `[data-theme="monarch"]` overrides them for the hidden dark "Shadow Monarch" easter-egg mode. Use tokens, not raw hex.
+- Styling: design tokens are CSS variables in `src/app/globals.css` (`--bg-page`, `--text-headline`, `--accent-olive`, …), used via the `@theme` utilities (`bg-page`, `text-headline`, `border-hairline`, `bg-olive/20`, …). `[data-theme="monarch"]` overrides them for the hidden dark "Shadow Monarch" easter-egg mode. Use token utilities, not raw hex or `stone-*` (ADR 015).
 - `backend/` is empty (planned FastAPI service, only if needed).
 
 ## Design direction
