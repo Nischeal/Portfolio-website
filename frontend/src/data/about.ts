@@ -7,7 +7,7 @@ export const ABOUT_HEADING = "About me";
 export const ABOUT_BLOCKS: AboutBlock[] = [
   {
     label: "Background",
-    text: "I'm a full-stack developer based in Kathmandu, Nepal, in my final year of a BCA at Pascal National College. I work across the whole stack, from the database schema to the screen a person actually touches.",
+    text: "I'm a full-stack developer based in Kathmandu, Nepal, in my final year of a BCA at Pascal National College. I work across the whole stack, from the database schema to the screen a person touches.",
   },
   {
     label: "What I build",

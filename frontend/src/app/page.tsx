@@ -5,7 +5,7 @@ import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main" tabIndex={-1} className="outline-none scroll-mt-20">
       {/* The hero fills the first screen (minus the 80px navbar) and centres itself in it */}
       <div className="min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <HeroSection />

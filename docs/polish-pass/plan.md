@@ -1,5 +1,5 @@
 # Polish pass — Plan
-Status: planned (starts after Phase 3 is merged)
+Status: done (2026-11-16)
 Branch: `fix/polish-pass` (from `master`)
 
 ## Goal
@@ -31,25 +31,41 @@ From two `/design-taste-frontend` reviews (2026-11-16): an eyes-on review, then 
 | Reduced motion | `usePrefersReducedMotion`, `motion-safe:` | Hero entrance `motion-safe` only |
 | Skill checkers | `~/.claude/skills/design-taste-frontend/scripts` | Re-run `copy-lint` + `consistency.mjs` after each milestone to confirm the finding is gone (read-only, output in the scratchpad) |
 
+## Settled (2026-11-16)
+| Item | Decision |
+|---|---|
+| Inquiry links | Hidden behind one flag (`INQUIRY_LIVE` in `src/data/site.ts`), off until Phase 4 builds `#inquiry` |
+| Skip link | "Skip to content" |
+| Phone hero | Quote card moves after the meta strip on phones (< lg); desktop unchanged |
+| Grid | About moves from 4/8 to 5/7 to share Works' line; hero keeps 7/5 |
+| Logo font | Keep the signature (Alex Brush) |
+| "robust" | "Focused on clean system design, well-modelled relational databases, and scalable web platforms." (hero bio + meta description) |
+| Hero button | "Get in touch ↓" (scrolls to `#inquiry` once live) |
+| Section name | **Stack** everywhere: nav "Stack", heading "Stack", counter `04 // STACK`, anchor `#stack` |
+| Meta labels | `SEASON` / `GITHUB` |
+| Lint WARNs | About: "…to the screen a person touches" (drop "actually"); kicker em dash → `·`. Quote + tailor line stay (your voice; remaining WARN explained) |
+| Headline | Keep the name as h1 (deliberate; kicker + typewriter carry the role) |
+| Entrance | Staggered fade-up once on load: kicker, name, role, bio, buttons, quote card; 12px rise, ~80ms apart, ~600ms each; none under reduced motion |
+
 ## Milestones
 ### M1 — Quick fixes: dead links + keyboard (#1, #2)
 - [x] Choose: **hide all three** Inquiry links until Phase 4 (chosen 2026-11-16); the hero keeps only "Explore Selected Work"
-- [ ] Hide them in the navbar (desktop + mobile drawer) and hero; nothing points to a missing id
-- [ ] "Skip to content" link (visible on focus, first Tab stop, lands on `<main>`); copy is two words, shown as DRAFT
-- [ ] Verify the deck's focus ring by hand; if it's really missing, make it visible
-- [ ] Verify (build, lint, tsc; click every in-page link; Tab from the top); `testing.md` section
+- [x] Hide them in the navbar (desktop + mobile drawer) and hero; nothing points to a missing id (`INQUIRY_LIVE` flag)
+- [x] "Skip to content" link (visible on focus, first Tab stop, lands on `<main id="main">`)
+- [x] Verify the deck's focus ring by hand: it really was missing (`outline-none` + `focus-visible:outline-2` leaves the style at none in Tailwind v4); fixed with `focus-visible:outline-solid`
+- [x] Verify (build, lint, tsc; click every in-page link; Tab from the top); `testing.md` section
 ### M2 — Mechanical sweep: readable text + tap sizes (#3, #4)
-- [ ] Floor for readable mono labels: 11px → proposed 12px (decorative counters may stay 11px); list every changed class
-- [ ] 44px tap targets on phones for logo, `[ Menu ]`, deck arrows, card buttons (hit area, not necessarily visible size)
+- [x] Floor for readable mono labels: 12px (`text-xs`). 14 lines raised from 9–11px: hero kicker + 4 meta labels, quote-card footer (9px), About labels, card ledger labels, "Project file", case-study header, deck index numbers, "In progress", "or drag the card". The three `aria-hidden` section counters stay 11px
+- [x] 44px tap targets (`min-h-11` / `h-11 w-11`): navbar logo, `[ Menu ]`, deck ← →, "Read case study", `SOURCE ↗`, `[ Close ]`, "Next file"
 - [ ] Nothing wraps or breaks at 375px; contrast stays per ADR 022; verify; `testing.md` section
 ### M3 — Layout: shared grid, phone hero, fonts (#5, #6, #7)
-- [ ] Design gate: options for one shared column grid (which lines About/Works/hero snap to) + top-aligned splits; options for the phone hero (e.g. quote card smaller / after the meta strip / hidden on phones)
-- [ ] Decide the signature font (keep Alex Brush for the logo, or set the logo in Cormorant italic and drop a family)
-- [ ] Build the approved options; verify at 1440/1024/768/390; `testing.md` section
+- [x] Design gate: About + Works share 5/7 (About moved from 4/8; both right columns now start at x=884 on a 1920px window); Works deck top raised to the heading line (`lg:pt-3.5`, tab sits above); hero keeps 7/5 and its centred columns. Phone hero: quote card after the meta strip (`display: contents` + `order`)
+- [x] Signature font kept (Alex Brush)
+- [x] Build the approved options; verify; `testing.md` section. Also fixed: the typewriter line was clipped on phones (`whitespace-nowrap`); below `sm` "Building" sits on its own line with two lines reserved
 ### M4 — Copy + hero entrance (#8, #9, #10)
-- [ ] Content gate: DRAFT replacements for "robust", the virtue words/em dashes, h1 or kicker wording that says what you do, "Initiate Inquiry ↗", Craft/Capabilities, "Seasonal ambience" / "Code archive" (multiple choice, your approval; approved About/hero copy changes are recorded in `docs/decisions.md`)
-- [ ] Design gate: entrance options (e.g. name + lines fade up once, staggered ~80ms; or a single fade), `motion-safe`, runs once, no layout shift
-- [ ] Build, verify (`copy-lint` clean or every kept WARN explained), `testing.md` section; close-out (decision entry)
+- [x] Content gate: settled (see table above); recorded in ADR 031
+- [x] Design gate: staggered fade-up (`--animate-enter`, delays as inline styles because the `animation` shorthand resets `animation-delay`)
+- [x] Build, verify, `testing.md`, ADR 031. Skill re-run: copy-lint 0 FAIL / 1 WARN (3 virtue words: the quote + tailor line, kept as your voice); consistency gone: links, focus-visible, skip-link, nav-labels, button-styles, col-edge, copy-buttons, hero-screen. Left on purpose: split-pair (hero 7/5), copy-headline (name as h1), collide (false positive: hidden card back)
 
 ## Open questions
 - None yet; each milestone opens with its own gate.

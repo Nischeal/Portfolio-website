@@ -236,7 +236,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
                   aria-current={active ? "true" : undefined}
                   className="group w-full flex items-baseline gap-5 py-4 text-left"
                 >
-                  <span className={`font-mono text-[11px] tracking-widest ${active ? "text-olive-dark" : "text-muted"}`}>
+                  <span className={`font-mono text-xs tracking-widest ${active ? "text-olive-dark" : "text-muted"}`}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span
@@ -247,7 +247,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
                     {project.title}
                   </span>
                   {project.status === "in-progress" && (
-                    <span className="ml-auto font-mono text-[11px] uppercase tracking-widest text-muted">
+                    <span className="ml-auto font-mono text-xs uppercase tracking-widest text-muted">
                       {project.label}
                     </span>
                   )}
@@ -264,7 +264,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
             type="button"
             onClick={prev}
             aria-label="Previous project"
-            className="h-10 w-10 rounded-full border border-border-muted text-headline hover:border-headline bg-card/60 transition-colors"
+            className="h-11 w-11 rounded-full border border-border-muted text-headline hover:border-headline bg-card/60 transition-colors"
           >
             ←
           </button>
@@ -275,11 +275,11 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
             type="button"
             onClick={() => next(-1)}
             aria-label="Next project"
-            className="h-10 w-10 rounded-full border border-border-muted text-headline hover:border-headline bg-card/60 transition-colors"
+            className="h-11 w-11 rounded-full border border-border-muted text-headline hover:border-headline bg-card/60 transition-colors"
           >
             →
           </button>
-          <span aria-hidden="true" className="ml-2 text-[11px] uppercase tracking-widest hidden sm:inline">
+          <span aria-hidden="true" className="ml-2 text-xs uppercase tracking-widest hidden sm:inline">
             or drag the card
           </span>
         </div>
@@ -292,7 +292,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
         onKeyDown={onKeyDown}
         onWheel={onWheel}
         aria-label="Project deck. Use the left and right arrow keys to move through the projects."
-        className="order-2 lg:order-none lg:col-span-7 lg:pt-10 grid pb-8 outline-none focus-visible:ring-2 focus-visible:ring-olive/40 focus-visible:ring-offset-8 focus-visible:ring-offset-page rounded-[3px]"
+        className="order-2 lg:order-none lg:col-span-7 lg:pt-3.5 grid pb-8 outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive rounded-[3px]"
       >
         {projects.map((project, index) => {
           const position = order.indexOf(index);

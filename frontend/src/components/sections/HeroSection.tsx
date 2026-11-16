@@ -2,22 +2,24 @@ import Link from "next/link";
 import { TypewriterRole } from "@/components/ui/TypewriterRole";
 import { HeroQuoteCard } from "@/components/ui/HeroQuoteCard";
 import { SeasonLabel } from "@/components/ui/SeasonLabel";
+import { INQUIRY_LIVE } from "@/data/site";
 
 export function HeroSection() {
   return (
-    <section className="pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 max-w-6xl mx-auto w-full">
-      {/* Asymmetric Two-Column Editorial Desk */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+    <section className="flex flex-col lg:block pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 max-w-6xl mx-auto w-full">
+      {/* Asymmetric Two-Column Editorial Desk. Below lg the wrapper dissolves (display: contents) so the
+          quote card can follow the meta strip and the first phone screen holds name, bio, button and strip. */}
+      <div className="contents lg:grid lg:grid-cols-12 lg:gap-14 lg:items-center">
         {/* Left Column: Typographic Hierarchy & Identity */}
-        <div className="lg:col-span-7 space-y-8 text-left">
+        <div className="order-1 lg:order-none lg:col-span-7 space-y-8 text-left">
           {/* Clean Spaced Kicker */}
-          <div className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
+          <div className="flex items-center gap-2.5 font-mono text-xs text-muted tracking-widest uppercase motion-safe:animate-enter" style={{ animationDelay: "0ms" }}>
             <span className="w-1.5 h-1.5 rounded-full bg-olive" />
-            <span>KATHMANDU, NEPAL — FULL-STACK &amp; BACKEND ENGINEER</span>
+            <span>KATHMANDU, NEPAL · FULL-STACK &amp; BACKEND ENGINEER</span>
           </div>
 
           {/* Grand Typographic Headline Lockup */}
-          <div className="space-y-3">
+          <div className="space-y-3 motion-safe:animate-enter" style={{ animationDelay: "80ms" }}>
             <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl font-semibold tracking-tight text-headline leading-[0.98]">
               Nischal Basnet
             </h1>
@@ -33,12 +35,12 @@ export function HeroSection() {
           </div>
 
           {/* Grounded Bio Statement */}
-          <p className="text-body text-lg sm:text-xl leading-relaxed max-w-xl font-normal pt-1">
-            Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.
+          <p className="text-body text-lg sm:text-xl leading-relaxed max-w-xl font-normal pt-1 motion-safe:animate-enter" style={{ animationDelay: "160ms" }}>
+            Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, well-modelled relational databases, and scalable web platforms. Rooted in Kathmandu, Nepal.
           </p>
 
           {/* Action Button Row */}
-          <div className="flex flex-wrap items-center gap-4 pt-2 font-mono text-xs">
+          <div className="flex flex-wrap items-center gap-4 pt-2 font-mono text-xs motion-safe:animate-enter" style={{ animationDelay: "240ms" }}>
             <Link
               href="#work"
               className="bg-olive hover:bg-olive-dark text-white px-7 py-3.5 rounded-full tracking-wider transition-all shadow-[0_4px_16px_rgba(74,93,78,0.22)] inline-flex items-center gap-2"
@@ -47,33 +49,35 @@ export function HeroSection() {
               <span>↓</span>
             </Link>
 
+            {INQUIRY_LIVE && (
             <Link
               href="#inquiry"
               className="border border-border-muted hover:border-headline text-headline px-7 py-3.5 rounded-full tracking-wider transition-all bg-card/60 hover:bg-card inline-flex items-center gap-2 shadow-sm"
             >
-              <span>Initiate Inquiry</span>
-              <span>↗</span>
+              <span>Get in touch</span>
+              <span aria-hidden="true">↓</span>
             </Link>
+            )}
           </div>
         </div>
 
         {/* Right Column: Tactile Polaroid Quote Card */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end pt-4 lg:pt-0">
+        <div className="order-3 lg:order-none lg:col-span-5 flex justify-center lg:justify-end mt-14 lg:mt-0 motion-safe:animate-enter" style={{ animationDelay: "320ms" }}>
           <HeroQuoteCard />
         </div>
       </div>
 
       {/* Generous Spaced Full-Width Metadata Strip */}
-      <div className="mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body">
+      <div className="order-2 lg:order-none motion-safe:animate-enter mt-14 sm:mt-16 pt-8 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs text-body" style={{ animationDelay: "400ms" }}>
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             LOCATION
           </span>
           <span className="text-headline">Kathmandu, NP</span>
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
             AVAILABILITY
           </span>
           <span className="text-olive-dark font-medium flex items-center gap-1.5">
@@ -83,8 +87,8 @@ export function HeroSection() {
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
-            SEASONAL AMBIENCE
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
+            SEASON
           </span>
           <span className="text-headline capitalize">
             <SeasonLabel />
@@ -92,14 +96,14 @@ export function HeroSection() {
         </div>
 
         <div>
-          <span className="text-[10px] text-muted block uppercase tracking-widest mb-1">
-            CODE ARCHIVE
+          <span className="text-xs text-muted block uppercase tracking-widest mb-1">
+            GITHUB
           </span>
           <a
             href="https://github.com/Nischeal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-olive hover:underline"
+            className="inline-flex items-center min-h-11 -my-3 text-olive hover:underline"
           >
             github.com/Nischeal ↗
           </a>

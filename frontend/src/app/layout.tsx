@@ -36,7 +36,7 @@ const alexBrush = Alex_Brush({
 export const metadata: Metadata = {
   title: "Nischal Basnet | Full-Stack & Backend Engineer",
   description:
-    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, robust database architectures, and scalable web platforms. Rooted in Kathmandu, Nepal.",
+    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, well-modelled relational databases, and scalable web platforms. Rooted in Kathmandu, Nepal.",
   openGraph: {
     title: "Nischal Basnet | Full-Stack & Backend Engineer",
     description: "Full-Stack & Backend Engineer based in Kathmandu, Nepal.",
@@ -60,6 +60,14 @@ export default function RootLayout({
         <SeasonProvider>
           {/* Ambient Seasonal Background Canvas */}
           <SeasonalCanvas />
+
+          {/* Keyboard skip link: first Tab stop, visible only on focus */}
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-olive focus:px-5 focus:py-3 focus:font-mono focus:text-xs focus:tracking-wider focus:text-white focus:outline-2 focus:outline-offset-2 focus:outline-olive-dark"
+          >
+            Skip to content
+          </a>
 
           {/* Sticky Editorial Navbar */}
           <Navbar />

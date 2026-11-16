@@ -21,7 +21,7 @@ interface DossierCardProps {
 
 const paper = "rounded-[3px] border bg-card shadow-[0_18px_44px_rgba(28,25,23,0.08)]";
 const ghostButton =
-  "inline-flex items-center gap-2 rounded-full border border-border-muted bg-card px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-headline hover:border-headline hover:-translate-y-0.5 transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive cursor-pointer";
+  "inline-flex items-center gap-2 min-h-11 rounded-full border border-border-muted bg-card px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-headline hover:border-headline hover:-translate-y-0.5 transition-all focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive cursor-pointer";
 
 /** Linen corner tab with the file number (decorative). */
 function NumberTab({ number }: { number: string }) {
@@ -38,7 +38,7 @@ function NumberTab({ number }: { number: string }) {
 function LedgerRow({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-x-4 gap-y-1.5 py-4 border-t border-hairline last:border-b">
-      <dt className="font-mono text-[11px] uppercase tracking-widest text-muted pt-1">{label}</dt>
+      <dt className="font-mono text-xs uppercase tracking-widest text-muted pt-1">{label}</dt>
       <dd className="text-body leading-relaxed">{children}</dd>
     </div>
   );
@@ -87,7 +87,7 @@ export function DossierCard({ project, number, interactive = false, flipped = fa
               inProgress ? "border-dashed border-border-muted" : "border-hairline"
             }`}
           >
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted">
               {inProgress ? project.label : "Project file"}
             </p>
             <h3 className="mt-3 font-serif text-3xl sm:text-[2.6rem] font-semibold tracking-tight text-headline leading-[1.05]">
@@ -101,7 +101,7 @@ export function DossierCard({ project, number, interactive = false, flipped = fa
                   key={fact.label}
                   className="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[8rem_1fr] gap-x-4 py-2.5 border-t border-hairline last:border-b"
                 >
-                  <dt className="font-mono text-[11px] uppercase tracking-widest text-muted pt-0.5">{fact.label}</dt>
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted pt-0.5">{fact.label}</dt>
                   <dd className="text-headline">{fact.value}</dd>
                 </div>
               ))}
@@ -172,12 +172,12 @@ function CaseStudy({
     >
       {/* Header stays pinned while the case study scrolls inside the card */}
       <div className="sticky top-0 z-10 -mx-6 sm:-mx-9 px-6 sm:px-9 pt-6 sm:pt-9 pb-2 bg-card flex items-start justify-between gap-4">
-        <p className="font-mono text-[11px] uppercase tracking-widest text-muted">{`${number} // Case study`}</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-muted">{`${number} // Case study`}</p>
         <button
           type="button"
           onClick={onClose}
           onPointerDown={(e) => e.stopPropagation()}
-          className="-mt-2 -mr-1 px-1 py-2 font-mono text-xs uppercase tracking-widest text-headline hover:text-olive-dark transition-colors rounded-[2px] focus-visible:outline-2 focus-visible:outline-olive cursor-pointer"
+          className="-mt-3 -mr-2 inline-flex items-center min-h-11 px-2 font-mono text-xs uppercase tracking-widest text-headline hover:text-olive-dark transition-colors rounded-[2px] focus-visible:outline-2 focus-visible:outline-olive cursor-pointer"
         >
           [ Close ]
         </button>
@@ -219,7 +219,7 @@ function CaseStudy({
             type="button"
             onClick={onNext}
             onPointerDown={(e) => e.stopPropagation()}
-            className="group/next inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-widest text-headline underline decoration-hairline underline-offset-[6px] hover:decoration-olive hover:text-olive-dark transition-colors rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive cursor-pointer"
+            className="group/next inline-flex items-center gap-2 min-h-11 font-mono text-xs uppercase tracking-widest text-headline underline decoration-hairline underline-offset-[6px] hover:decoration-olive hover:text-olive-dark transition-colors rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive cursor-pointer"
           >
             Next file
             <span aria-hidden="true" className="motion-safe:transition-transform group-hover/next:translate-x-0.5">

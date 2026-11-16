@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { INQUIRY_LIVE } from "@/data/site";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,8 +24,8 @@ export function Navbar() {
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Work", href: "#work" },
-    { label: "Craft", href: "#craft" },
-    { label: "Inquiry", href: "#inquiry" },
+    { label: "Stack", href: "#stack" },
+    ...(INQUIRY_LIVE ? [{ label: "Inquiry", href: "#inquiry" }] : []),
   ];
 
   return (
@@ -33,7 +34,7 @@ export function Navbar() {
         {/* Fluid Signature Brand Mark */}
         <Link
           href="/"
-          className="font-signature text-3xl sm:text-4xl text-headline hover:text-olive transition-colors leading-none pt-1 select-none"
+          className="inline-flex items-center min-h-11 font-signature text-3xl sm:text-4xl text-headline hover:text-olive transition-colors leading-none pt-1 select-none"
         >
           Nischal
         </Link>
@@ -51,13 +52,15 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Olive Pill Action Button */}
+          {/* Olive Pill Action Button (hidden until the Inquiry section exists) */}
+          {INQUIRY_LIVE && (
           <Link
             href="#inquiry"
             className="bg-olive hover:bg-olive-dark text-white font-mono text-xs px-5 py-2 rounded-full tracking-wider transition-all shadow-[0_2px_10px_rgba(74,93,78,0.2)]"
           >
             Get in Touch
           </Link>
+          )}
         </nav>
 
         {/* Mobile Menu Toggle Button */}
@@ -65,7 +68,7 @@ export function Navbar() {
           ref={toggleRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden font-mono text-xs text-body hover:text-headline px-3 py-1.5 border border-hairline rounded-full bg-card/50"
+          className="md:hidden inline-flex items-center min-h-11 font-mono text-xs text-body hover:text-headline px-4 border border-hairline rounded-full bg-card/50"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav"
         >
@@ -90,6 +93,7 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          {INQUIRY_LIVE && (
           <div className="pt-4 border-t border-hairline">
             <Link
               href="#inquiry"
@@ -99,6 +103,7 @@ export function Navbar() {
               Get in Touch
             </Link>
           </div>
+          )}
         </nav>
       )}
     </header>
