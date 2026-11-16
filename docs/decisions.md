@@ -89,3 +89,10 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Per task: `docs/<task>/plan.md` (milestones + reusable-asset inventory) and `docs/<task>/testing.md` (manual checks); decisions stay in this log.
 - Branch per task (`feat/<task>`), commit per approved milestone; the user merges and pushes.
 - Verify = this repo's checks (build, lint, tsc) plus tests once a runner exists; hard stop after every milestone.
+
+## 021 — Portfolio v1 master plan & open content calls (2026-11-16)
+- Remaining work lives in one master plan, `docs/portfolio-v1/plan.md` (rebuilt from the Gemini-era plan), one branch per phase; no more reading git history to plan.
+- Page order Hero → About → Works → Capabilities → Inquiry → Footer; navbar reordered to About / Work / Craft / Inquiry.
+- Inquiry: Web3Forms from the browser, plus the published address nischealbasnet10@gmail.com with copy + mailto.
+- Capabilities: tags grouped by discipline, no ratings of any kind (overrides old M6 "mastery ratings").
+- Third Works card is the 8th-semester college project, generic "in progress" until it has a name. Later phases: scroll reveal, Ctrl+K terminal, FastAPI backend.
