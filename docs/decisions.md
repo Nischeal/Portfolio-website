@@ -159,3 +159,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Copy (supersedes parts of 008/023-era copy): bio "robust database architectures" → "well-modelled relational databases"; hero button "Get in touch ↓"; section renamed **Stack** (nav, heading, `#stack`); meta labels SEASON / GITHUB; kicker dash → `·`; About drops "actually". The name stays the h1.
 - Hero enters once on load: staggered 12px fade-up (0–400ms), `motion-safe` only.
 - Skipped on purpose (skill rules that clash with this site): screen-snapped section heights, no hairlines, pause buttons, always-colour logos, hero split top-alignment.
+
+## 032 — Design-taste skill drives the design from Phase 5; footer-dark (2026-11-16)
+- From Phase 5 each phase follows the `/design-taste-frontend` recipes and runs its checkers (copy-lint, consistency at 1440/390, perf) every milestone. The theme stays: no new colours, fonts or kit; skill "deals" are shown as options for the user to pick; ADR 031's waivers stay.
+- Footer = the skill's `footer-dark`, on our tokens inverted (espresso `bg-headline`, linen text; olive only as decoration). The Inquiry form is the page's close, so no extra call-to-action row.
+- Rows: signature + lede with *Sections* / *Elsewhere* columns (matching the nav; GitHub, Email; no Privacy/Terms pages); legal row with © year, live Kathmandu clock (not announced), Autumn/Winter switch (`aria-pressed`); the signature set wide as the type moment and Phase 6's Monarch doorway (`data-monarch-doorway`).
+- The wide signature uses a solid `color-mix` of two tokens (alpha showed seams where script strokes overlap) and `leading-[1.2]` (tighter leading spilled 27px below the page).

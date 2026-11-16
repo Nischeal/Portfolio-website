@@ -91,3 +91,14 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] **Without the key:** a valid submit shows "That didn't send. Please try again, or email me directly…" and makes no network request.
 - [ ] **With the key (real test):** a valid submit shows "Sending…", then "Thanks, your message is on its way…", the form clears, and the email arrives in your inbox with subject "Portfolio inquiry: <type>".
 - [ ] **Screen reader:** every field has a visible label; errors are read with their field; the sending/sent/error line is announced.
+
+## Phase 5 — M1 (Footer, footer-dark, ADR 032)
+`http://localhost:3000/`, scroll to the end; desktop (~1440px) and phone (~375px).
+- [ ] After Inquiry: one espresso band with linen text, the same space above and inside its top edge; nothing linen shows below it.
+- [ ] Row 1: "Nischal" signature + "Full-stack & backend engineer, Kathmandu."; columns **Sections** (About, Work, Stack, Inquiry → each jumps to its section) and **Elsewhere** (GitHub ↗ opens in a new tab, Email ↗ opens a new email).
+- [ ] Press ❄️ Winter: every leaf turns into a six-armed snowflake straight away (frost blue-grey, slowly spinning), no coloured dots left; press 🍂 Autumn: the leaves come back.
+- [ ] Row 2: "© 2026 Nischal Basnet", "Kathmandu // HH:MM GMT+5:45" showing Nepal time (changes on the minute), and the 🍂 Autumn / ❄️ Winter switch: the current season is filled in; pressing the other changes the leaves/snow and the hero's SEASON label.
+- [ ] Row 3: "Nischal" set huge across the content width in a soft dark tone, no visible seams where strokes overlap; it doesn't spill or get cut at any width.
+- [ ] Phone: name smaller, Sections/Elsewhere side by side, legal row stacked, signature fits the width; links and switch buttons easy to tap.
+- [ ] Keyboard: Tab reaches every footer link and both switch buttons with a visible linen focus ring; screen reader hears "Footer" navigation with two headed lists, the switch as toggle buttons, and the clock isn't re-announced every minute.
+- [ ] Reduced motion: nothing in the footer moves.
