@@ -1,34 +1,17 @@
-# Nischal Basnet — Full-Stack & Systems Portfolio
+# Nischal Basnet — Portfolio
 
-> A high-performance personal engineering portfolio fusing modern web technologies with clean editorial design and precision system UI aesthetics.
-
----
-
-## 🏛️ Monorepo Architecture
+Personal portfolio at [nischal.info.np](https://nischal.info.np). Next.js 16 static export, deployed to GitHub Pages on push to `master`.
 
 ```text
 Portfolio-website/
-├── frontend/          # Next.js 15+ (App Router), React 19, TypeScript (Strict), Tailwind CSS
-├── backend/           # Future Python 3.12+ FastAPI Microservice (PostgreSQL & Redis)
-├── docs/              # Central Project Documentation Hub
-│   ├── architecture/  # System design specs, vision & roadmap
-│   ├── design-system/ # Design tokens, typography, visual reference analysis
-│   └── phase-*/       # Milestone implementation plans, decision logs & testing guides
-├── CNAME              # Production DNS pointer (nischal.info.np)
-└── README.md
+├── frontend/   # Next.js (App Router), React 19, TypeScript, Tailwind v4
+├── backend/    # Reserved for a future FastAPI service
+└── docs/       # roadmap.md, decisions.md, design-system/
 ```
 
----
-
-## 🛠️ Development Setup
-
-### Frontend
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev     # http://localhost:3000
+npm run build   # static output in frontend/out
 ```
-Local development server runs at `http://localhost:3000`.
-
-### Documentation
-All phase planning, architectural decisions, and testing checklists are maintained under [`docs/`](./docs/).

@@ -1,6 +1,6 @@
-# 🌿 Old-Money Minimalist & Seasonal Design System Specification
+# Design Tokens
 
-This document is the **design bible** for the Old-Money Minimalist portfolio, capturing every nuance derived from the David Whyte & Mosh Mohammed inspirations and our deep architectural grilling.
+Source of truth for colors, type and canvas parameters. Implemented in `frontend/src/app/globals.css` — keep both in sync. Visual references: `ref-old-money-david-whyte.jpg`, `ref-old-money-mosh.jpg`, `ref-polaroid-quote.jpg` (this folder).
 
 ---
 
@@ -64,7 +64,7 @@ This document is the **design bible** for the Old-Money Minimalist portfolio, ca
 
 ## 🔤 Typography & Font Hierarchy
 
-- **Identity Mark**: `Nischal Basnet` in medium-weight `Cormorant Garamond` (like an author's signature on a poetry book).
+- **Identity Mark**: script signature `Nischal` in `Alex Brush` (navbar).
 - **Display Headings**: `Cormorant Garamond` (Weights: 500, 600, 700). High-contrast luxury editorial serif with natural beauty and generous letter-spacing.
 - **Body & Paragraphs**: `Inter` (Weights: 400, 500). Clean modern sans-serif with supreme legibility.
 - **Micro-Details & Swiss Dials**: `JetBrains Mono` (Weights: 400, 500). Counters (`01 //`, `02 //`), tech tags, timestamps, coordinates.
@@ -80,18 +80,6 @@ This document is the **design bible** for the Old-Money Minimalist portfolio, ca
 
 ---
 
-## 📐 Layout & Component Standards
+## Layout
 
-1. **Split Hero**:
-   - Left: Typographic introduction, dynamic olive typewriter rotator ("Crafting [Full-Stack Web Systems | AI & Vision Pipelines | Scalable Backend Services | Interactive Web Experiences]"), 2-sentence bio, Primary Olive Pill (`Explore Work ↓`) + Hairline Ghost Button (`Initiate Inquiry ↗`).
-   - Right: Framed artistic botanical watercolor card (like David Whyte's tree) with floating live availability pill (`● Available for Engineering`).
-2. **The Three Pillars ("Philosophy & The Craft")**:
-   - Triad cards with Swiss-dial counters (`01 //`, `02 //`, `03 //`), Cormorant titles, delicate line icons, and 2-sentence reflections.
-3. **Selected Works with Slide-Out Drawers**:
-   - Vertical editorial case cards with clean tags and hover lift.
-   - Slide-out architectural drawer displaying Problem, Architectural Solution, Technical Challenges Overcome, Full Stack Ledger, and direct GitHub links.
-4. **Minimalist Horizon Matrix**:
-   - Horizontal technology spec ledger with Swiss-dial counters, mastery ratings, and olive tech tags.
-5. **Inquiry & Footer**:
-   - 4-field editorial inquiry form with quick-copy `nischealbasnet10@gmail.com`.
-   - Footer displaying Kathmandu time, seasonal toggle, copyright, and secret Shadow Monarch watermark.
+Section layout and status live in `../roadmap.md`; layout decisions in `../decisions.md`.
