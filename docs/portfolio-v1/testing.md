@@ -44,3 +44,18 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] Ledgers match the approved copy exactly.
 - [ ] **Monarch preview:** dossiers readable in dark.
 - [ ] **Screen reader / accessibility tree:** only the top dossier is exposed ("1 of 3: Clip Cuisine"); changes are announced; buttons are "Previous project" / "Next project".
+
+## Phase 2 — M2 (Case study on the card's back, ADR 027)
+`http://localhost:3000/#work`, desktop (~1440px) and phone (~375px).
+- [ ] The top Clip Cuisine / Gym card shows a hairline ghost button **READ CASE STUDY →**; the final-year card has none.
+- [ ] Pressing the button doesn't drag the card. Dragging elsewhere on the card still works.
+- [ ] Click it: the card turns over (3D, about half a second) and grows taller to fit the back. Back: `01 // CASE STUDY` + `[ Close ]`, the title, then Problem / Solution / Challenges (olive bullets) / Stack as ledger rows, then `SOURCE ↗`. At rest both sides are flat with sharp text.
+- [ ] Copy matches the approved M0 table exactly.
+- [ ] `SOURCE ↗` opens the GitHub repo in a new tab.
+- [ ] `[ Close ]` and **Esc** turn the card face-up; it shrinks back and focus returns to the button.
+- [ ] While the back is showing, **→ / ← buttons, arrow keys, a swipe or the project index** turn the card face-up first, then move on. A card never comes back around face-down.
+- [ ] **Keyboard only:** Tab to the button, Enter turns the card and focus lands on the back; Tab reaches `[ Close ]` and `SOURCE ↗` but nothing on the hidden front.
+- [ ] **Screen reader / accessibility tree:** the button reports expanded/collapsed; "Case study open: <title>" is announced; the hidden face isn't reachable.
+- [ ] **Phone (~375px):** the back fits the width; long text wraps; the page scrolls normally over the card.
+- [ ] **Reduced motion:** the card swaps sides instantly, without turning.
+- [ ] **Monarch preview** (devtools: `data-theme="monarch"` on `<html>`): both sides are readable in dark.

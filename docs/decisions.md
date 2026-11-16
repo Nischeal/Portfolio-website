@@ -127,3 +127,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Built with no library; reduced motion swaps instantly.
 - Addendum (same day): the deck sits in a split layout, with heading, a clickable project index and controls in a sticky left column and the deck on the right, so it reads as part of the editorial grid rather than a small centred widget. On phones: heading → deck → index → controls.
 - Approved 2026-11-16 as provisional: the design stays unless a better reference turns up, in which case the concept is reopened.
+
+## 027 — Case study on the back of the dossier, not a drawer (2026-11-16)
+- The slide-out drawer was built and rejected: a side panel over the page felt wrong for the deck. The top dossier now turns over (real 3D turn) and its back is the case study.
+- Both faces are flat at rest (decision 010 holds); the angle exists only mid-turn. Reduced motion swaps instantly.
+- The card grows to fit the back instead of scrolling inside. Any deck navigation turns the card face-up first.
+- Trigger is a hairline ghost button ("Read case study →"); the back closes with `[ Close ]`, the label approved in M0.

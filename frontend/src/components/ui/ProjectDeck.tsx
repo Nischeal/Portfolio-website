@@ -2,7 +2,7 @@
 
 import { useRef, useState, type CSSProperties, type ReactNode, type KeyboardEvent, type PointerEvent, type WheelEvent } from "react";
 import type { Project } from "@/types/portfolio";
-import { DossierCard } from "@/components/ui/DossierCard";
+import { DossierCard, FLIP_MS } from "@/components/ui/DossierCard";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const SWIPE_DISTANCE = 110; // px dragged that sends the card away
@@ -33,11 +33,19 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   const count = projects.length;
   const [order, setOrder] = useState(() => projects.map((_, i) => i)); // order[0] is the top card
   const [motion, setMotion] = useState<Motion>({ kind: "rest" });
+  const [flipped, setFlipped] = useState<number | null>(null); // project whose card shows its back (ADR 027)
   const reducedMotion = usePrefersReducedMotion();
+  const deckRef = useRef<HTMLDivElement>(null);
 
   const busy = useRef(false);
   const drag = useRef<{ x: number; t: number } | null>(null);
   const wheel = useRef({ sum: 0, lockedUntil: 0 });
+
+  /** If focus is on the outgoing card's button, park it on the deck so it isn't lost to <body>. */
+  const keepFocus = () => {
+    const deck = deckRef.current;
+    if (deck && deck !== document.activeElement && deck.contains(document.activeElement)) deck.focus();
+  };
 
   const lock = () => {
     busy.current = true;
@@ -45,8 +53,9 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   };
 
   /** Send the top card to the back of the deck. dir = the side it flies out to. */
-  const next = (dir: 1 | -1 = -1) => {
+  const sendAway = (dir: 1 | -1 = -1) => {
     if (busy.current) return;
+    keepFocus();
     if (reducedMotion) {
       setOrder((o) => [...o.slice(1), o[0]]);
       setMotion({ kind: "rest" });
@@ -61,8 +70,9 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   };
 
   /** Bring the bottom card back on top, sliding in from the left. */
-  const prev = () => {
+  const bringBack = () => {
     if (busy.current) return;
+    keepFocus();
     setOrder((o) => [o[o.length - 1], ...o.slice(0, -1)]);
     if (reducedMotion) return;
     lock();
@@ -72,7 +82,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   };
 
   /** Bring a specific project to the top (from the index list). The deck re-stacks with its spring. */
-  const jumpTo = (index: number) => {
+  const bringToTop = (index: number) => {
     if (busy.current || order[0] === index) return;
     setOrder((o) => {
       const at = o.indexOf(index);
@@ -81,11 +91,30 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
     setMotion({ kind: "rest" });
   };
 
+  /** Deck moves never carry a card face-down: turn it face-up first, then move (ADR 027). */
+  const faceUpThen = (move: () => void) => {
+    if (busy.current) return;
+    if (flipped === null) return move();
+    setFlipped(null);
+    setMotion({ kind: "rest" }); // a released drag springs back while the card turns face-up
+    if (reducedMotion) return move();
+    busy.current = true;
+    window.setTimeout(() => {
+      busy.current = false;
+      move();
+    }, FLIP_MS);
+  };
+  const next = (dir: 1 | -1 = -1) => faceUpThen(() => sendAway(dir));
+  const prev = () => faceUpThen(bringBack);
+  const jumpTo = (index: number) => {
+    if (order[0] !== index) faceUpThen(() => bringToTop(index));
+  };
+
   // Pointer (touch, pen, mouse) drag on the top card
   const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
     if (busy.current) return;
     e.currentTarget.setPointerCapture(e.pointerId);
-    drag.current = { x: e.clientX, t: performance.now() };
+    drag.current = { x: e.clientX, t: e.timeStamp };
     setMotion({ kind: "drag", dx: 0 });
   };
   const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
@@ -95,7 +124,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
   const onPointerEnd = (e: PointerEvent<HTMLDivElement>) => {
     if (!drag.current) return;
     const dx = e.clientX - drag.current.x;
-    const velocity = Math.abs(dx) / Math.max(performance.now() - drag.current.t, 1);
+    const velocity = Math.abs(dx) / Math.max(e.timeStamp - drag.current.t, 1);
     drag.current = null;
     if (Math.abs(dx) > SWIPE_DISTANCE || (Math.abs(dx) > 30 && velocity > SWIPE_VELOCITY)) {
       next(dx > 0 ? 1 : -1);
@@ -111,13 +140,16 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
     } else if (e.key === "ArrowLeft") {
       e.preventDefault();
       prev();
+    } else if (e.key === "Escape" && flipped !== null) {
+      e.preventDefault();
+      setFlipped(null);
     }
   };
 
   // Horizontal trackpad swipe
   const onWheel = (e: WheelEvent<HTMLDivElement>) => {
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-    const now = performance.now();
+    const now = e.timeStamp;
     if (now < wheel.current.lockedUntil) return;
     wheel.current.sum += e.deltaX;
     if (Math.abs(wheel.current.sum) > 80) {
@@ -240,6 +272,7 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
 
       {/* Right: the deck. Every card shares one grid cell, so the deck is as tall as the tallest card */}
       <div
+        ref={deckRef}
         tabIndex={0}
         onKeyDown={onKeyDown}
         onWheel={onWheel}
@@ -263,13 +296,21 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
               className={`[grid-area:1/1] select-none ${isTop ? "touch-pan-y cursor-grab active:cursor-grabbing" : "pointer-events-none"}`}
               style={styleFor(position)}
             >
-              <DossierCard project={project} number={String(index + 1).padStart(2, "0")} />
+              <DossierCard
+                project={project}
+                number={String(index + 1).padStart(2, "0")}
+                interactive={isTop}
+                flipped={flipped === index}
+                onFlip={(open) => setFlipped(open ? index : null)}
+              />
             </div>
           );
         })}
       </div>
 
-      <p className="sr-only" aria-live="polite">{`Project ${order[0] + 1} of ${count}: ${top.title}`}</p>
+      <p className="sr-only" aria-live="polite">{flipped === order[0]
+          ? `Case study open: ${top.title}`
+          : `Project ${order[0] + 1} of ${count}: ${top.title}`}</p>
     </div>
   );
 }
