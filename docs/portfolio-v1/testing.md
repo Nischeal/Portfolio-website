@@ -33,3 +33,14 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] Every claim about Clip Cuisine and the Gym Management System is accurate (pretrained YOLO, Flask, PostgreSQL for users + history; admin + member portal, manual check-ins, plans/expiry/payments).
 - [ ] Nothing is overstated (no recipe suggestions, no custom-trained model, no online payments).
 - [ ] The college card reveals only what you want public right now.
+
+## Phase 2 — M1 (Works deck, ADR 026)
+- [ ] Below About: a deck of three paper dossiers, the top one fully visible with the others peeking out below. Each dossier has a linen number tab, title, summary and fact ledger; no images. The college dossier has a dashed edge.
+- [ ] **Drag (mouse or finger):** the top card follows you exactly and leans slightly; the cards underneath rise as you pull. Let go after a short drag and it springs back; drag far or flick and it flies off and tucks under the deck, with the next card on top. It never gets stuck halfway.
+- [ ] **← button / Left arrow key** brings the previous card back from the left; **→ / Right arrow** sends the top card away. Counter `01 / 03` follows. A horizontal trackpad swipe also works.
+- [ ] **Mobile (~375px):** a horizontal swipe moves the card, while vertical scrolling over the card still scrolls the page. No sideways page scroll while a card flies off.
+- [ ] At rest the top card is flat and its text is sharp (the lean only happens while dragging).
+- [ ] **Reduced motion:** cards swap instantly.
+- [ ] Ledgers match the approved copy exactly.
+- [ ] **Monarch preview:** dossiers readable in dark.
+- [ ] **Screen reader / accessibility tree:** only the top dossier is exposed ("1 of 3: Clip Cuisine"); changes are announced; buttons are "Previous project" / "Next project".

@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — Phase 2 (Selected Works), next: M1 Cards
+Status: in progress — Phase 2 (Selected Works), M2 next (M1 deck approved provisionally 2026-11-16; may change if a better reference turns up)
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -69,15 +69,15 @@ Must not repeat the hero bio word for word. No poetic labels (decision 005).
 ## Phase 2 — Selected Works (`#work`)  · branch `feat/works-section`
 Source: old M5 + old decision 4, decision 002, ADR 021.
 
-**Spec.** Three editorial case cards, counter `03 // SELECTED WORKS`:
+**Spec (ADR 026).** A swipeable deck of text-only archival dossiers (title, summary, fact ledger), counter `03 // SELECTED WORKS`:
 
 | Card | Stack | Link | Status |
 |---|---|---|---|
 | **Clip Cuisine (Ingredient Finder)**: computer vision | Python, Flask, YOLO, PostgreSQL | `SOURCE ↗` https://github.com/Nischeal/Ingredient_finder | not live: no demo link |
 | **Gym Management System**: members, subscriptions, attendance, admin dashboard | PHP, Laravel, MySQL | `SOURCE ↗` https://github.com/Nischeal/Gym-Management-System | not live: no demo link |
-| **College project (8th semester)** | TBD | none | "In progress / coming soon" card, generic until you name it; not clickable |
+| **College project (8th semester)** | TBD | none | Sealed "In progress" dossier in the deck; generic until you name it; no case study |
 
-Clicking a real card opens a **slide-out drawer** from the right containing: Problem, Solution (architecture), Challenges overcome, Stack ledger, `SOURCE ↗`. It closes on `[Close]`, a backdrop click or Esc.
+Clicking "Read case study →" on the top (real) card opens a **slide-out drawer** from the right containing: Problem, Solution (architecture), Challenges overcome, Stack ledger, `SOURCE ↗`. It closes on `[Close]`, a backdrop click or Esc.
 
 - [x] **M0 Content gate:** for both real projects, a 1–2 line card summary + Problem / Solution / Challenges as DRAFT for you to edit (from the repos/README if readable, otherwise questions). Third card wording.
 
@@ -102,7 +102,7 @@ Clicking a real card opens a **slide-out drawer** from the right containing: Pro
   | Stack | PHP · Laravel · MySQL |
   | **College project** card | Label: In progress · Title: Final-year project · Text: My BCA final-year project is underway. Details soon. (Not clickable, no link.) |
   | Drawer labels | Problem · Solution · Challenges · Stack · `SOURCE ↗` · `[ Close ]` |
-- [ ] **M1 Cards (working slice):** `src/types/portfolio.ts` (`Project`: slug, title, summary, stack[], problem, solution, challenges[], sourceUrl?, status `"shipped" | "in-progress"`; also move `AboutBlock` there from `src/data/about.ts`); `src/data/projects.ts` with the approved copy; `WorksSection.tsx` (server) + `ProjectCard.tsx`. Fully styled: 3-up grid on `lg`, 1-up on mobile, quote-card style with lift on hover. Accessible: `h2`, list semantics, small labels `text-muted` or darker (ADR 022), the college card clearly non-interactive. Real cards render as `<button>`s that do nothing until M2.
+- [x] **M1 Project deck (working slice, ADR 026):** `src/types/portfolio.ts` (`Project` = shipped | in-progress, each with a `facts` ledger; `AboutBlock` moved here); `src/data/projects.ts` (approved copy + approved ledgers); `WorksSection.tsx` (server) + `ProjectDeck.tsx` (client) + `DossierCard.tsx`. A stack of three text-only dossiers (linen number tab, title, summary, fact ledger). The top card follows the finger/mouse 1:1 with a slight lean while dragged; past 110px or a quick flick it flies off and tucks to the back, otherwise it springs back; the cards below rise as it's dragged. ← brings the previous card back from the left. Also → / ← buttons, arrow keys, horizontal trackpad swipe. Accessible: carousel/slide roles, only the top card exposed, live announcement; reduced motion = instant swaps. No images, no library. Split layout: sticky left column (heading, clickable project index, controls), deck on the right; phones stack heading → deck → index → controls. "Read case study →" on the top card comes in M2.
 - [ ] **M2 Drawer (working slice):** `ProjectDrawer.tsx` (client) opens from a real card with Problem / Solution / Challenges / Stack / `SOURCE ↗` (`rel="noopener noreferrer"`). `role="dialog"`, `aria-modal`, labelled by the title; focus moves in on open and returns to the card on close; Tab is trapped; body scroll locked; closes on Esc, backdrop or `[ Close ]`; slide is `motion-safe`. Close-out in the same turn as the "ok".
 
 ## Phase 3 — Capabilities (`#craft`)  · branch `feat/capabilities-section`

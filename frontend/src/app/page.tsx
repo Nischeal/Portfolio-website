@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { WorksSection } from "@/components/sections/WorksSection";
 
 export default function HomePage() {
   return (
@@ -9,6 +10,7 @@ export default function HomePage() {
         <HeroSection />
       </div>
       <AboutSection />
+      <WorksSection />
     </main>
   );
 }

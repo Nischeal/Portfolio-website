@@ -1,9 +1,6 @@
 // Approved copy (docs/portfolio-v1/plan.md, Phase 1 M0). Change only with the user's approval.
 
-export interface AboutBlock {
-  label: string;
-  text: string;
-}
+import type { AboutBlock } from "@/types/portfolio";
 
 export const ABOUT_HEADING = "About me";
 
