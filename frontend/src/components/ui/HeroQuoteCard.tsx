@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-
 export function HeroQuoteCard() {
   return (
     <div className="relative group w-full max-w-[340px] sm:max-w-[370px] mx-auto lg:mx-0">

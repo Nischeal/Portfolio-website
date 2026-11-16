@@ -15,7 +15,7 @@ Single-page portfolio. Sections are built in `frontend/src/components/sections/`
 - [ ] **Inquiry** (`#inquiry`) — form (Name, Email, Opportunity type, Message) + quick-copy email button. ⚠ Static export has no server: decide on mailto, a form service, or the future FastAPI backend.
 - [ ] **Footer** — build fresh (legacy file deleted, ADR 018): Kathmandu time (GMT+5:45), season toggle, copyright, GitHub link, Monarch watermark.
 - [ ] **Monarch mode** — `M` key / watermark toggles `data-theme="monarch"` on `<html>`; tokens already in `globals.css`; small pill "Shadow Mode // Press M to return".
-- [ ] **Polish** — accessibility (contrast, keyboard nav, `prefers-reduced-motion` for canvas/typewriter), SEO/OG image, Lighthouse.
+- [ ] **Polish** — contrast audit, SEO/OG image (`metadataBase`), Lighthouse. (Reduced motion, screen-reader typewriter, menu keyboard support done — ADR 017.)
 
 ## Later
 - [ ] `backend/` FastAPI service (e.g. for the inquiry form) — only if a static option isn't enough.

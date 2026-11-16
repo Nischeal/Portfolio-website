@@ -1,10 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  // Esc closes the mobile menu and returns focus to its toggle.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { label: "Work", href: "#work" },
@@ -48,9 +62,12 @@ export function Navbar() {
 
         {/* Mobile Menu Toggle Button */}
         <button
+          ref={toggleRef}
+          type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden font-mono text-xs text-body hover:text-headline px-3 py-1.5 border border-hairline rounded-full bg-card/50"
-          aria-label="Toggle Navigation"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav"
         >
           {mobileMenuOpen ? "[ Close ]" : "[ Menu ]"}
         </button>
@@ -58,7 +75,11 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-page border-b border-hairline px-8 py-8 space-y-5 animate-in fade-in slide-in-from-top-2 duration-200">
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="md:hidden bg-page border-b border-hairline px-8 py-8 space-y-5"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -78,7 +99,7 @@ export function Navbar() {
               Get in Touch
             </Link>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSeason, Season } from "@/context/SeasonContext";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface Particle {
   x: number;
@@ -23,6 +24,10 @@ export function SeasonalCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { season } = useSeason();
   const seasonRef = useRef<Season>(season);
+  const reducedMotion = usePrefersReducedMotion();
+  // In reduced-motion mode the single static frame must be redrawn when the season changes;
+  // when animating, the loop picks the new season up from seasonRef instead.
+  const staticSeason = reducedMotion ? season : null;
 
   // Keep the animation loop's view of the season current without restarting it.
   useEffect(() => {
@@ -41,14 +46,27 @@ export function SeasonalCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let animationFrameId = 0;
+    let width = 0;
+    let height = 0;
+
+    // Size the backing store in device pixels so leaves stay sharp on retina screens,
+    // then draw in CSS pixels via the transform.
+    const sizeCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    sizeCanvas();
 
     const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      sizeCanvas();
+      if (reducedMotion) drawFrame();
     };
 
     window.addEventListener("resize", handleResize);
@@ -136,6 +154,16 @@ export function SeasonalCanvas() {
       context.restore();
     };
 
+    // Reduced motion: one still frame of the current season, no loop.
+    const drawFrame = () => {
+      ctx.clearRect(0, 0, width, height);
+      const isAutumn = seasonRef.current === "autumn";
+      for (const p of particles) {
+        if (isAutumn) drawLeaf(ctx, p);
+        else drawSnow(ctx, p);
+      }
+    };
+
     let tick = 0;
     const render = () => {
       ctx.clearRect(0, 0, width, height);
@@ -156,7 +184,7 @@ export function SeasonalCanvas() {
           const dx = p.x - mouseRef.current.x;
           const dy = p.y - mouseRef.current.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist > 0 && dist < 120) {
             const force = (120 - dist) / 120;
             p.x += (dx / dist) * force * 1.5;
             p.y += (dy / dist) * force * 0.8;
@@ -181,15 +209,27 @@ export function SeasonalCanvas() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    // Pause the loop while the tab is hidden; resume when it's visible again.
+    const handleVisibility = () => {
+      cancelAnimationFrame(animationFrameId);
+      if (!document.hidden) render();
+    };
+
+    if (reducedMotion) {
+      drawFrame();
+    } else {
+      document.addEventListener("visibilitychange", handleVisibility);
+      if (!document.hidden) render();
+    }
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [reducedMotion, staticSeason]);
 
   return (
     <canvas

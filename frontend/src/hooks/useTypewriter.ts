@@ -7,6 +7,8 @@ interface UseTypewriterOptions {
   typingSpeed?: number;
   deletingSpeed?: number;
   pauseDuration?: number;
+  /** When false, returns the first word in full and runs no timers (reduced motion). */
+  enabled?: boolean;
 }
 
 export function useTypewriter({
@@ -14,12 +16,15 @@ export function useTypewriter({
   typingSpeed = 75,
   deletingSpeed = 40,
   pauseDuration = 1800,
+  enabled = true,
 }: UseTypewriterOptions) {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!enabled) return;
+
     let timer: NodeJS.Timeout;
     const currentWord = words[wordIndex];
 
@@ -47,7 +52,7 @@ export function useTypewriter({
     }
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [enabled, displayText, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
 
-  return displayText;
+  return enabled ? displayText : words[0];
 }

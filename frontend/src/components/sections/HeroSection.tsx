@@ -1,13 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import { TypewriterRole } from "@/components/ui/TypewriterRole";
 import { HeroQuoteCard } from "@/components/ui/HeroQuoteCard";
-import { useSeason } from "@/context/SeasonContext";
+import { SeasonLabel } from "@/components/ui/SeasonLabel";
 
 export function HeroSection() {
-  const { season } = useSeason();
-
   return (
     <section className="pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 max-w-6xl mx-auto w-full">
       {/* Asymmetric Two-Column Editorial Desk */}
@@ -81,7 +77,7 @@ export function HeroSection() {
             AVAILABILITY
           </span>
           <span className="text-olive-dark font-medium flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-olive animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-olive motion-safe:animate-pulse" />
             Open for Work
           </span>
         </div>
@@ -91,7 +87,7 @@ export function HeroSection() {
             SEASONAL AMBIENCE
           </span>
           <span className="text-headline capitalize">
-            {season === "autumn" ? "🍂 Autumn Drift" : "❄️ Winter Frost"}
+            <SeasonLabel />
           </span>
         </div>
 
