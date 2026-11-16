@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: planned — next: Phase 1 (About)
+Status: in progress — Phase 1 (About), M0 done
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -46,7 +46,20 @@ Source: old M4, decision 005.
 
 Must not repeat the hero bio word for word. No poetic labels (decision 005).
 
-- [ ] **M0 Content gate:** heading + three paragraphs as DRAFT from the points above; ask whether to add personal details (study, how you started, goals); record approved copy here.
+- [x] **M0 Content gate:** heading + three paragraphs as DRAFT from the points above; ask whether to add personal details (study, how you started, goals); record approved copy here.
+
+  **Copy (approved 2026-11-16).** Sources: decision 005, Clip Cuisine from decision 002, and study details confirmed by the user (BCA, final year, Pascal National College). Text 2 is backend-first, at the user's request. Implement exactly this.
+
+  | Slot | Copy |
+  |---|---|
+  | Counter | `02 // ABOUT` |
+  | Heading (h2) | About me |
+  | Label 1 | Background |
+  | Text 1 | I'm a full-stack developer based in Kathmandu, Nepal, in my final year of a BCA at Pascal National College. I work across the whole stack, from the database schema to the screen a person actually touches. |
+  | Label 2 | What I build |
+  | Text 2 | Most of what I build is backend: platforms in Laravel and FastAPI, with data modelled in PostgreSQL and MySQL. Alongside that I explore computer vision, building with YOLO models in Python, like the ingredient detection behind Clip Cuisine, and I use Next.js with TypeScript when a project needs a modern web interface. |
+  | Label 3 | How I work |
+  | Text 3 | I care about the parts nobody sees: clean, readable code and database schemas that still make sense a year later. I try to build software the way a good tailor makes a suit: measured carefully, fitted properly, made to last. |
 - [ ] **M1 Markup:** `AboutSection.tsx` (server), compose in `page.tsx` after the hero; reorder navbar links to `About / Work / Craft / Inquiry`.
 - [ ] **M2 Styling + responsive.**
 - [ ] **M3 Accessibility:** heading order, `aria-labelledby`, contrast of muted text, navbar jump lands on the heading.
