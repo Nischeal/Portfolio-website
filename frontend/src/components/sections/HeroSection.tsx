@@ -2,6 +2,7 @@ import Link from "next/link";
 import { TypewriterRole } from "@/components/ui/TypewriterRole";
 import { HeroQuoteCard } from "@/components/ui/HeroQuoteCard";
 import { SeasonLabel } from "@/components/ui/SeasonLabel";
+import { INQUIRY_LIVE } from "@/data/site";
 
 export function HeroSection() {
   return (
@@ -47,6 +48,7 @@ export function HeroSection() {
               <span>↓</span>
             </Link>
 
+            {INQUIRY_LIVE && (
             <Link
               href="#inquiry"
               className="border border-border-muted hover:border-headline text-headline px-7 py-3.5 rounded-full tracking-wider transition-all bg-card/60 hover:bg-card inline-flex items-center gap-2 shadow-sm"
@@ -54,6 +56,7 @@ export function HeroSection() {
               <span>Initiate Inquiry</span>
               <span>↗</span>
             </Link>
+            )}
           </div>
         </div>
 

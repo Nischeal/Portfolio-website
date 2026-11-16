@@ -1,5 +1,5 @@
 # Polish pass — Plan
-Status: planned (starts after Phase 3 is merged)
+Status: in progress (M2)
 Branch: `fix/polish-pass` (from `master`)
 
 ## Goal
@@ -31,13 +31,29 @@ From two `/design-taste-frontend` reviews (2026-11-16): an eyes-on review, then 
 | Reduced motion | `usePrefersReducedMotion`, `motion-safe:` | Hero entrance `motion-safe` only |
 | Skill checkers | `~/.claude/skills/design-taste-frontend/scripts` | Re-run `copy-lint` + `consistency.mjs` after each milestone to confirm the finding is gone (read-only, output in the scratchpad) |
 
+## Settled (2026-11-16)
+| Item | Decision |
+|---|---|
+| Inquiry links | Hidden behind one flag (`INQUIRY_LIVE` in `src/data/site.ts`), off until Phase 4 builds `#inquiry` |
+| Skip link | "Skip to content" |
+| Phone hero | Quote card moves after the meta strip on phones (< lg); desktop unchanged |
+| Grid | About moves from 4/8 to 5/7 to share Works' line; hero keeps 7/5 |
+| Logo font | Keep the signature (Alex Brush) |
+| "robust" | "Focused on clean system design, well-modelled relational databases, and scalable web platforms." (hero bio + meta description) |
+| Hero button | "Get in touch ↓" (scrolls to `#inquiry` once live) |
+| Section name | **Stack** everywhere: nav "Stack", heading "Stack", counter `04 // STACK`, anchor `#stack` |
+| Meta labels | `SEASON` / `GITHUB` |
+| Lint WARNs | About: "…to the screen a person touches" (drop "actually"); kicker em dash → `·`. Quote + tailor line stay (your voice; remaining WARN explained) |
+| Headline | Keep the name as h1 (deliberate; kicker + typewriter carry the role) |
+| Entrance | Staggered fade-up once on load: kicker, name, role, bio, buttons, quote card; 12px rise, ~80ms apart, ~600ms each; none under reduced motion |
+
 ## Milestones
 ### M1 — Quick fixes: dead links + keyboard (#1, #2)
 - [x] Choose: **hide all three** Inquiry links until Phase 4 (chosen 2026-11-16); the hero keeps only "Explore Selected Work"
-- [ ] Hide them in the navbar (desktop + mobile drawer) and hero; nothing points to a missing id
-- [ ] "Skip to content" link (visible on focus, first Tab stop, lands on `<main>`); copy is two words, shown as DRAFT
-- [ ] Verify the deck's focus ring by hand; if it's really missing, make it visible
-- [ ] Verify (build, lint, tsc; click every in-page link; Tab from the top); `testing.md` section
+- [x] Hide them in the navbar (desktop + mobile drawer) and hero; nothing points to a missing id (`INQUIRY_LIVE` flag)
+- [x] "Skip to content" link (visible on focus, first Tab stop, lands on `<main id="main">`)
+- [x] Verify the deck's focus ring by hand: it really was missing (`outline-none` + `focus-visible:outline-2` leaves the style at none in Tailwind v4); fixed with `focus-visible:outline-solid`
+- [x] Verify (build, lint, tsc; click every in-page link; Tab from the top); `testing.md` section
 ### M2 — Mechanical sweep: readable text + tap sizes (#3, #4)
 - [ ] Floor for readable mono labels: 11px → proposed 12px (decorative counters may stay 11px); list every changed class
 - [ ] 44px tap targets on phones for logo, `[ Menu ]`, deck arrows, card buttons (hit area, not necessarily visible size)

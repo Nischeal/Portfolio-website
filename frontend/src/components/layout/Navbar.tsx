@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { INQUIRY_LIVE } from "@/data/site";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ export function Navbar() {
     { label: "About", href: "#about" },
     { label: "Work", href: "#work" },
     { label: "Craft", href: "#craft" },
-    { label: "Inquiry", href: "#inquiry" },
+    ...(INQUIRY_LIVE ? [{ label: "Inquiry", href: "#inquiry" }] : []),
   ];
 
   return (
@@ -51,13 +52,15 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Olive Pill Action Button */}
+          {/* Olive Pill Action Button (hidden until the Inquiry section exists) */}
+          {INQUIRY_LIVE && (
           <Link
             href="#inquiry"
             className="bg-olive hover:bg-olive-dark text-white font-mono text-xs px-5 py-2 rounded-full tracking-wider transition-all shadow-[0_2px_10px_rgba(74,93,78,0.2)]"
           >
             Get in Touch
           </Link>
+          )}
         </nav>
 
         {/* Mobile Menu Toggle Button */}
@@ -90,6 +93,7 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          {INQUIRY_LIVE && (
           <div className="pt-4 border-t border-hairline">
             <Link
               href="#inquiry"
@@ -99,6 +103,7 @@ export function Navbar() {
               Get in Touch
             </Link>
           </div>
+          )}
         </nav>
       )}
     </header>
