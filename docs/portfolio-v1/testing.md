@@ -102,3 +102,20 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] Phone: name smaller, Sections/Elsewhere side by side, legal row stacked, signature fits the width; links and switch buttons easy to tap.
 - [ ] Keyboard: Tab reaches every footer link and both switch buttons with a visible linen focus ring; screen reader hears "Footer" navigation with two headed lists, the switch as toggle buttons, and the clock isn't re-announced every minute.
 - [ ] Reduced motion: nothing in the footer moves.
+
+## Phase 6 — M1 (Monarch mode, ADR 033)
+`http://localhost:3000/`, desktop and phone.
+- [ ] Press **M** (not in a field): the page fades to a violet-black ground with pale lavender text and purple buttons; leaves/snow disappear; the screen gets a dim violet light in the middle with darkness closing in from every edge, slowly breathing in and out, under fine film grain; tiny violet motes rise from the bottom to the top, swaying and twinkling; a purple light flows round the hero quote card's edge with a slow breathing glow behind it; a pill at the bottom reads "Shadow Mode // Press M to return" with a faint purple glow. The footer stays a darker band with a purple glow in its top-right corner. Press M again: back to linen, leaves/snow return, pill disappears.
+- [ ] **Switch into Monarch:** press M: the dark theme ripples out from the centre with a purple ring on its edge; for about half a second the ring splits into violet and cyan copies, thin violet/cyan fringe bars jitter across the page and faint scanlines appear, then it settles. No eyes, nothing tears. Press M during it: ignored.
+- [ ] **Back to light:** press M again: the light theme ripples out the same way with a quieter, shorter glitch. Firefox (no View Transitions): the glitch layer with an instant switch.
+- [ ] **Dramatic extras:** the hero name glows purple and every ~5s a bright light sweeps across it from left to right, then rests; nothing follows the mouse; the big footer "Nischal" glows purple and breathes. Reloading while dark doesn't replay the ripple.
+- [ ] **One aura in every season:** in Monarch, switch the footer to ❄️ Winter and back to 🍂 Autumn: the vignette stays exactly the same (no leaves or snow appear).
+- [ ] Type an "m" in the Inquiry Name field: nothing toggles. Cmd/Ctrl+M doesn't toggle either.
+- [ ] Click/tap the big "Nischal" at the bottom of the footer: toggles Monarch both ways (this is the phone way in and out).
+- [ ] Reload while dark: the page loads dark straight away (no light flash).
+- [ ] Every section reads well in dark: hero, About, Works deck (front and case-study back), Stack logos (and brand colours on hover), Inquiry form fields and errors, footer (stays a dark band, a step darker than the page).
+- [ ] Olive buttons in dark have dark text that's easy to read.
+- [ ] Reduced motion: no colour fade; the vignette holds still; no ripple, shimmer or breathing.
+- [ ] Screen reader: turning Monarch on announces the pill text once.
+- [ ] All text stays readable while scrolling every section in Monarch (nothing busy sits behind it).
+- [ ] No WebGL anywhere: the aura is plain CSS.

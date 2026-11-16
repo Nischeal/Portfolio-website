@@ -3,10 +3,14 @@
 import { useEffect, useRef } from "react";
 import { useSeason, Season } from "@/context/SeasonContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useMonarch } from "@/hooks/useMonarch";
+
+/** What the canvas draws: the season, or shadow motes while Monarch mode is on (Phase 6). */
+type Kind = Season | "shadow";
 
 interface Particle {
-  /** The season it was made for; a season switch replaces it with the other kind. */
-  season: Season;
+  /** The kind it was made for; a season or Monarch switch replaces it with the current kind. */
+  season: Kind;
   x: number;
   y: number;
   size: number;
@@ -21,22 +25,25 @@ interface Particle {
 }
 
 const AUTUMN_COLORS = ["#C88A42", "#6E7F66", "#B87333", "#7A8450"];
+// In Monarch the canvas draws rising violet motes over the CSS vignette (MonarchAura, ADR 039/040)
 // Frost blue-grey (the canvas's existing winter tone, a step deeper so thin flake lines read on linen)
 const SNOW_COLOR = "#97A7B3";
 
 export function SeasonalCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { season } = useSeason();
-  const seasonRef = useRef<Season>(season);
+  const monarch = useMonarch();
+  const kind: Kind = monarch ? "shadow" : season;
+  const seasonRef = useRef<Kind>(kind);
   const reducedMotion = usePrefersReducedMotion();
   // In reduced-motion mode the single static frame must be redrawn when the season changes;
   // when animating, the loop picks the new season up from seasonRef instead.
-  const staticSeason = reducedMotion ? season : null;
+  const staticSeason = reducedMotion ? kind : null;
 
   // Keep the animation loop's view of the season current without restarting it.
   useEffect(() => {
-    seasonRef.current = season;
-  }, [season]);
+    seasonRef.current = kind;
+  }, [kind]);
 
   const mouseRef = useRef<{ x: number; y: number; active: boolean }>({
     x: -1000,
@@ -86,7 +93,7 @@ export function SeasonalCanvas() {
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Particle count: 18 on desktop, 10 on mobile
+    // Leaves/snow: 18 on desktop, 10 on mobile. In Monarch the canvas draws rising motes instead
     const particleCount = width < 768 ? 10 : 18;
 
     const createParticle = (randomY = true): Particle => {
@@ -110,6 +117,61 @@ export function SeasonalCanvas() {
     const particles: Particle[] = Array.from({ length: particleCount }, () =>
       createParticle(true)
     );
+
+    // ---- Monarch motes (ADR 040): tiny violet specks rising from the bottom over the vignette ----
+    interface Mote {
+      x: number;
+      y: number;
+      r: number;
+      vy: number;
+      sway: number;
+      phase: number;
+      light: boolean;
+    }
+    const moteCount = width < 768 ? 28 : 56;
+    const spawnMote = (anywhere: boolean): Mote => ({
+      x: Math.random() * width,
+      y: anywhere ? Math.random() * height : height + 10 + Math.random() * 40,
+      r: Math.random() * 1.4 + 0.7, // 0.7–2.1px: specks, never blobs
+      vy: Math.random() * 0.55 + 0.25,
+      sway: Math.random() * 0.6 + 0.2,
+      phase: Math.random() * Math.PI * 2,
+      light: Math.random() < 0.35,
+    });
+    const motes: Mote[] = Array.from({ length: moteCount }, () => spawnMote(true));
+
+    const drawMotes = (t: number, move: boolean) => {
+      ctx.save();
+      for (const m of motes) {
+        if (move) {
+          m.y -= m.vy;
+          m.x += Math.sin(t * 0.012 + m.phase) * m.sway * 0.35;
+          if (mouseRef.current.active) {
+            const dx = m.x - mouseRef.current.x;
+            const dy = m.y - mouseRef.current.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 0 && dist < 110) {
+              const f = ((110 - dist) / 110) * 1.2;
+              m.x += (dx / dist) * f;
+              m.y += (dy / dist) * f;
+            }
+          }
+          if (m.y < -10) Object.assign(m, spawnMote(false));
+        }
+        // fade in near the bottom, out near the top; a slow twinkle
+        const rise = 1 - m.y / height;
+        const fade = Math.min(1, Math.max(0, rise * 4)) * Math.min(1, Math.max(0, (1 - rise) * 2.2));
+        const twinkle = 0.65 + 0.35 * Math.sin(t * 0.05 + m.phase * 3);
+        ctx.globalAlpha = fade * twinkle * (m.light ? 0.9 : 0.7);
+        ctx.fillStyle = m.light ? "#D9CBFF" : "#9B78F2";
+        ctx.shadowColor = "rgba(124, 77, 237, 0.9)";
+        ctx.shadowBlur = m.r * 6;
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    };
 
     // Helper: draw an organic watercolor leaf silhouette
     const drawLeaf = (
@@ -173,31 +235,42 @@ export function SeasonalCanvas() {
       context.restore();
     };
 
+    const drawParticle = (context: CanvasRenderingContext2D, p: Particle) => {
+      if (p.season === "autumn") drawLeaf(context, p);
+      else drawSnow(context, p);
+    };
+
     // A season switch replaces every particle with the other kind at once (spread over the screen)
     const matchSeason = () => {
+      if (seasonRef.current === "shadow") return; // Monarch draws motes instead
       for (let i = 0; i < particles.length; i++) {
         if (particles[i].season !== seasonRef.current) particles[i] = createParticle(true);
       }
     };
 
+    let tick = 0;
+
     // Reduced motion: one still frame of the current season, no loop.
     const drawFrame = () => {
-      matchSeason();
       ctx.clearRect(0, 0, width, height);
-      const isAutumn = seasonRef.current === "autumn";
-      for (const p of particles) {
-        if (isAutumn) drawLeaf(ctx, p);
-        else drawSnow(ctx, p);
+      if (seasonRef.current === "shadow") {
+        drawMotes(0, false); // reduced motion: one still scatter of motes
+        return;
       }
+      matchSeason();
+      for (const p of particles) drawParticle(ctx, p);
     };
 
-    let tick = 0;
     const render = () => {
-      ctx.clearRect(0, 0, width, height);
       tick++;
 
+      ctx.clearRect(0, 0, width, height);
+      if (seasonRef.current === "shadow") {
+        drawMotes(tick, true);
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
       matchSeason();
-      const isAutumn = seasonRef.current === "autumn";
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -219,12 +292,7 @@ export function SeasonalCanvas() {
           }
         }
 
-        // Draw particle
-        if (isAutumn) {
-          drawLeaf(ctx, p);
-        } else {
-          drawSnow(ctx, p);
-        }
+        drawParticle(ctx, p);
 
         // Reset if moved out of bounds
         if (p.y > height + 30) {

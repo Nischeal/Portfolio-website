@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — next: Phase 6 (Monarch mode). Phase 5 (Footer) done 2026-11-16
+Status: in progress — next: Phase 7 (Polish, SEO & launch). Phase 6 (Monarch mode) done 2026-11-17
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -239,7 +239,37 @@ Source: old M7.3 + old decision 3, ADR 003/004.
 
 **Spec.** Pressing `M` (ignored while typing in inputs/textareas or with modifier keys) or clicking the footer watermark toggles `data-theme="monarch"` on `<html>`. Dark tokens already exist in `globals.css`. A small fixed pill reads `Shadow Mode // Press M to return`. A faint cyan aura (allowed **only** inside `[data-theme="monarch"]`) appears on the hero quote card. Body transitions colour over ~0.4s (already in `globals.css`).
 
-- [ ] **M1 Monarch mode (single slice):** questions first (persist across reloads via localStorage, or reset each visit? canvas particles change in Monarch, e.g. rising shadow motes, or stay leaves/snow?). Then the client hook/provider setting `data-theme`, `M` key listener (ignored in inputs or with modifier keys), watermark click, the `Shadow Mode // Press M to return` pill (`aria-live`), cyan aura on the quote card, any canvas tweak, reduced-motion transitions; every section checked in dark. Close-out in the same turn as the "ok".
+**Re-checked 2026-11-16 (ADR 032 skill mode, ADR 022 contrast):** three drifts found and settled below: the espresso footer would invert to cream in Monarch; phones can't press `M`; white text on Monarch olive buttons is ~4.0:1 (below AA).
+
+**Settled (2026-11-16)**
+| Question | Decision |
+|---|---|
+| Persist | Remembered in `localStorage` (`theme = monarch`); an inline head script applies it before first paint (no light flash) |
+| Canvas | Rising purple shadow-smoke wisps in Monarch (ADR 034; first built as cyan motes); leaves/snow return when Monarch ends |
+| Footer | Stays dark in Monarch, a step darker than the page with a hairline on top (footer-only token override; skill rule for dark pages) |
+| Pill | `Shadow Mode // Press M to return`, a polite status (not a button); phones toggle via the footer signature |
+| Contrast fix | In Monarch, text on olive buttons uses the dark page colour (~4.6:1) instead of white (~4.0:1) |
+| Doorway | `M` key (ignored in fields or with modifier keys) or a click/tap on the wide footer signature (`data-monarch-doorway`), both directions |
+
+- [x] **M1 Monarch mode (single slice):** questions first (persist across reloads via localStorage, or reset each visit? canvas particles change in Monarch, e.g. rising shadow motes, or stay leaves/snow?). Then the client hook/provider setting `data-theme`, `M` key listener (ignored in inputs or with modifier keys), watermark click, the `Shadow Mode // Press M to return` pill (`aria-live`), cyan aura on the quote card, any canvas tweak, reduced-motion transitions; every section checked in dark. Close-out in the same turn as the "ok".
+  - [x] `useMonarch` hook (attribute on `<html>` is the source of truth, `localStorage`, head boot script), `MonarchMode` (M key + doorway click + status pill), canvas shadow motes, quote-card aura, footer stays dark, olive-button contrast fix, reduced-motion colour fade off
+  - [x] Verify: build, lint, tsc; browser: M on/off, M ignored in a field, reload keeps it, signature toggles, every section checked in dark
+  - [x] Skill checks: copy-lint 0 FAIL; consistency no new FAILs vs Phase 5; perf layout shift 0.000
+  - [x] Feedback (2026-11-16): "not matching the Shadow Monarch visual, purple" + "aura flowing" → Shadow violet palette, flowing lit border + breathing glow on the quote card, purple smoke wisps, footer corner glow (ADR 034; subtle). Verified on the production build (your dev server served a stale `globals.css`; restart `npm run dev` to see the glow)
+  - [x] Feedback (2026-11-16): "add ideas 1–4", "one aura in winter and autumn", "make it dramatic" → ADR 035 (arise ripple, glowing doorway, name shimmer, cursor aura; denser season-independent smoke; stronger border/glows). Verified on the production build in both seasons
+  - [x] Feedback (2026-11-16): "no ripple", "aura looks like a ball", "name not glowing" → flow-field smoke trails, name glow, stronger/slower ripple (ADR 036). Root cause of the missing ripple/shimmer: stale dev server CSS
+  - [x] Feedback (2026-11-16): "remove the cursor shadow", "aura still looks bad" → cursor aura removed; aura rebuilt as the skill's `aurora-curtains` WebGL shader, vendored in `public/fx/`, loaded only in Monarch (ADR 037)
+  - [x] Feedback (2026-11-16): "don't like the aurora, smoke was better" → custom `shadow-smoke` shader on the same runtime, heavy at the bottom only (ADR 038)
+  - [x] Feedback (2026-11-16): "don't like this design, suggest another" → options shown; picked the breathing shadow vignette (pure CSS); shader runtime removed (ADR 039)
+  - [x] Feedback (2026-11-17): "motes flowing bottom to top", "colour changes before the ripple", "name animation not working properly" → rising motes over the vignette, View Transition reveal synced with the ring, reworked shimmer (ADR 040)
+  - [x] Feedback (2026-11-17): glowing eyes for the arise moment → original SVG eyes open before the reveal (ADR 041)
+  - [x] Feedback (2026-11-17): "eyes look cartoonish", "glowing white with smoke flowing horizontally away", "another effect after the eyes" → white-hot slits, horizontal smoke, ring removed (ADR 042)
+  - [x] Feedback (2026-11-17): "eye shape too cartoonish, no sharp edges, smoke like the reference picture" → soft eyes of light, turbulent smoke curling up and out (ADR 043)
+  - [x] Feedback (2026-11-17): "it looks like an almond, make it like this [anime eye-flare reference]" → burning streaks with flame trails (ADR 044)
+  - [x] Feedback (2026-11-17): "more space between the eyes, taller core, still cartoonish, match the reference", "no strands" → blown-out light eyes, big and close, asymmetric (ADR 045)
+  - [x] Feedback (2026-11-17): "make it intimidating like the reference, loop until satisfied", "random wisp with a flow" → reference anatomy (sharp slanted lid, flaming top, tall core, tight bloom) + random flowing wisps (ADR 046)
+  - [x] Feedback (2026-11-17): "remove the eyes, glitch instead" → "keep the ripple, just colour glitch", "remove unused code" → ripple + RGB-split ring + chromatic fringe bars; eyes and tear code removed; unused-code sweep (ADR 047)
+  - [x] `testing.md` section; ADR 033–047; closed out 2026-11-17
 
 ## Phase 7 — Polish, SEO & launch  · branch `feat/polish-seo`
 Source: old M8, vision Phase 3, roadmap Polish.

@@ -83,7 +83,7 @@ export function SiteFooter() {
         <p
           aria-hidden="true"
           data-monarch-doorway
-          className="mt-10 sm:mt-12 -mb-6 font-signature leading-[1.2] text-[color-mix(in_srgb,var(--bg-page)_16%,var(--text-headline))] select-none text-[6.7rem] sm:text-[12.6rem] md:text-[15.4rem] lg:text-[21rem] xl:text-[24rem] whitespace-nowrap"
+          className="cursor-pointer mt-10 sm:mt-12 -mb-6 font-signature leading-[1.2] text-[color-mix(in_srgb,var(--bg-page)_16%,var(--text-headline))] select-none text-[6.7rem] sm:text-[12.6rem] md:text-[15.4rem] lg:text-[21rem] xl:text-[24rem] whitespace-nowrap"
         >
           Nischal
         </p>

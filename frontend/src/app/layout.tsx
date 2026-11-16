@@ -4,6 +4,10 @@ import { SeasonProvider } from "@/context/SeasonContext";
 import { SeasonalCanvas } from "@/components/canvas/SeasonalCanvas";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { MonarchMode } from "@/components/ui/MonarchMode";
+import { MonarchAura } from "@/components/ui/MonarchAura";
+import { MonarchGlitch } from "@/components/ui/MonarchGlitch";
+import { MONARCH_BOOT_SCRIPT } from "@/hooks/useMonarch";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -55,11 +59,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // The boot script may set data-theme before React hydrates
+      suppressHydrationWarning
       className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} ${alexBrush.variable} antialiased`}
     >
+      <head>
+        {/* Apply a remembered Monarch mode before first paint (no light flash) */}
+        <script dangerouslySetInnerHTML={{ __html: MONARCH_BOOT_SCRIPT }} />
+      </head>
       <body className="bg-page text-body min-h-screen selection:bg-olive/20 selection:text-olive-dark relative overflow-x-hidden">
         <SeasonProvider>
-          {/* Ambient Seasonal Background Canvas */}
+          {/* Monarch only: the breathing shadow vignette (under the canvas, so the motes rise over it) */}
+          <MonarchAura />
+
+          {/* Ambient Seasonal Background Canvas: leaves / snow, or rising motes in Monarch */}
           <SeasonalCanvas />
 
           {/* Keyboard skip link: first Tab stop, visible only on focus */}
@@ -78,6 +91,12 @@ export default function RootLayout({
 
           {/* Footer: espresso band (footer-dark recipe, ADR 032) */}
           <SiteFooter />
+
+          {/* Hidden dark mode: M key / footer signature, plus its status pill */}
+          <MonarchMode />
+
+          {/* Monarch switch: the ring on the ripple's edge and a short colour glitch */}
+          <MonarchGlitch />
         </SeasonProvider>
       </body>
     </html>

@@ -165,3 +165,78 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Footer = the skill's `footer-dark`, on our tokens inverted (espresso `bg-headline`, linen text; olive only as decoration). The Inquiry form is the page's close, so no extra call-to-action row.
 - Rows: signature + lede with *Sections* / *Elsewhere* columns (matching the nav; GitHub, Email; no Privacy/Terms pages); legal row with © year, live Kathmandu clock (not announced), Autumn/Winter switch (`aria-pressed`); the signature set wide as the type moment and Phase 6's Monarch doorway (`data-monarch-doorway`).
 - The wide signature uses a solid `color-mix` of two tokens (alpha showed seams where script strokes overlap) and `leading-[1.2]` (tighter leading spilled 27px below the page).
+
+## 033 — Monarch mode built (2026-11-16)
+- `M` (not in fields, no modifier keys) or a click/tap on the footer's wide signature toggles `data-theme="monarch"`; remembered in `localStorage` and applied by an inline head script before first paint (no light flash; `suppressHydrationWarning` on `<html>`).
+- A polite status pill "Shadow Mode // Press M to return" (not a button; phones use the signature). Cyan stays Monarch-only: a faint aura on the hero quote card and the pill, and rising shadow motes replacing leaves/snow on the canvas.
+- The footer stays a dark band in Monarch (footer-only token re-scope, hairline on top). Text on olive buttons uses the dark page colour in Monarch (~4.6:1; white was ~4.0:1, ADR 022). Body colour fade is off under reduced motion.
+
+## 034 — Monarch becomes Shadow Monarch violet, with a flowing aura (2026-11-16)
+- Supersedes the cyan/warm-dark parts of 033 at the user's request ("purple and all"). Monarch tokens: ground `#0B0912`, cards `#16121F`, hairlines `#2A2340`, text `#ECE7F7`, muted `#9D93B8`, accent `#7C4DED` (buttons, white text ~5.1:1), light `#B79CFF` (purple text and glow, ~8:1).
+- **Exception to the design-taste skill's no-violet rule**, chosen by the user, and scoped strictly to `[data-theme="monarch"]`; the light theme never uses violet (ADR 015/032 unchanged).
+- Flowing aura (subtle): the page's one lit border is a purple light travelling round the hero quote card (conic gradient on an animated `@property` angle, 6s) with a breathing glow behind it; the canvas draws rising purple shadow-smoke wisps instead of dots; the dark footer gets a still purple corner glow. All still under reduced motion.
+
+## 035 — Monarch made dramatic, one aura in every season, four extras (2026-11-16)
+- The user asked for a dramatic aura and one look regardless of season: in Monarch the canvas always draws the same denser purple smoke (28 wisps desktop / 16 phone, opacity 0.14–0.28), whatever Autumn/Winter is set to; leaves/snow keep their old counts outside Monarch.
+- Stronger lit border (2px, brighter light, 4s loop), bigger breathing glow behind the quote card, stronger pill glow and footer corner glow.
+- Extras (user-picked ideas 1–4, Monarch only): a one-time "arise" ripple when Monarch is switched on (not on a restored reload); the footer doorway signature glows and breathes purple; a slow purple shimmer across the hero name; a soft purple aura following the mouse (fine pointers only, behind content).
+- Skill rules knowingly bent at the user's request (Monarch only): violet, a glow at the cursor, a moving text effect. All rest under reduced motion (ripple and cursor aura hidden).
+
+## 036 — Monarch aura as flow-field smoke; name glow (2026-11-16)
+- The round smoke wisps read as "a ball flowing". Replaced by flow-field smoke: 460 fine particles (220 on phones) ride a slowly swirling, upward-biased current, drawn as short additive purple strokes on a canvas that only partly fades each frame, so trails build into curling smoke threads. The mouse pushes the smoke aside. Reduced motion: one pre-settled still.
+- Same smoke in every season (season only matters outside Monarch). Leaves/snow are untouched.
+- The hero name gets a steady purple glow (`drop-shadow`) under the shimmer; the arise ripple is slower and brighter (1.4s).
+- Checked on the production build. The user's dev server kept serving an old `globals.css` (no ripple/shimmer rules), which is why those looked missing; restart `npm run dev` after CSS changes if that happens again.
+
+## 037 — Monarch aura = the skill's `aurora-curtains` shader; cursor aura removed (2026-11-16)
+- Why the aura looked bad: a 2D canvas can only fake smoke with dots or strokes (read as "balls", then as streaks). A proper volumetric glow needs a GPU shader. Supersedes the canvas smoke of 035/036.
+- The design-taste skill's effect runtime (`fx.js` v1.0.0) and its `aurora-curtains` WebGL shader are vendored **unchanged** in `public/fx/` (plain files, lint-ignored) and loaded with `import(/* webpackIgnore: true */ …)` only when Monarch turns on, so the light site downloads nothing extra (perf: 0 WebGL contexts at load). The runtime handles reduced motion (one still), hidden tabs (paused) and no-WebGL (CSS fallback).
+- Tuned for readability on our palette: curtains hung as high as they go (`height 0.3`), `intensity 1.35`, calm zone over the text column, 3 bands, slow sway, a few stars. Canvas draws nothing in Monarch.
+- The cursor aura (idea 4 of 035) is removed at the user's request. Ripple, name glow + shimmer, doorway glow and the card's lit border stay.
+
+## 038 — Monarch aura = custom `shadow-smoke` shader (2026-11-16)
+- The user disliked the aurora and preferred smoke. Supersedes the aura part of 037 (the runtime setup stays: `public/fx/fx.js` unchanged from the skill, loaded only in Monarch via `webpackIgnore`).
+- `public/fx/shadow-smoke/effect.js`, written for this site in the runtime's effect format: domain-warped fbm noise scrolling upward (billowing, curling smoke with real volume), heavy at the bottom with a ragged ceiling, a dark violet body with lit violet rims and an ember line along the bottom edge, a calm zone over the text column. Runtime gives reduced-motion still, tab pause and a CSS fallback.
+- Tuned for readability (user's pick "heavy at the bottom only"): `reach 0.42`, `density 0.85`, `glow 0.7`, `scale 1.1`, `calm 0.65` at (0.42, 0.5). The aurora file was removed.
+
+## 039 — Monarch aura = breathing shadow vignette (CSS); shader runtime removed (2026-11-16)
+- After four full-screen backgrounds were turned down (canvas balls, canvas threads, aurora shader, smoke shader), the user picked the calmest option: no moving shapes. Supersedes the aura parts of 035–038.
+- `.monarch-vignette`: a dim violet light in the middle of the screen, violet-black darkness closing in from every edge with a violet rim where they meet; it slowly creeps in and out (scale + opacity, 7s). `.monarch-grain`: fine still film grain (percent-encoded SVG turbulence; the raw inline SVG made the CSS processor drop every rule after it). Pure CSS, no WebGL; still under reduced motion.
+- `public/fx/` (the vendored runtime and the smoke effect) is deleted, with its eslint ignore. Kept from earlier rounds: palette (034), ripple, name glow + shimmer, doorway glow, card lit border, pill glow, dark footer.
+
+## 040 — Monarch motes, reveal transition, clearer name shimmer (2026-11-17)
+- Motes: 56 tiny violet specks (28 on phones, 0.7–2.1px, soft glow) rise from the bottom of the screen over the breathing vignette, swaying and twinkling, fading in at the bottom and out near the top; the mouse nudges them. The canvas now sits above the vignette. Reduced motion: one still scatter.
+- Switching mode is a reveal: `toggleMonarch` uses the View Transitions API to grow the new theme in a circle from the centre (1.1s, `clip-path` on `::view-transition-new(root)`), and the arise ring is sized and timed to ride that circle's edge, so the colours change with the ring instead of before it. No support or reduced motion: an instant switch. The body colour fade is off during the reveal.
+- Name shimmer was hard to see (a fast mid-cycle dash with ease-in-out, half-parked on "net"). Now a clear left-to-right sweep (~2.2s) with a brighter, wider band, then a rest; the cycle is 5s.
+
+## 041 — Monarch awakening: glowing eyes before the reveal (2026-11-17)
+- The user asked for glowing eyes like a reference wallpaper. The wallpaper itself is third-party artwork (watermarked), so it isn't used; the eyes are an original SVG drawing: narrow angled almond eyes with glowing lavender whites, violet irises half under the upper lid, a strong purple bloom, soft smoke curling off the outer corners.
+- Sequence on switching Monarch on (2.4s): the screen goes near-black, the eyes open and flare (0.15–0.6s), then at 0.65s the View Transition reveal and the arise ring burst out from them and the eyes fade. `toggleMonarch` fires `monarch:awaken`, waits `AWAKEN_MS` (650), then reveals; presses during the awakening are ignored. The overlay has its own view-transition layer so the reveal doesn't clip it.
+- Turning Monarch off: the reveal without the eyes. Reduced motion: an instant switch, no eyes.
+
+## 042 — Intimidating eyes; one continuous awakening (2026-11-17)
+- The almond eyes with irises read as cartoonish. Now two narrow slits of white-hot light (no iris, no pupil) with a white core and a heavy violet bloom, set apart like a real glare, igniting from a hairline. Smoke streams flow horizontally away from the outer corners: continuous strokes that fade from violet to nothing, stretching and rippling outward.
+- The separate arise ring is removed: it played after the eyes had gone and read as a second effect. The awakening is now one moment: near-black → eyes ignite → the dark theme is revealed under the lifting darkness → eyes fade with their smoke (2.6s).
+
+## 043 — Soft eyes of light, smoke curling up and out (2026-11-17)
+- The slits still read as cartoonish (hard drawn edges). The eyes are now soft shapes of white light with no outline: the shape itself is blurred and bloomed, with a white-hot centre. Bug behind the earlier hard edges: the flare animation set a CSS `filter` on the same element as the SVG `filter="url(...)"`, which replaced it; the two now sit on separate elements.
+- Smoke now follows the user's reference: violet wisps curling up and outward around the eyes like a brow of shadow, made organic by SVG turbulence + displacement, the noise animated so they churn; they fade with distance and drift away as the eyes fade.
+
+## 044 — Eyes as burning streaks of light (2026-11-17)
+- The soft almond still read as an almond. Following the user's anime reference (style only; the frame isn't used), each eye is now a burning streak: a small white-hot core at the inner eye and a flame trail streaming outward, wide at the eye and tapering to a ragged tail, its edges torn and flickering by animated SVG turbulence displacement; white → lavender → transparent along its length, violet bloom around it.
+- It ignites by shooting outward from the eye (scaleX from the inner end). The curling smoke stays, fainter, so the streak leads. Colour stays Monarch violet (the reference is blue-white).
+
+## 045 — Eyes as blown-out light, close and large (2026-11-17)
+- Iterating toward the user's anime reference (style only): each eye is a tall white-hot core with noise-torn flame edges and a short trail flicking outward and up, merged with several blur layers into a blown-out light inside a heavy violet bloom (plus a wide violet halo). No outline, iris, pupil or smoke.
+- Big and close: the pair spans ~70% of a desktop screen, eyes set well apart. The two eyes differ slightly (shape, trail, noise seed, flicker speed) and ignite 60ms apart, so they read as living light, not a mirrored stamp.
+- Tried and dropped at the user's request: dark hair-like strands across the light.
+
+## 046 — Eyes rebuilt on the reference's anatomy; random flowing wisps (2026-11-17)
+- Studying the user's anime reference (style only) gave the anatomy: a long flat band of light with a sharp, straight lower lid slanting down toward the nose (the glare), a ragged upper edge licking upward, a tall core, and a tight cool bloom that keeps the surroundings dark. Each eye is now three layers: a crisp band (sharp lid), a noise-torn flame layer on top, a small flicker at the outer end; weak halo, tight drop-shadow bloom.
+- Random wisps (the user's idea): every awakening makes a fresh set of 4–7 tongues per eye (random root, length, lift, thickness, speed) that peel off the top edge and stream back and outward on staggered loops, through the same flame filter. Generated in the event handler, not during render.
+- Eyes set wider apart (inner tips ~18% of the width apart); the right eye mirrors the left with its own noise, tilt and timing. Flame filters use a fixed large user-space region so rising wisps never leave it (they rendered raw and pixelated before).
+
+## 047 — Switch = ripple + colour glitch; eyes removed; unused code swept (2026-11-17)
+- The user dropped the eyes (and a Tenor GIF idea, after the copyright and tracking concerns were raised) for a glitch, then clarified: keep the ripple, glitch only the colour. The new theme ripples out from the centre (View Transition clip, 1.1s) with the purple ring on its edge, split into violet and cyan copies that jitter for half a second, plus thin violet/cyan fringe bars (each with a chromatic fringe) and faint scanlines, randomised per switch. Back to light: same ripple, quieter glitch. No page tearing.
+- Flash safety: only thin bars flicker (small area), everything else is a single transition (WCAG 2.3.1). Reduced motion: instant switch, no glitch.
+- Removed with it: `MonarchEyes`, the awakening delay/event, the eye/wisp/smoke CSS, the tear keyframes. A sweep found no other unused files, exports, CSS classes or keyframes; `tokens.md` updated to the current Monarch design.
