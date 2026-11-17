@@ -2,11 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 
-const KEY = "theme";
+// Monarch is an easter egg: never remembered, so every load starts in the old-money theme (ADR 049).
 const VALUE = "monarch";
-
-/** Runs in <head> before first paint so a remembered Monarch mode never flashes light first. */
-export const MONARCH_BOOT_SCRIPT = `try{if(localStorage.getItem("${KEY}")==="${VALUE}")document.documentElement.setAttribute("data-theme","${VALUE}")}catch(e){}`;
 
 function subscribe(onChange: () => void) {
   const observer = new MutationObserver(onChange);
@@ -24,18 +21,12 @@ function apply(next: boolean) {
   const root = document.documentElement;
   if (next) root.setAttribute("data-theme", VALUE);
   else root.removeAttribute("data-theme");
-  try {
-    if (next) localStorage.setItem(KEY, VALUE);
-    else localStorage.removeItem(KEY);
-  } catch {
-    // Storage blocked (private mode): the mode still works for this visit.
-  }
 }
 
 let busy = false;
 
 /**
- * Turn Monarch (the hidden dark mode) on or off and remember the choice (ADR 047). The new theme ripples
+ * Turn Monarch (the hidden dark mode) on or off for this page load only (ADR 047, 049). The new theme ripples
  * out from the centre of the screen (a View Transition clip), and MonarchGlitch (the `monarch:glitch`
  * event) adds the purple ring on the ripple's edge plus a short colour glitch: an RGB-split ring and
  * violet/cyan fringe bars. Smaller on the way back to light. No View Transitions: the glitch layer and an

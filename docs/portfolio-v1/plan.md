@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress — next: Phase 7 (Polish, SEO & launch). Phase 6 (Monarch mode) done 2026-11-17
+Status: in progress (Phase 7 — M1 merged to master 2026-11-17; M2 next). Phase 6 (Monarch mode) done 2026-11-17
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -244,7 +244,7 @@ Source: old M7.3 + old decision 3, ADR 003/004.
 **Settled (2026-11-16)**
 | Question | Decision |
 |---|---|
-| Persist | Remembered in `localStorage` (`theme = monarch`); an inline head script applies it before first paint (no light flash) |
+| Persist | Not remembered (ADR 049): every load starts old-money; Monarch lasts until reload. (Was `localStorage` + head boot script, ADR 033.) |
 | Canvas | Rising purple shadow-smoke wisps in Monarch (ADR 034; first built as cyan motes); leaves/snow return when Monarch ends |
 | Footer | Stays dark in Monarch, a step darker than the page with a hairline on top (footer-only token override; skill rule for dark pages) |
 | Pill | `Shadow Mode // Press M to return`, a polite status (not a button); phones toggle via the footer signature |
@@ -274,8 +274,13 @@ Source: old M7.3 + old decision 3, ADR 003/004.
 ## Phase 7 — Polish, SEO & launch  · branch `feat/polish-seo`
 Source: old M8, vision Phase 3, roadmap Polish.
 
-- [ ] **M1 SEO:** `metadataBase: new URL("https://www.nischalbasnet10.com.np")`; OG/Twitter image as a static `public/og.png` (1200×630, designed in the site style); `app/sitemap.ts` + `app/robots.ts` (static); JSON-LD `Person` (name, url, sameAs GitHub).
-- [ ] **M2 Audit:** contrast check of all token pairs in both themes; keyboard pass through the whole page; Lighthouse (target ≥95 for performance, accessibility, best practices and SEO) and fix findings.
+- [x] **M1 SEO:** `metadataBase` (`SITE_URL` in `src/data/site.ts`), canonical `/`, OG + Twitter `summary_large_image`, `theme-color` linen; share card 1200×630 "Masthead" layout rendered at build by `app/og.png/route.tsx` (next/og, `force-static`, OFL fonts in `frontend/assets/og/`) → `out/og.png`; static `app/sitemap.ts` + `app/robots.ts`; JSON-LD `Person` (name, url, jobTitle, Kathmandu NP, sameAs GitHub; no email) (ADR 048)
+  - [x] Skill review (2026-11-17, "check yourself, improve it"): card kicker no longer repeats the role, mono text 26px for chat-preview legibility, `PORTFOLIO` → `github.com/Nischeal`; `theme-color` added (share-meta PASS); default Next.js favicon replaced by an "NB" serif monogram (`/icon.png`, `/apple-icon.png`, `src/lib/monogram.tsx`); meta description shortened to the approved 139-char DRAFT (ADR 049)
+  - [x] Feedback (2026-11-17): "old-money theme default first, Shadow Monarch just an easter egg" → Monarch no longer remembered; boot script removed; cues unchanged (ADR 049)
+  - [x] Feedback (2026-11-17): "same colour motion as the quote card on the Selected Works card in Monarch" → front Works card gets `monarch-flow` (both faces), deck gets `monarch-glow` (ADR 050)
+  - [x] Verify: build / lint / tsc pass; copy-lint 0 FAIL; consistency head checks PASS; `out/og.png`, icons, `robots.txt`, `sitemap.xml` and meta tags checked in `out/`
+  - [x] `testing.md` section
+- [ ] **M2 Audit:** contrast check of all token pairs in both themes; keyboard pass through the whole page; Lighthouse (target ≥95 for performance, accessibility, best practices and SEO) and fix findings. Also (approved 2026-11-17): Monarch M key accepts `e.code === "KeyM"` (non-English layouts); trim the ~430 KB homepage HTML.
 - [ ] **M3 Launch check:** full build on `master` after merge, live site smoke test on desktop + phone, OG preview check (link pasted in a chat app).
 - [ ] Close-out: tick roadmap "Polish", in the same turn as the M3 "ok".
 

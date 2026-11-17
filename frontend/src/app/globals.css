@@ -120,9 +120,9 @@ html {
   box-shadow: 0 0 0 1px rgba(183, 156, 255, 0.4), 0 0 44px rgba(124, 77, 237, 0.5);
 }
 
-/* The one lit border on the page (skill rule): a purple light flows round the hero quote card
-   (.monarch-flow on the card), with a slow breathing glow behind it (.monarch-glow on its wrapper,
-   which never transforms, so the glow stays under the card). Still under reduced motion. */
+/* Lit borders: a purple light flows round the hero quote card and the front Works card
+   (.monarch-flow), with a slow breathing glow behind each (.monarch-glow on a wrapper that never
+   transforms, so the glow stays under the card). Still under reduced motion. (ADR 034, 050) */
 [data-theme="monarch"] .monarch-flow::before {
   content: "";
   position: absolute;

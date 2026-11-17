@@ -69,6 +69,8 @@ export function DossierCard({ project, number, interactive = false, flipped = fa
   }, [flipped, interactive]);
 
   const face = "[backface-visibility:hidden] [-webkit-backface-visibility:hidden]";
+  // Monarch only: the quote card's flowing purple edge, on the card in front (ADR 050)
+  const lit = interactive ? "monarch-flow rounded-[3px]" : "";
 
   return (
     <div className="relative h-full [perspective:1800px]">
@@ -80,7 +82,7 @@ export function DossierCard({ project, number, interactive = false, flipped = fa
         }}
       >
         {/* Front */}
-        <div className={`relative h-full ${face}`} inert={flipped}>
+        <div className={`relative h-full ${face} ${lit}`} inert={flipped}>
           <NumberTab number={number} />
           <div
             className={`h-full flex flex-col p-6 sm:p-9 ${paper} ${
@@ -131,7 +133,7 @@ export function DossierCard({ project, number, interactive = false, flipped = fa
         {project.status === "shipped" && (
           <div
             // Same size as the front (ADR 027 rev.): the case study scrolls inside, so the deck never changes height
-            className={`absolute inset-0 ${face} [transform:rotateY(180deg)]`}
+            className={`absolute inset-0 ${face} ${lit} [transform:rotateY(180deg)]`}
             inert={!flipped}
           >
             <NumberTab number={number} />
