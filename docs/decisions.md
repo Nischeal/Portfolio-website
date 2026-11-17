@@ -257,3 +257,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - User request: the hero quote card's Monarch colour motion also on the Selected Works card. The front card (both faces) gets `.monarch-flow` (purple light running round the edge, 4s loop) and the deck gets `.monarch-glow` (breathing glow behind, on the deck wrapper that never transforms).
 - Only the card in front is lit; the stacked cards under it stay plain so the deck doesn't read as a pile of glowing frames.
 - Same CSS, no new code paths: light theme unchanged, still under reduced motion. Replaces "one lit border on the page" (ADR 034) with two: the quote card and the Works card.
+
+## 051 — Phase 7 audit: one sprite for the stack logos, legible Monarch accent text (2026-11-17)
+- Homepage HTML 434 → 205 KB (38 KB gzipped): the Stack marquee repeated every logo path ~7× in the HTML and the RSC payload. Each path is now one `<symbol>` in a hidden sprite, used via `<use>`; same look, hover brand colours unchanged.
+- Monarch: the purple accent as text was 3.9:1 on the dark page (ADR 022 floor 4.5). The hero GitHub link and the typewriter role use the existing `--accent-olive-dark` (#B79CFF, 8.7:1) there via `.monarch-legible`; buttons, glows and the quote mark stay deep purple. Light theme unchanged (all text pairs ≥ 4.5:1).
+- Monarch `M` key also matches `e.code === "KeyM"`, so it works on non-Latin layouts.
+- Lighthouse (local build, gzip): desktop 98/96/100/100; mobile performance 89–93, accepted. Real LCP = FCP (0.16 s); the simulated 3.0 s comes from slow-4G modelling of the 4 preloaded fonts + JS. Re-measure on the live site in M3. The 96 accessibility is the footer's huge aria-hidden "Nischal" signature, kept as decoration.

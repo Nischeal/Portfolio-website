@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress (Phase 7 — M1 merged to master 2026-11-17; M2 next). Phase 6 (Monarch mode) done 2026-11-17
+Status: in progress (Phase 7 — M2 ready for check 2026-11-17; M3 next). Phase 6 (Monarch mode) done 2026-11-17
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -280,7 +280,13 @@ Source: old M8, vision Phase 3, roadmap Polish.
   - [x] Feedback (2026-11-17): "same colour motion as the quote card on the Selected Works card in Monarch" → front Works card gets `monarch-flow` (both faces), deck gets `monarch-glow` (ADR 050)
   - [x] Verify: build / lint / tsc pass; copy-lint 0 FAIL; consistency head checks PASS; `out/og.png`, icons, `robots.txt`, `sitemap.xml` and meta tags checked in `out/`
   - [x] `testing.md` section
-- [ ] **M2 Audit:** contrast check of all token pairs in both themes; keyboard pass through the whole page; Lighthouse (target ≥95 for performance, accessibility, best practices and SEO) and fix findings. Also (approved 2026-11-17): Monarch M key accepts `e.code === "KeyM"` (non-English layouts); trim the ~430 KB homepage HTML.
+- [x] **M2 Audit:** contrast check of all token pairs in both themes; keyboard pass through the whole page; Lighthouse (target ≥95 for performance, accessibility, best practices and SEO) and fix findings. Also (approved 2026-11-17): Monarch M key accepts `e.code === "KeyM"` (non-English layouts); trim the ~430 KB homepage HTML.
+  - [x] Contrast: light theme all text pairs ≥ 4.5:1; Monarch accent text 3.9:1 → `.monarch-legible` uses `#B79CFF` (user pick); footer signature is aria-hidden decoration, kept (ADR 051)
+  - [x] Keyboard: 34 tab stops in logical order, all with `focus-visible` rings; hidden card faces `inert`; honeypot `tabindex=-1`
+  - [x] Lighthouse (local, gzip): desktop 98/96/100/100; mobile perf 89–93, accepted by user (simulation artefact, re-measure live in M3) (ADR 051)
+  - [x] M key `e.code === "KeyM"`; homepage HTML 434 → 205 KB via a stack-logo SVG sprite
+  - [x] Verify: build / lint / tsc pass
+  - [x] `testing.md` section
 - [ ] **M3 Launch check:** full build on `master` after merge, live site smoke test on desktop + phone, OG preview check (link pasted in a chat app).
 - [ ] Close-out: tick roadmap "Polish", in the same turn as the M3 "ok".
 

@@ -166,6 +166,12 @@ html {
     rgba(124, 77, 237, 0.07) 50%, rgba(124, 77, 237, 0.02) 70%, rgba(124, 77, 237, 0) 85%);
 }
 
+/* Purple accent as text is 3.9:1 on the Monarch page (ADR 022 floor 4.5): readable accent text uses the
+   lighter accent token there instead (Phase 7 M2, ADR 051). Buttons, glows and decoration keep the deep purple. */
+[data-theme="monarch"] .monarch-legible {
+  color: var(--accent-olive-dark);
+}
+
 /* Olive buttons become purple in Monarch; their hover goes deeper (the lighter text tone would fail contrast) */
 [data-theme="monarch"] .hover\:bg-olive-dark:hover {
   background-color: #6534D9;

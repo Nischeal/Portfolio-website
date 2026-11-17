@@ -98,6 +98,7 @@ Violet appears **only** inside `[data-theme="monarch"]` (user's exception to the
 - `.monarch-flow` (quote card): flowing lit border (`--aura-angle`, `aura-flow` 4s). `.monarch-glow` (its wrapper): breathing glow (`aura-breathe` 4.5s). `.monarch-aura` (pill): still glow.
 - `footer.closing` in Monarch: `--text-headline: #07060B`, `--bg-page: #ECE7F7`, hairline on top, purple corner glow.
 - Button hover in Monarch: `#6534D9` (the light purple would fail contrast with white text).
+- Accent *text* in Monarch (`.monarch-legible`: hero GitHub link, typewriter role) uses `--accent-olive-dark` `#B79CFF`; `#7C4DED` as text is only 3.9:1 (ADR 051).
 - Aura: `.monarch-vignette` (violet centre light `rgba(124,77,237,.16)`, edges to `#020105`, violet rim; breathes 7s) + `.monarch-grain` (still film grain, 7%); pure CSS (ADR 039). The seasonal canvas draws rising violet motes (`#9B78F2` / `#D9CBFF`, 0.7–2.1px) over it (ADR 040).
 - Hero name: `.monarch-shimmer` (purple glow + a light sweep every 5s). Footer signature: `[data-monarch-doorway]` glows and breathes.
 - Switch (ADR 047): the new theme ripples out from the centre (View Transition clip, 1.1s); `.monarch-ring` rides its edge with `--cyan` / `--violet` RGB-split copies, plus `.monarch-glitch__bar` fringe bars and `.monarch-glitch__scan` scanlines (thin, flash-safe). Back to light: same ripple, quieter glitch. Cyan only appears in this glitch.
