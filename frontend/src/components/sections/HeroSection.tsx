@@ -103,7 +103,7 @@ export function HeroSection() {
             href="https://github.com/Nischeal"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center min-h-11 -my-3 text-olive hover:underline"
+            className="inline-flex items-center min-h-11 -my-3 text-olive monarch-legible hover:underline"
           >
             github.com/Nischeal ↗
           </a>

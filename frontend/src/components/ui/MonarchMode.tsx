@@ -14,7 +14,7 @@ export function MonarchMode() {
   // Keyboard + doorway toggles
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== "m" && e.key !== "M") return;
+      if (e.code !== "KeyM" && e.key !== "m" && e.key !== "M") return;
       if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
       const target = e.target;
       if (target instanceof Element && target.closest("input, textarea, select, [contenteditable='true']")) return;

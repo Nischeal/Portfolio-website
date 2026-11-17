@@ -10,6 +10,24 @@ function brandStyle(item: StackItem): CSSProperties {
   return { "--brand": item.brand === "#000000" ? "var(--text-headline)" : item.brand } as CSSProperties;
 }
 
+// Each logo's path is written once, as a <symbol> in a hidden sprite; every marquee copy points at it with <use>.
+// The marquee repeats each item ~7×, so inlining the paths made the homepage HTML ~430 KB (Phase 7 M2).
+function iconId(item: StackItem): string {
+  return `stack-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
+
+function IconSprite({ items }: { items: StackItem[] }) {
+  return (
+    <svg aria-hidden="true" width="0" height="0" className="absolute">
+      {items.map((item) => (
+        <symbol key={item.name} id={iconId(item)} viewBox="0 0 24 24">
+          <path d={item.path} />
+        </symbol>
+      ))}
+    </svg>
+  );
+}
+
 function Item({ item }: { item: StackItem }) {
   return (
     <span
@@ -21,7 +39,7 @@ function Item({ item }: { item: StackItem }) {
         viewBox="0 0 24 24"
         className="h-9 w-9 sm:h-11 sm:w-11 fill-current transition-colors duration-300 group-hover/item:text-(--brand)"
       >
-        <path d={item.path} />
+        <use href={`#${iconId(item)}`} />
       </svg>
       <span className="font-mono text-sm sm:text-base uppercase tracking-widest whitespace-nowrap">{item.name}</span>
     </span>
@@ -75,6 +93,7 @@ export function CapabilitiesSection() {
       aria-labelledby="stack-heading"
       className="w-full pt-16 sm:pt-24 pb-28 sm:pb-40"
     >
+      <IconSprite items={STACK} />
       <div className="px-6 max-w-6xl mx-auto space-y-5">
         <p aria-hidden="true" className="flex items-center gap-2.5 font-mono text-[11px] text-muted tracking-widest uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-olive" />

@@ -130,3 +130,13 @@ After `cd frontend && npm run build`:
 - [ ] View source of `http://localhost:3000/`: the short description ("Full-stack and backend engineer in Kathmandu, Nepal, building…"), `theme-color` #F9F6F0, icon links, canonical link, `og:image` = `https://www.nischalbasnet10.com.np/og.png` with width/height/alt, `twitter:card` = `summary_large_image`, and one `application/ld+json` Person block (no email).
 - [ ] `http://localhost:3000/og.png` shows the card in the browser.
 - [ ] After deploy (Phase 7 M3): paste the link into a chat app and confirm the card preview; optionally run the URL through Google's Rich Results Test (Person detected).
+
+## Phase 7 — M2 (Audit, ADR 051)
+Run `npm run build`, then serve `frontend/out` (e.g. `npx serve out` from `frontend/`), or use `npm run dev` at http://localhost:3000.
+
+- [ ] **Stack logos (desktop 1440 + phone 390):** both bands drift and loop without a seam; every logo is drawn (none blank); hovering a logo shows its brand colour; reduced motion shows one still row with logos.
+- [ ] **Size:** `out/index.html` ≈ 205 KB (was 434 KB).
+- [ ] **Monarch text:** press `M`. The hero `github.com/Nischeal ↗` link and the typewriter role are light lavender and easy to read; buttons, the quote mark and the glows are still deep purple. Press `M` again: the light theme is unchanged (olive).
+- [ ] **M key on another layout:** switch the OS keyboard to e.g. Russian or Nepali, press the M key → Monarch toggles. Typing `m` in the inquiry form still does nothing.
+- [ ] **Keyboard pass:** from the top of the page, Tab through everything: skip link → nav → hero links → project tabs → deck arrows → deck → case study → email buttons → form → footer links → season switch. Every stop shows an olive ring. Open the case study (Enter): focus goes to the back face, Esc closes it and focus returns; the hidden face is never reached.
+- [ ] **Lighthouse (Chrome DevTools, incognito):** desktop ≥ 95 in all four categories; mobile performance about 90 locally (accepted, re-checked live in M3).
