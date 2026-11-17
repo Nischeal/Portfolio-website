@@ -140,3 +140,11 @@ Run `npm run build`, then serve `frontend/out` (e.g. `npx serve out` from `front
 - [ ] **M key on another layout:** switch the OS keyboard to e.g. Russian or Nepali, press the M key → Monarch toggles. Typing `m` in the inquiry form still does nothing.
 - [ ] **Keyboard pass:** from the top of the page, Tab through everything: skip link → nav → hero links → project tabs → deck arrows → deck → case study → email buttons → form → footer links → season switch. Every stop shows an olive ring. Open the case study (Enter): focus goes to the back face, Esc closes it and focus returns; the hidden face is never reached.
 - [ ] **Lighthouse (Chrome DevTools, incognito):** desktop ≥ 95 in all four categories; mobile performance about 90 locally (accepted, re-checked live in M3).
+
+## Phase 7 — M3 (Launch check, ADR 052)
+Live site: https://www.nischalbasnet10.com.np/
+
+- [ ] **Link preview:** paste the URL in WhatsApp / Messenger / Discord / LinkedIn. Expected: the "Masthead" card (name, role, `github.com/Nischeal`), title "Nischal Basnet | Full-Stack & Backend Engineer". A cached old preview can take a while to refresh; on Facebook/LinkedIn, use their post inspector to re-scrape.
+- [ ] **Phone (real device):** open the site, scroll top to bottom: no sideways scroll, the menu opens and closes, the Stack logos loop, the form fields are usable, the NB icon shows when you add it to the home screen.
+- [ ] **Desktop:** both themes (press `M`); the Works deck flips; Esc closes it.
+- [ ] **Cloudflare (optional, ADR 052):** after switching `@`/`www` to "DNS only" (and ticking "Enforce HTTPS" in repo Settings → Pages), view the page source: no `/cdn-cgi/challenge-platform` script. Re-run Lighthouse in incognito.

@@ -263,3 +263,9 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - Monarch: the purple accent as text was 3.9:1 on the dark page (ADR 022 floor 4.5). The hero GitHub link and the typewriter role use the existing `--accent-olive-dark` (#B79CFF, 8.7:1) there via `.monarch-legible`; buttons, glows and the quote mark stay deep purple. Light theme unchanged (all text pairs ≥ 4.5:1).
 - Monarch `M` key also matches `e.code === "KeyM"`, so it works on non-Latin layouts.
 - Lighthouse (local build, gzip): desktop 98/96/100/100; mobile performance 89–93, accepted. Real LCP = FCP (0.16 s); the simulated 3.0 s comes from slow-4G modelling of the 4 preloaded fonts + JS. Re-measure on the live site in M3. The 96 accessibility is the footer's huge aria-hidden "Nischal" signature, kept as decoration.
+
+## 052 — Launch check: Cloudflare in front of GitHub Pages (2026-11-17)
+- The domain is now proxied by Cloudflare (`server: cloudflare`). Live checks pass: all routes, meta/OG/JSON-LD, both themes, phone 390, no console errors; SEO 100, accessibility 96.
+- Cloudflare injects a bot-detection script (`/cdn-cgi/challenge-platform`, from Bot Fight Mode / JavaScript detections) and speculation rules. It causes every best-practices deduction (81–82, deprecated APIs) and adds main-thread work; it isn't in the site's code.
+- Static assets get only `max-age=600` (GitHub Pages default), so returning visitors re-check fonts and JS every 10 minutes.
+- Live mobile performance measured 68–85 (local build 89–93). The fix is a dashboard change, not code: the already-planned switch of `@`/`www` to "DNS only" (then "Enforce HTTPS" in GitHub Pages) removes the injected script; staying proxied would need the JS detection turned off. The user decides.
