@@ -112,10 +112,21 @@ No UI yet. Check the approved copy table under Phase 2 in `plan.md`:
 - [ ] **One aura in every season:** in Monarch, switch the footer to ❄️ Winter and back to 🍂 Autumn: the vignette stays exactly the same (no leaves or snow appear).
 - [ ] Type an "m" in the Inquiry Name field: nothing toggles. Cmd/Ctrl+M doesn't toggle either.
 - [ ] Click/tap the big "Nischal" at the bottom of the footer: toggles Monarch both ways (this is the phone way in and out).
-- [ ] Reload while dark: the page loads dark straight away (no light flash).
+- [ ] Reload while dark: the page loads in the old-money light theme (Monarch isn't remembered, ADR 049).
 - [ ] Every section reads well in dark: hero, About, Works deck (front and case-study back), Stack logos (and brand colours on hover), Inquiry form fields and errors, footer (stays a dark band, a step darker than the page).
 - [ ] Olive buttons in dark have dark text that's easy to read.
 - [ ] Reduced motion: no colour fade; the vignette holds still; no ripple, shimmer or breathing.
 - [ ] Screen reader: turning Monarch on announces the pill text once.
 - [ ] All text stays readable while scrolling every section in Monarch (nothing busy sits behind it).
 - [ ] No WebGL anywhere: the aura is plain CSS.
+
+## Phase 7 — M1 (SEO & share card, ADR 048)
+After `cd frontend && npm run build`:
+- [ ] Open `frontend/out/og.png`: 1200×630 linen card, mono kicker "KATHMANDU, NEPAL", large serif "Nischal Basnet", "Full-Stack & Backend Engineer", olive "Laravel · Livewire · Python (FastAPI)", hairline, `nischalbasnet10.com.np` / `github.com/Nischeal`. Nothing clipped; the mono lines still readable when the image is shown ~500px wide.
+- [ ] Browser tab shows the "NB" monogram (linen circle, olive ring), not the black Next.js "N". On a phone, "Add to Home Screen" shows the square linen NB icon. The phone's browser bar is linen.
+- [ ] **Works card in Monarch:** press M, scroll to Selected Works: a purple light runs round the front card's edge (same 4s loop as the hero quote card) with a soft breathing glow behind the deck; cards under it aren't lit. Swipe/arrow to the next card: the new front card is lit. "Read case study": the back face is lit too. Reduced motion: edge and glow hold still. Light theme: no change.
+- [ ] **Old-money first:** turn Monarch on (M), reload: the page is old-money light. Open the site in a new tab: light. Monarch still toggles with M and the footer "Nischal" click.
+- [ ] `frontend/out/robots.txt` allows all and points to `https://www.nischalbasnet10.com.np/sitemap.xml`; `out/sitemap.xml` lists the one homepage URL.
+- [ ] View source of `http://localhost:3000/`: the short description ("Full-stack and backend engineer in Kathmandu, Nepal, building…"), `theme-color` #F9F6F0, icon links, canonical link, `og:image` = `https://www.nischalbasnet10.com.np/og.png` with width/height/alt, `twitter:card` = `summary_large_image`, and one `application/ld+json` Person block (no email).
+- [ ] `http://localhost:3000/og.png` shows the card in the browser.
+- [ ] After deploy (Phase 7 M3): paste the link into a chat app and confirm the card preview; optionally run the URL through Google's Rich Results Test (Person detected).

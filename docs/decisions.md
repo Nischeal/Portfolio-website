@@ -240,3 +240,20 @@ Condensed log of design/architecture decisions (formerly `docs/adr/001–010`; f
 - The user dropped the eyes (and a Tenor GIF idea, after the copyright and tracking concerns were raised) for a glitch, then clarified: keep the ripple, glitch only the colour. The new theme ripples out from the centre (View Transition clip, 1.1s) with the purple ring on its edge, split into violet and cyan copies that jitter for half a second, plus thin violet/cyan fringe bars (each with a chromatic fringe) and faint scanlines, randomised per switch. Back to light: same ripple, quieter glitch. No page tearing.
 - Flash safety: only thin bars flicker (small area), everything else is a single transition (WCAG 2.3.1). Reduced motion: instant switch, no glitch.
 - Removed with it: `MonarchEyes`, the awakening delay/event, the eye/wisp/smoke CSS, the tear keyframes. A sweep found no other unused files, exports, CSS classes or keyframes; `tokens.md` updated to the current Monarch design.
+
+## 048 — SEO metadata and a build-rendered share card (2026-11-17)
+- Share card uses the "Masthead" layout (hero kicker, serif name, role, stack line, hairline, domain) in the light tokens; the user picked it from three options.
+- It's rendered at build by a static route `app/og.png/route.tsx` (next/og) instead of a hand-made `public/og.png`, so it stays in code with the real fonts (OFL WOFF files in `frontend/assets/og/`). Not the `opengraph-image` convention: under static export that file has no extension and GitHub Pages would serve it as a download.
+- JSON-LD `Person`: name, url, jobTitle, Kathmandu NP, GitHub only. No email (ADR 002/008: only what's already published, kept minimal).
+- `SITE_URL` and `GITHUB_URL` live in `src/data/site.ts`; robots allows all; sitemap has the single homepage URL.
+
+## 049 — Old-money always first; NB favicon; share card and head refined (2026-11-17)
+- Monarch is an easter egg only: no longer remembered (supersedes the `localStorage` + head boot script part of ADR 033). Every load and reload starts in the old-money theme; Monarch lasts until reload. Entry cues unchanged (M key, footer "Nischal" click, pill once inside). Any old `theme` key left in a visitor's storage is no longer read.
+- Favicon: the default Next.js "N" is replaced by an "NB" Cormorant monogram in espresso on linen with an olive ring (user's pick of three), rendered at build (`/icon.png` 192px; `/apple-icon.png` 180px full square, no ring). `theme-color` = linen `#F9F6F0`.
+- Share card (skill review): the kicker no longer repeats the role (now "KATHMANDU, NEPAL"), mono text 22→26px so it reads at chat-preview size, the filler `PORTFOLIO` became `github.com/Nischeal`.
+- Meta description shortened to one 139-char sentence (approved DRAFT); Google cut the old 224-char one.
+
+## 050 — Monarch: the Works card gets the quote card's flowing edge (2026-11-17)
+- User request: the hero quote card's Monarch colour motion also on the Selected Works card. The front card (both faces) gets `.monarch-flow` (purple light running round the edge, 4s loop) and the deck gets `.monarch-glow` (breathing glow behind, on the deck wrapper that never transforms).
+- Only the card in front is lit; the stacked cards under it stay plain so the deck doesn't read as a pile of glowing frames.
+- Same CSS, no new code paths: light theme unchanged, still under reduced motion. Replaces "one lit border on the page" (ADR 034) with two: the quote card and the Works card.

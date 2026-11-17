@@ -292,7 +292,8 @@ export function ProjectDeck({ projects, heading }: ProjectDeckProps) {
         onKeyDown={onKeyDown}
         onWheel={onWheel}
         aria-label="Project deck. Use the left and right arrow keys to move through the projects."
-        className="order-2 lg:order-none lg:col-span-7 lg:pt-3.5 grid pb-8 outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive rounded-[3px]"
+        // monarch-glow: the quote card's breathing purple glow behind the deck (Monarch only, ADR 050)
+        className="monarch-glow relative order-2 lg:order-none lg:col-span-7 lg:pt-3.5 grid pb-8 outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-olive rounded-[3px]"
       >
         {projects.map((project, index) => {
           const position = order.indexOf(index);

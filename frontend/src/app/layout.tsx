@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono, Alex_Brush } from "next/font/google";
 import { SeasonProvider } from "@/context/SeasonContext";
 import { SeasonalCanvas } from "@/components/canvas/SeasonalCanvas";
@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { MonarchMode } from "@/components/ui/MonarchMode";
 import { MonarchAura } from "@/components/ui/MonarchAura";
 import { MonarchGlitch } from "@/components/ui/MonarchGlitch";
-import { MONARCH_BOOT_SCRIPT } from "@/hooks/useMonarch";
+import { GITHUB_URL, SITE_URL } from "@/data/site";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -38,17 +38,57 @@ const alexBrush = Alex_Brush({
   display: "swap",
 });
 
+const TITLE = "Nischal Basnet | Full-Stack & Backend Engineer";
+const SHARE_DESCRIPTION = "Full-Stack & Backend Engineer based in Kathmandu, Nepal.";
+
+// Share card rendered at build by app/og.png/route.tsx.
+const SHARE_IMAGE = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "Nischal Basnet, Full-Stack & Backend Engineer in Kathmandu, Nepal",
+};
+
 export const metadata: Metadata = {
-  title: "Nischal Basnet | Full-Stack & Backend Engineer",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
   description:
-    "Full-Stack Developer and Backend Engineer specializing in Laravel, Livewire, and Python (FastAPI). Focused on clean system design, well-modelled relational databases, and scalable web platforms. Rooted in Kathmandu, Nepal.",
-  openGraph: {
-    title: "Nischal Basnet | Full-Stack & Backend Engineer",
-    description: "Full-Stack & Backend Engineer based in Kathmandu, Nepal.",
-    url: "https://www.nischalbasnet10.com.np",
-    siteName: "Nischal Basnet",
-    type: "website",
+    "Full-stack and backend engineer in Kathmandu, Nepal, building Laravel, Livewire and FastAPI systems with clean, well-modelled databases.",
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [{ url: "/icon.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  openGraph: {
+    title: TITLE,
+    description: SHARE_DESCRIPTION,
+    url: "/",
+    siteName: "Nischal Basnet",
+    locale: "en_US",
+    type: "website",
+    images: [SHARE_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: SHARE_DESCRIPTION,
+    images: [SHARE_IMAGE],
+  },
+};
+
+// Browser chrome colour on phones: the linen page ground (--bg-page).
+export const viewport: Viewport = { themeColor: "#F9F6F0" };
+
+// Structured data for search engines: only facts already published on the site (ADR 002/008).
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nischal Basnet",
+  url: SITE_URL,
+  jobTitle: "Full-Stack & Backend Engineer",
+  address: { "@type": "PostalAddress", addressLocality: "Kathmandu", addressCountry: "NP" },
+  sameAs: [GITHUB_URL],
 };
 
 export default function RootLayout({
@@ -59,13 +99,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // The boot script may set data-theme before React hydrates
+      // Monarch mode sets data-theme on <html> after hydration
       suppressHydrationWarning
       className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} ${alexBrush.variable} antialiased`}
     >
       <head>
-        {/* Apply a remembered Monarch mode before first paint (no light flash) */}
-        <script dangerouslySetInnerHTML={{ __html: MONARCH_BOOT_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD).replace(/</g, "\\u003c") }}
+        />
       </head>
       <body className="bg-page text-body min-h-screen selection:bg-olive/20 selection:text-olive-dark relative overflow-x-hidden">
         <SeasonProvider>
