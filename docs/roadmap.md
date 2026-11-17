@@ -17,7 +17,7 @@ Full specs and milestones: [portfolio-v1/plan.md](portfolio-v1/plan.md). Run wit
 - [x] Phase 4 — **Inquiry** (`#inquiry`) via Web3Forms + copy email
 - [x] Phase 5 — **Footer**: espresso footer-dark band, Kathmandu clock, season switch (ADR 032)
 - [x] Phase 6 — **Monarch mode**: violet Shadow Monarch theme, vignette + rising motes, ripple + colour glitch switch (ADR 033–047)
-- [ ] Phase 7 — **Polish, SEO & launch**
+- [x] Phase 7 — **Polish, SEO & launch** (done 2026-11-17, ADR 048–052)
 
 ## Later
 - [ ] Phase 8 — Scroll reveal

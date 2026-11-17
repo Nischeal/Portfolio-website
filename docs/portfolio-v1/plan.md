@@ -1,5 +1,5 @@
 # Portfolio v1 — Master Plan
-Status: in progress (Phase 7 — M3 ready for check 2026-11-17). Phase 6 (Monarch mode) done 2026-11-17
+Status: in progress — v1 phases 1–7 done 2026-11-17; next: Phase 8 (Scroll reveal, post-launch). Phase 6 (Monarch mode) done 2026-11-17
 Branch: one per phase (named in each phase heading), created from `master` after the previous phase is merged
 
 Single source for everything left to build. Rebuilt on 2026-11-16 from the Gemini-era master plan (old Milestones 4–8 + `vision-roadmap.md`, removed in `77b593a`) and updated with decisions 001–021. **Implement from this file; no need to read git history.** If anything here conflicts with `docs/decisions.md`, the newer decision wins. Update this plan in the same commit.
@@ -287,13 +287,13 @@ Source: old M8, vision Phase 3, roadmap Polish.
   - [x] M key `e.code === "KeyM"`; homepage HTML 434 → 205 KB via a stack-logo SVG sprite
   - [x] Verify: build / lint / tsc pass
   - [x] `testing.md` section
-- [ ] **M3 Launch check:** full build on `master` after merge, live site smoke test on desktop + phone, OG preview check (link pasted in a chat app).
+- [x] **M3 Launch check:** full build on `master` after merge, live site smoke test on desktop + phone, OG preview check (link pasted in a chat app).
   - [x] Build / lint / tsc pass on `master` after the M2 merge (`42efb15`); pushed and deployed (homepage 436 → 207 KB live)
   - [x] Live smoke: `/`, `/og.png`, `/icon.png`, `/apple-icon.png`, `/robots.txt`, `/sitemap.xml` 200; 404 page 404; OG/Twitter/canonical/JSON-LD tags present; desktop both themes + phone 390 render, no console errors
   - [x] Live Lighthouse: SEO 100, accessibility 96; best practices 81–82 and mobile performance 68–85 lowered by Cloudflare's injected `/cdn-cgi/challenge-platform` script and short edge cache (ADR 052) — dashboard settings, user's call
   - [x] User: OG preview pasted in a chat app (confirmed 2026-11-17)
   - [x] `testing.md` section
-- [ ] Close-out: tick roadmap "Polish", in the same turn as the M3 "ok".
+- [x] Close-out: tick roadmap "Polish", in the same turn as the M3 "ok". Done 2026-11-17.
 
 ---
 
